@@ -3,4 +3,5 @@
   <groupId>com.showmecoo.web</groupId>
   <artifactId>com.showmecoo.web.parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
 </project>
