@@ -1,0 +1,28 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <localRepository>/Users/weixin/workspace/mvn-repos</localRepository>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <repositories>
+                <!--repository for spring-->
+                <repository>
+					<id>io.spring.repo.maven.release</id> 
+					<url>http://repo.spring.io/release/</url> 
+					<snapshots><enabled>false</enabled></snapshots>
+  			    </repository>
+            </repositories>
+            <pluginRepositories>
+             <pluginRepository>
+	            <id>spring-milestone</id>
+	            <url>https://repo.spring.io/libs-release</url>
+	         </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>dev</activeProfile>
+    </activeProfiles>
+</settings>
