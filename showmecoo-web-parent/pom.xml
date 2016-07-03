@@ -25,6 +25,8 @@
 
 		<!-- test dependency -->
 		<assured.version>2.9.0</assured.version>
+		
+		<showmecoo.version>0.0.1-SNAPSHOT</showmecoo.version>
 	</properties>
 
 	<build>

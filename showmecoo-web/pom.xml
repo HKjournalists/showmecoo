@@ -7,4 +7,13 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.showmecooo.web</artifactId>
+	
+	
+	<dependencies>
+	<dependency>
+		<groupId>com.showmecoo.web</groupId>
+		<artifactId>com.showmecoo.web.management</artifactId>
+		<version>${showmecoo.version}</version>
+	</dependency>
+	</dependencies>
 </project>
