@@ -1,5 +1,46 @@
 CREATE SCHEMA `showmecoo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 
+--user 用户信息表
+CREATE TABLE `showmecoo`.`user` (
+  `userid` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `rolename` VARCHAR(45) NULL,
+  `createdate` DATETIME NOT NULL,
+  `modifydate` DATETIME NOT NULL,
+  `lastlogindate` DATETIME NOT NULL,
+  `openid` VARCHAR(45) NULL,
+  PRIMARY KEY (`userid`));
+  
+--role 角色表
+CREATE TABLE `showmecoo`.`role` (
+  `roleid` INT NOT NULL AUTO_INCREMENT,
+  `rolename` VARCHAR(45) NOT NULL,
+  `roledesc` VARCHAR(45) NULL,
+  `createuserid` VARCHAR(45) NOT NULL,
+  `createdate` DATETIME NOT NULL,
+  `modifyuserid` VARCHAR(45) NOT NULL,
+  `modifydate` DATETIME NOT NULL,
+  PRIMARY KEY (`roleid`));
+
+--user_wechat_info 微信用户信息表
+CREATE TABLE `showmecoo`.`user_wechat_info` (
+  `openid` VARCHAR(45) NOT NULL,
+  `userid` VARCHAR(45) NULL,
+  `nickname` VARCHAR(45) NULL,
+  `sex` CHAR(1) NULL,
+  `city` VARCHAR(45) NULL,
+  `country` VARCHAR(45) NULL,
+  `province` VARCHAR(45) NULL,
+  `language` VARCHAR(45) NULL,
+  `headimgurl` VARCHAR(45) NULL,
+  `subscribe_time` DATETIME NULL,
+  `unionid` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `groupid` VARCHAR(45) NULL,
+  PRIMARY KEY (`openid`));
 user表字段
 用户ID（UUID）
 用户名，
