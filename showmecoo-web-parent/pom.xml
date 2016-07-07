@@ -22,11 +22,12 @@
 		<logback.version>1.1.7</logback.version>
 		<java.compile.version>1.8</java.compile.version>
 		<java.encoding>UTF-8</java.encoding>
-
+		
 		<!-- test dependency -->
 		<assured.version>2.9.0</assured.version>
 		
 		<showmecoo.version>0.0.1-SNAPSHOT</showmecoo.version>
+		<hibernate.version>4.3.11.Final</hibernate.version>
 	</properties>
 
 	<build>

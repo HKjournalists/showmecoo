@@ -12,7 +12,9 @@ CREATE TABLE `showmecoo`.`user` (
   `modifydate` DATETIME NOT NULL,
   `lastlogindate` DATETIME NOT NULL,
   `openid` VARCHAR(45) NULL,
-  PRIMARY KEY (`userid`));
+  PRIMARY KEY (`userid`),
+  UNIQUE INDEX `userid_UNIQUE` (`userid` ASC),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC));
   
 --role 角色表
 CREATE TABLE `showmecoo`.`role` (
@@ -41,14 +43,6 @@ CREATE TABLE `showmecoo`.`user_wechat_info` (
   `remark` VARCHAR(45) NULL,
   `groupid` VARCHAR(45) NULL,
   PRIMARY KEY (`openid`));
-user表字段
-用户ID（UUID）
-用户名，
-密码，
-手机号
-邮箱地址
-角色
-微信号openId
 
 
 微信用户表
@@ -84,11 +78,5 @@ groupid	用户所在的分组ID
 }
 
 
-
-角色表
-角色ID
-角色类型（艺人，商家，管理员，普通用户）
-
-o6_bmjrPTlm6_2sgVt7hMZOPfL2M
 
 
