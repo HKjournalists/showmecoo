@@ -20,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,7 +32,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class BasicRepository<T, ID extends Serializable> implements BaseDao<T, ID>{
+@NoRepositoryBean
+public class BasicRepository<T, ID extends Serializable> implements BasicDao<T, ID>{
 	
 	 @PersistenceContext
 	  private EntityManager entityManager;

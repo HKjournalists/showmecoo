@@ -22,7 +22,20 @@ package com.showmecoo.web.management.user.constants;
 
 public class UserSQLConstants {
 	
-//	public static final String 
+	/*
+	 *   `userid` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `rolename` VARCHAR(45) NULL,
+  `createdate` DATETIME NOT NULL,
+  `modifydate` DATETIME NOT NULL,
+  `lastlogindate` DATETIME NOT NULL,
+  `openid` VARCHAR(45) NULL
+	 */
+	
+	public static final String SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid from user where username=?"; 
 }
 
 /*

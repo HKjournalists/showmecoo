@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.entity;
+package com.showmecoo.web.management.test;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -30,12 +30,12 @@ import org.hibernate.annotations.GenericGenerator;
 /**
  * TODO 此处填写 class 信息
  *
- * @author weixin (mailto:weixin@primeton.com)
+ * @author yourname (mailto:yourname@primeton.com)
  */
 
 @Entity
 @Table(name="user")
-public class UserEntity implements Serializable{
+public class UserEntity2 implements Serializable{
 
 	/**
 	 * Comment for <code>serialVersionUID</code>
@@ -43,8 +43,8 @@ public class UserEntity implements Serializable{
 	private static final long serialVersionUID = 7512770280276080940L;
 	
 	
-//	@GeneratedValue(generator="system-uuid")  
-//    @GenericGenerator(name="system-uuid",strategy="uuid")  
+	@GeneratedValue(generator="system-uuid")  
+    @GenericGenerator(name="system-uuid",strategy="uuid")  
 	@Id
 	private String userId;
 	

@@ -11,32 +11,34 @@
  * Created on 2016年7月6日
  *******************************************************************************/
 
-package com.showmecoo.web.commons.dao;
+package com.showmecoo.web.management.test;
 
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * JPA Datasource 配置类
+ * TODO 此处填写 class 信息
  *
- * @author weixin (mailto:weixin@showmecoo.com)
+ * @author yourname (mailto:yourname@primeton.com)
  */
 
 @Configuration
 @EnableTransactionManagement
-public class DatabaseConfiguration {
+public class DatabaseConfig {
 
 	@Autowired
 	private Environment env;
@@ -118,7 +120,7 @@ public class DatabaseConfiguration {
 	  public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 	    return new PersistenceExceptionTranslationPostProcessor();
 	  }
-
+	  
 }
 
 /*

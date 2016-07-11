@@ -22,10 +22,10 @@
 		<logback.version>1.1.7</logback.version>
 		<java.compile.version>1.8</java.compile.version>
 		<java.encoding>UTF-8</java.encoding>
-		
+
 		<!-- test dependency -->
 		<assured.version>2.9.0</assured.version>
-		
+
 		<showmecoo.version>0.0.1-SNAPSHOT</showmecoo.version>
 		<hibernate.version>4.3.11.Final</hibernate.version>
 	</properties>
@@ -61,6 +61,33 @@
 							<phase>package</phase>
 							<goals>
 								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+<!-- 					<configuration> -->
+<!-- 						<fork>true</fork> -->
+<!-- 					</configuration> -->
+					<!-- 热更新, 但是不适用于m2e插件 -->
+					<dependencies>
+						<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>springloaded</artifactId>
+							<version>1.2.3.RELEASE</version>
+						</dependency>
+					</dependencies>
+					<!-- 如果spring boot项目有多个application的main入口，则在编译的时候需要指定一个入口，在真正起作用的也只有该入口 -->
+					<configuration>
+						<mainClass>com.showmecoo.web.management.Application</mainClass>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -118,6 +145,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 </project>

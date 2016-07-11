@@ -16,6 +16,7 @@ package com.showmecoo.web.commons.dao;
 
 import java.io.Serializable;
 
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
 /**
@@ -26,7 +27,8 @@ import org.springframework.data.repository.Repository;
  * @param <T> the domain type the repository manages
  * @param <ID> the type of the id of the entity the repository manages
  */
-public interface BaseDao<T, ID extends Serializable> extends Repository<T, ID> {
+@NoRepositoryBean
+public interface BasicDao<T, ID extends Serializable> extends Repository<T, ID> {
 	
 	/**
 	 * create a record by given entity. Use the returned instance for further operations as the save operation might have changed the
