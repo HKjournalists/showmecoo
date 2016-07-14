@@ -16,6 +16,8 @@ package com.showmecoo.web.management.user.impl;
 
 import static org.junit.Assert.fail;
 
+import java.util.Date;
+
 import javax.transaction.Transactional;
 
 import org.junit.Assert;
@@ -41,7 +43,7 @@ import com.showmecoo.web.management.user.spi.UserRepository;
 public class UserRepositoryTestCase {
 	
 	@Autowired
-	private UserRepository userDao;
+	private UserRepository userRepository;
 
 	/**
 	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUserByName(java.lang.String)}.
@@ -49,7 +51,7 @@ public class UserRepositoryTestCase {
 	@Test
 //	@Rollback(false)
 	public void testFindUserByName() {
-		UserEntity user = userDao.findUserByName("mac");
+		UserEntity user = userRepository.findUserByName("mac");
 		System.out.println(user);
 		Assert.assertNotNull(user);
 		Assert.assertEquals(user.getUserName(), "mac");
@@ -60,7 +62,9 @@ public class UserRepositoryTestCase {
 	 */
 	@Test
 	public void testFindUserById() {
-		fail("Not yet implemented");
+		UserEntity user = userRepository.findUserById("402881e755e99c620155e99c68400000");
+		Assert.assertEquals(user.getUserName(), "mac");
+		System.out.println(user);
 	}
 
 	/**
@@ -84,31 +88,53 @@ public class UserRepositoryTestCase {
 	 */
 	@Test
 	public void testCountUsers() {
-		fail("Not yet implemented");
+		int count = userRepository.countUsers();
+		Assert.assertEquals(2, count);
 	}
 
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#create(java.lang.Object)}.
 	 */
 	@Test
+//	@Rollback(false)
 	public void testCreate() {
-		fail("Not yet implemented");
+		UserEntity user = new UserEntity();
+//		user.setUserId("1");
+		user.setUserName("mac");
+		user.setPassword("1234");
+		user.setPhone("123456789");
+		user.setEmail("ss@aa.com");
+		user.setRolename("admin");
+		user.setCreateDate(new Date());
+		user.setModifyDate(new Date());
+		user.setLastLoginDate(new Date());
+		user.setOpenId("1234");
+		userRepository.createUser(user);
 	}
 
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#update(java.lang.Object)}.
 	 */
 	@Test
+	@Rollback(false)
 	public void testUpdate() {
-		fail("Not yet implemented");
+		UserEntity user = userRepository.findUserByName("mac");
+		user.setEmail("update@gmail.com");
+		userRepository.updateUser(user);
+		UserEntity nuser = userRepository.findUserById(user.getUserId());
+		Assert.assertEquals("update@gmail.com", nuser.getEmail());
 	}
 
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#delete(java.lang.Object)}.
 	 */
 	@Test
+	@Rollback(false)
 	public void testDelete() {
-		fail("Not yet implemented");
+		UserEntity user = userRepository.findUserByName("mac1");
+		userRepository.deleteUserEntity(user.getUserId());
+		UserEntity nuser = userRepository.findUserByName("mac1");
+		Assert.assertNull(nuser);
 	}
 
 }

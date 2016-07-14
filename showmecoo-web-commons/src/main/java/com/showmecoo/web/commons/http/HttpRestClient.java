@@ -1,5 +1,11 @@
 package com.showmecoo.web.commons.http;
 
+/**
+ * 
+ * restful api 调用客户端工具类
+ *
+ * @author weixin (mailto:weixin@showmecoo.com)
+ */
 
 public class HttpRestClient {
 	

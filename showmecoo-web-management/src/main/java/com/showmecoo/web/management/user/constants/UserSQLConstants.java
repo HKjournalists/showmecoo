@@ -36,6 +36,11 @@ public class UserSQLConstants {
 	 */
 	
 	public static final String SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid from user where username=?"; 
+	public static final String SQL_FIND_USER_BY_ID = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid from user where userid=?"; 
+	public static final String SQL_COUNT_USER = "select count(userid) from user"; 
+	
+	public static final String SQL_DELETE_USER_BY_ID = "delete from user where userid=?"; 
+	
 }
 
 /*

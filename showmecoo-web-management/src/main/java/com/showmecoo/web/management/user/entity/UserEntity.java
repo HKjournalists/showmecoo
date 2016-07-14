@@ -43,8 +43,8 @@ public class UserEntity implements Serializable{
 	private static final long serialVersionUID = 7512770280276080940L;
 	
 	
-//	@GeneratedValue(generator="system-uuid")  
-//    @GenericGenerator(name="system-uuid",strategy="uuid")  
+	@GeneratedValue(generator="system-uuid")  
+    @GenericGenerator(name="system-uuid",strategy="uuid")  
 	@Id
 	private String userId;
 	

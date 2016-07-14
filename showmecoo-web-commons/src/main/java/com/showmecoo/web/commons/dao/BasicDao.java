@@ -16,7 +16,6 @@ package com.showmecoo.web.commons.dao;
 
 import java.io.Serializable;
 
-import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
 /**
@@ -28,7 +27,7 @@ import org.springframework.data.repository.Repository;
  * @param <ID> the type of the id of the entity the repository manages
  */
 
-@NoRepositoryBean
+@Deprecated
 public interface BasicDao<T, ID extends Serializable> extends Repository<T, ID> {
 	
 	/**

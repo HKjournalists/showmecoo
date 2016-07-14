@@ -17,13 +17,15 @@ package com.showmecoo.web.management.user.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.showmecoo.web.commons.dao.BasicRepository;
 import com.showmecoo.web.management.user.constants.UserSQLConstants;
 import com.showmecoo.web.management.user.entity.UserEntity;
 import com.showmecoo.web.management.user.spi.UserRepository;
@@ -38,6 +40,8 @@ import com.showmecoo.web.management.user.spi.UserRepository;
 @Transactional
 public class UserRepositoryImpl implements UserRepository{
 	
+	private static Logger log = LoggerFactory.getLogger(UserRepositoryImpl.class);
+	
 	 @PersistenceContext
 	 private EntityManager entityManager;
 
@@ -48,7 +52,15 @@ public class UserRepositoryImpl implements UserRepository{
 	public UserEntity findUserByName(String userName) {
 		Query query = entityManager.createNativeQuery(UserSQLConstants.SQL_FIND_USER_BY_NAME, UserEntity.class);
 		query.setParameter(1, userName);
-		return (UserEntity) query.getSingleResult();
+		UserEntity user;
+		try {
+			user = (UserEntity) query.getSingleResult();
+		} catch (NoResultException e) {
+			log.error("can not find user by userName: {}", userName, e);
+			return null;
+		}
+		
+		return user;
 	}
 
 	/* (non-Javadoc)
@@ -56,8 +68,10 @@ public class UserRepositoryImpl implements UserRepository{
 	 */
 	@Override
 	public UserEntity findUserById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = entityManager.createNativeQuery(UserSQLConstants.SQL_FIND_USER_BY_ID, UserEntity.class);
+		query.setParameter(1, userId);
+		
+		return (UserEntity) query.getSingleResult();
 	}
 
 	/* (non-Javadoc)
@@ -81,16 +95,32 @@ public class UserRepositoryImpl implements UserRepository{
 	/* (non-Javadoc)
 	 * @see com.showmecoo.web.management.user.spi.UserDao#countUsers()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public long countUsers() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int countUsers() {
+		Query query = entityManager.createNativeQuery(UserSQLConstants.SQL_COUNT_USER);
+		List<Number> list = (List<Number>)query.getResultList();
+		return list.get(0).intValue();
 	}
 
 	@Override
 	public UserEntity createUser(UserEntity userInfo) {
 		entityManager.persist(userInfo);
 		return userInfo;
+	}
+
+	@Override
+	public UserEntity updateUser(UserEntity user) {
+		
+		return entityManager.merge(user);
+	}
+
+	@Override
+	public void deleteUserEntity(String userid) {
+
+		Query query = entityManager.createNativeQuery(UserSQLConstants.SQL_DELETE_USER_BY_ID);
+		query.setParameter(1, userid);
+		query.executeUpdate();
 	}
 	
 }	

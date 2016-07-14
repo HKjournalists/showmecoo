@@ -16,14 +16,9 @@ package com.showmecoo.web.management.user.spi;
 
 import java.util.List;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import javax.transaction.Transactional;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
-import com.showmecoo.web.management.user.constants.UserConstants;
 import com.showmecoo.web.management.user.entity.UserEntity;
 
 /**
@@ -31,15 +26,30 @@ import com.showmecoo.web.management.user.entity.UserEntity;
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
-
+@Transactional
 public interface UserRepository{
 	
 	/**
 	 * 新增用户，返回带useId信息的UserEntity对象
-	 * @param userInfo
+	 * @param user
 	 * @return
 	 */
-	public UserEntity createUser(UserEntity userInfo);
+	public UserEntity createUser(UserEntity user);
+	
+	
+	/**
+	 * 更新用户，返回跟新后的UserEntity对象
+	 * @param user
+	 * @return
+	 */
+	public UserEntity updateUser(UserEntity user);
+	
+	/**
+	 * 根据userid删除UserEntity
+	 * @param userId
+	 */
+	public void deleteUserEntity(String userId);
+	
 	
 	/**
 	 * 根据用户名查找用户，适用于用户注册场景，页面搜索艺人场景
@@ -47,6 +57,8 @@ public interface UserRepository{
 	 * @return	UserEntity	用户对象		
 	 */
 	public UserEntity findUserByName(@PathParam("userName")String userName);
+	
+	
 	
 	
 	/**
@@ -68,7 +80,7 @@ public interface UserRepository{
 	 * 统计总用户数
 	 * @return	
 	 */
-	public long countUsers();
+	public int countUsers();
 	
 	
 }

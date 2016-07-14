@@ -29,7 +29,7 @@ import org.springframework.stereotype.Repository;
  * @author weixin (mailto:weixin@showmecoo.com)
  * @param <T>
  */
-
+@Deprecated
 @Repository
 @Transactional
 @NoRepositoryBean
