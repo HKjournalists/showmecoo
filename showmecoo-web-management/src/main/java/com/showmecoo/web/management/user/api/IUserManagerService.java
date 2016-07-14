@@ -52,7 +52,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@POST
-	@Path("/create")
+	@Path(RestAPIConstants.OPERATION_TYPE_POST)
 	UserEntity createUserEntity(UserEntity user);
 	
 	/**
@@ -61,7 +61,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@PUT
-	@Path("/update")
+	@Path(RestAPIConstants.OPERATION_TYPE_PUT)
 	UserEntity updateUserEntity(UserEntity user);
 	
 	/**
@@ -69,7 +69,7 @@ public interface IUserManagerService {
 	 * @param userId
 	 */
 	@DELETE
-	@Path("/delete/{userid}")
+	@Path(RestAPIConstants.OPERATION_TYPE_DELETE + "/{userid}")
 	void deleteUserEntity(@PathParam("userid")String userId);
 	
 	/**
@@ -78,7 +78,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path("/query/{userName}")
+	@Path(RestAPIConstants.OPERATION_TYPE_GET + "/{userName}")
 	UserEntity findUserByName(@PathParam("userName")String userName);
 	
 	/**
@@ -87,7 +87,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path("/query/id/{userid}")
+	@Path(RestAPIConstants.OPERATION_TYPE_GET + "/id/{userid}")
 	UserEntity findUserById(@PathParam("{userid}")String userId);
 	
 	/**
@@ -95,7 +95,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path("/query/count")
+	@Path(RestAPIConstants.OPERATION_TYPE_GET + "/count")
 	int countUsers();
 	
 //	List<UserEntity> findUsers();
