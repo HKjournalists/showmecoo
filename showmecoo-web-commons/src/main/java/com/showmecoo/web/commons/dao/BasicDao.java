@@ -27,6 +27,7 @@ import org.springframework.data.repository.Repository;
  * @param <T> the domain type the repository manages
  * @param <ID> the type of the id of the entity the repository manages
  */
+
 @NoRepositoryBean
 public interface BasicDao<T, ID extends Serializable> extends Repository<T, ID> {
 	

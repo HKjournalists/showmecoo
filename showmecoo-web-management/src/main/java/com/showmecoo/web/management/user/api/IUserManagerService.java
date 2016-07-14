@@ -28,23 +28,39 @@ import com.showmecoo.web.management.user.entity.UserEntity;
 import com.showmecoo.web.management.user.spi.Consumes;
 
 /**
- * TODO 此处填写 class 信息
+ * restful api standard
+ * http://ip:port/api_version/module/operation(create/update/delete/query)/options...(list/id/name...)/parameter
+ * uri:http://ip:port//一级模块/操作/可选标识/参数
+ *
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
 @Component
-@Path("/users")
+@Path(RestAPIConstants.API_VERSION + RestAPIConstants.URI_MODULE_USERS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public interface IUserManagerService {
 	
 	@POST
+	@Path("/create")
 	UserEntity createUserEntity(UserEntity user);
 	
+	@PUT
+	@Path("/update")
+	UserEntity updateUserEntity(UserEntity user);
+	
+	@DELETE
+	@Path("/delete/{userid}")
+	void deleteUserEntity(@pathParm("userid")String userId);
+	
 	@GET
-	@Path("/{userName}")
+	@Path("/query/{userName}")
 	UserEntity findUserByName(@PathParam("userName")String userName);
+	
+	@GET
+	@Path("/query/id/{userid}")
+	UserEntity findUserById(@PathParam("{userid}")String userId);
 	
 	
 	
