@@ -16,6 +16,8 @@ package com.showmecoo.web.management.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -48,7 +50,21 @@ public class UDAOImplTestCase {
 		UserEntity2 user = dao.findUserByName("mac");
 		System.out.println(user);
 	}
-
+	
+	@Test
+	public void testCreateUser(){
+		UserEntity2 user = new UserEntity2();
+		user.setUserName("mac1");
+		user.setPassword("1234");
+		user.setPhone("123456789");
+		user.setEmail("ss@aa.com");
+		user.setRolename("admin");
+		user.setCreateDate(new Date());
+		user.setModifyDate(new Date());
+		user.setLastLoginDate(new Date());
+		user.setOpenId("1234");
+		dao.createUser(user);
+	}
 }
 
 /*

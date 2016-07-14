@@ -15,12 +15,14 @@
 package com.showmecoo.web.management.user.api;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.showmecoo.web.management.user.entity.UserEntity;
 
@@ -35,9 +37,15 @@ import com.showmecoo.web.management.user.entity.UserEntity;
 @Produces(MediaType.APPLICATION_JSON)
 public interface IUserManagerService {
 	
+	@POST
+	@Path("/{user}")
+	UserEntity createUserEntity(@RequestBody UserEntity user);
+	
 	@GET
 	@Path("/{userName}")
 	UserEntity findUserByName(@PathParam("userName")String userName);
+	
+	
 	
 }
 

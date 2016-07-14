@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 import com.showmecoo.web.management.user.api.IUserManagerService;
 import com.showmecoo.web.management.user.entity.UserEntity;
-import com.showmecoo.web.management.user.spi.UserDao;
+import com.showmecoo.web.management.user.spi.UserRepository;
 
 /**
  * 用户管理模块对外提供的rest service，返回json格式的返回值
@@ -33,7 +33,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 //	@Resource
 //	@Qualifier("userRepository")此类定义用于dao有多个实现类的情况
 	@Autowired
-	private UserDao userDao;
+	private UserRepository userDao;
 	/* (non-Javadoc)
 	 * @see com.showmecoo.web.management.user.spi.IUserManagerService#findUserByName(java.lang.String)
 	 */
@@ -42,6 +42,11 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		UserEntity user = userDao.findUserByName(userName);
 		
 		return user;
+	}
+	@Override
+	public UserEntity createUserEntity(UserEntity user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

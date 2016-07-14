@@ -23,9 +23,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.showmecoo.web.commons.dao.BasicRepository;
 import com.showmecoo.web.management.user.constants.UserSQLConstants;
 import com.showmecoo.web.management.user.entity.UserEntity;
-import com.showmecoo.web.management.user.spi.UserDao;
+import com.showmecoo.web.management.user.spi.UserRepository;
 
 /**
  * TODO 此处填写 class 信息
@@ -35,7 +36,7 @@ import com.showmecoo.web.management.user.spi.UserDao;
 
 @Repository
 @Transactional
-public class UserRepository implements UserDao{
+public class UserRepositoryImpl implements UserRepository{
 	
 	 @PersistenceContext
 	 private EntityManager entityManager;
@@ -47,8 +48,6 @@ public class UserRepository implements UserDao{
 	public UserEntity findUserByName(String userName) {
 		Query query = entityManager.createNativeQuery(UserSQLConstants.SQL_FIND_USER_BY_NAME, UserEntity.class);
 		query.setParameter(1, userName);
-//		Object r = query.getSingleResult();
-//		UserEntity user = (UserEntity) query.getSingleResult();
 		return (UserEntity) query.getSingleResult();
 	}
 
@@ -86,6 +85,12 @@ public class UserRepository implements UserDao{
 	public long countUsers() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public UserEntity createUser(UserEntity userInfo) {
+		entityManager.persist(userInfo);
+		return userInfo;
 	}
 	
 }	

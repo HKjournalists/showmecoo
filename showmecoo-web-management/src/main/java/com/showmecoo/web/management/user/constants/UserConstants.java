@@ -8,25 +8,18 @@
  * Copyright (c) 2001-2012 Primeton Technologies, Ltd.
  * All rights reserved.
  * 
- * Created on 2016年7月11日
+ * Created on 2016年7月14日
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.test;
+package com.showmecoo.web.management.user.constants;
 
-import org.springframework.data.repository.Repository;
-
-/**
- * TODO 此处填写 class 信息
- *
- * @author weixin (mailto:weixin@showmecoo.com)
- */
-
-public interface UDAO{
+public class UserConstants {
 	
-	UserEntity2 findUserByName(String name);
-	
-	UserEntity2 createUser(UserEntity2 user);
+	public static final String METHOD_TYPE_GET = "1";
+	public static final String METHOD_TYPE_POST = "2";
+	public static final String METHOD_TYPE_PUT = "3";
+	public static final String METHOD_TYPE_DELETE = "4";
 }
 
 /*

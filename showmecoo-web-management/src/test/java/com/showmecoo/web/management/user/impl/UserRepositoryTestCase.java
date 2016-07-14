@@ -28,7 +28,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.showmecoo.web.management.Application;
 import com.showmecoo.web.management.user.entity.UserEntity;
-import com.showmecoo.web.management.user.spi.UserDao;
+import com.showmecoo.web.management.user.spi.UserRepository;
 
 /**
  * TODO 此处填写 class 信息
@@ -41,10 +41,10 @@ import com.showmecoo.web.management.user.spi.UserDao;
 public class UserRepositoryTestCase {
 	
 	@Autowired
-	private UserDao userDao;
+	private UserRepository userDao;
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepository#findUserByName(java.lang.String)}.
+	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUserByName(java.lang.String)}.
 	 */
 	@Test
 //	@Rollback(false)
@@ -56,7 +56,7 @@ public class UserRepositoryTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepository#findUserById(java.lang.String)}.
+	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUserById(java.lang.String)}.
 	 */
 	@Test
 	public void testFindUserById() {
@@ -64,7 +64,7 @@ public class UserRepositoryTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepository#findAllUsers()}.
+	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findAllUsers()}.
 	 */
 	@Test
 	public void testFindAllUsers() {
@@ -72,7 +72,7 @@ public class UserRepositoryTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepository#findUsersWithPage()}.
+	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUsersWithPage()}.
 	 */
 	@Test
 	public void testFindUsersWithPage() {
@@ -80,7 +80,7 @@ public class UserRepositoryTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepository#countUsers()}.
+	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#countUsers()}.
 	 */
 	@Test
 	public void testCountUsers() {

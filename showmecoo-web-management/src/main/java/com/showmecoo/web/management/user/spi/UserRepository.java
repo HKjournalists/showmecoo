@@ -16,8 +16,14 @@ package com.showmecoo.web.management.user.spi;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+import com.showmecoo.web.management.user.constants.UserConstants;
 import com.showmecoo.web.management.user.entity.UserEntity;
 
 /**
@@ -25,16 +31,26 @@ import com.showmecoo.web.management.user.entity.UserEntity;
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
-//@Component
-public interface UserDao {
+@Path("/user")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public interface UserRepository{
 	
+	/**
+	 * 新增用户，返回带useId信息的UserEntity对象
+	 * @param userInfo
+	 * @return
+	 */
+	public UserEntity createUser(UserEntity userInfo);
 	
 	/**
 	 * 根据用户名查找用户，适用于用户注册场景，页面搜索艺人场景
 	 * @param userName		用户名
 	 * @return	UserEntity	用户对象		
 	 */
-	public UserEntity findUserByName(String userName);
+	@GET
+	@Path(value="/" + UserConstants.METHOD_TYPE_GET + "/{userName}")
+	public UserEntity findUserByName(@PathParam("userName")String userName);
 	
 	
 	/**

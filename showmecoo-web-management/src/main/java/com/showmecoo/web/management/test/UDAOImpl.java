@@ -45,6 +45,13 @@ public class UDAOImpl implements UDAO{
 		return (UserEntity2) query.getSingleResult();
 	}
 
+	@Override
+	public UserEntity2 createUser(UserEntity2 user) {
+		entityManager.persist(user);
+		System.out.println(user.getUserId());
+		return user;
+	}
+
 }
 
 /*
