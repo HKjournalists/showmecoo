@@ -62,6 +62,12 @@ public interface IUserManagerService {
 	@Path("/query/id/{userid}")
 	UserEntity findUserById(@PathParam("{userid}")String userId);
 	
+	@GET
+	@Path("/query/count")
+	int count();
+	
+//	List<UserEntity> findUsers();
+	
 	
 	
 }
