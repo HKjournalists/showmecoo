@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.showmecoo.web.management.user.entity.UserEntity;
+import com.showmecoo.web.management.user.spi.Consumes;
 
 /**
  * TODO 此处填写 class 信息
@@ -33,13 +34,13 @@ import com.showmecoo.web.management.user.entity.UserEntity;
  */
 
 @Component
-@Path("/user")
+@Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public interface IUserManagerService {
 	
 	@POST
-	@Path("/{user}")
-	UserEntity createUserEntity(@RequestBody UserEntity user);
+	UserEntity createUserEntity(UserEntity user);
 	
 	@GET
 	@Path("/{userName}")

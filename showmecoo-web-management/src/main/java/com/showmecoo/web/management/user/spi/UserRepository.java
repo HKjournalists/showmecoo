@@ -31,9 +31,7 @@ import com.showmecoo.web.management.user.entity.UserEntity;
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
-@Path("/user")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+
 public interface UserRepository{
 	
 	/**
@@ -48,8 +46,6 @@ public interface UserRepository{
 	 * @param userName		用户名
 	 * @return	UserEntity	用户对象		
 	 */
-	@GET
-	@Path(value="/" + UserConstants.METHOD_TYPE_GET + "/{userName}")
 	public UserEntity findUserByName(@PathParam("userName")String userName);
 	
 	
