@@ -28,8 +28,15 @@
 1、完成restful crud api调用的预研
 
 20160714
-1、定义rest api 规范  参考httpsWx://parse.com/docs/rest/guide
-2、完成user service rest api 定义和rest client 编写
+1、定义rest api 规范  参考httpsWx://parse.com/docs/rest/guide 		done
+2、完成user service rest api 定义和rest client 编写					half done		
 
 
 ip:port/api_version/module/operation(create/update/delete/query)/options...(list/id/name...)/parameter
+
+
+20160715
+1、预研spring request filter
+2、预研spring session 管理
+3、预研jpa 分页用法
+4、预研rest client　

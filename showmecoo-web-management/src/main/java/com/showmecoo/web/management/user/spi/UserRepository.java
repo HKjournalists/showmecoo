@@ -42,13 +42,15 @@ public interface UserRepository{
 	 * @param user
 	 * @return
 	 */
-	public UserEntity updateUser(UserEntity user);
+	public UserEntity updateUser(UserEntity user) throws IllegalAccessException;
 	
 	/**
 	 * 根据userid删除UserEntity
 	 * @param userId
+	 * @return
+	 * @throws Throwable
 	 */
-	public void deleteUserEntity(String userId);
+	public boolean deleteUserEntity(String userId) throws Throwable;
 	
 	
 	/**

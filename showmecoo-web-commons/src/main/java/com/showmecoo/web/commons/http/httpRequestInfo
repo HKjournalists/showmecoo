@@ -1,0 +1,80 @@
+Request URL:https://www.google.com/search?q=speing&oq=speing&aqs=chrome..69i57j69i60j69i59j69i60l2j69i61.989j0j7&sourceid=chrome&ie=UTF-8
+Request Method:GET
+Status Code:200 
+Remote Address:127.0.0.1:1080
+Response Headers
+alt-svc:quic=":443"; ma=2592000; v="36,35,34,33,32,31,30,29,28,27,26,25"
+alternate-protocol:443:quic
+cache-control:private, max-age=0
+content-encoding:gzip
+content-encoding:sdch
+content-type:text/html; charset=UTF-8
+date:Fri, 15 Jul 2016 13:55:14 GMT
+expires:-1
+server:gws
+status:200
+x-frame-options:SAMEORIGIN
+x-xss-protection:1; mode=block
+Request Headers
+:authority:www.google.com
+:method:GET
+:path:/search?q=speing&oq=speing&aqs=chrome..69i57j69i60j69i59j69i60l2j69i61.989j0j7&sourceid=chrome&ie=UTF-8
+:scheme:https
+accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+accept-encoding:gzip, deflate, sdch, br
+accept-language:zh-CN,zh;q=0.8,en;q=0.6
+avail-dictionary:7l7kfm63
+cookie:GMAIL_RTT=939; SID=MANZTAW3lN9OG6LC5Yg14Uuf6F3UAD7J_QwyjsKalVLFVTtlDaaj869fmZITvJ4AwTl9vg.; HSID=A3-Etn8oSGiKOIBNV; SSID=AkjNSc6liU6wCIjTF; APISID=IkvhsUFMFyse3Ho1/AYLaNJvjCdn8vEe6F; SAPISID=U1HWudC9RE1Xo4hi/AF-eUge_sc0mSFjOl; DV=wrYlNA2zxRFOribqHLp8x30x-qndqyoiL3hKVkQHVAAAAKKJ08up-qG6HQAAgNaxZndo04qrCwAAAA; NID=82=BbQUXzbwuR_zpnF9usmhcN7hMuJGqZZTxlLtFTOxqy9UpQy-BxYBXi-ghe9o7iUHS-VXoKX_KvzlTLrtP9uofh65WayzRgJaZB33eMSo0TJnZHnsgWZSIkGI72gsmYSNba-HJ57jlawXapIrjWMpSG2kYj3Ml6m-zD90aqfb3THPxYZ0cRYZhY4x7eX0d7OTMQ3zZwYVdW-3xvhO5rZmA_rt49k47XYPp-gKLyh1h0nimdxwuxvHdyMhRpAy8qWNYzric9NPZgH2WlnfGV5bAd4e_TxQUUbmKDwSmynxdHsvK_RkQj_NIAdemQ
+dnt:1
+upgrade-insecure-requests:1
+user-agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36
+x-client-data:CI+2yQEIpLbJAQjEtskBCIqSygEI4ZTKAQjynMoB
+Query String Parameters
+view source
+view URL encoded
+q:speing
+oq:speing
+aqs:chrome..69i57j69i60j69i59j69i60l2j69i61.989j0j7
+sourceid:chrome
+ie:UTF-8
+Name
+Path
+search?q=speing&oq=speing&aqs=chrome..69i57j69i60j69i59j69i60l2j69i61.989j0j7&sourceid=chrome&ie=UTF-8
+data=RfCSdfNZ0LFPrHSm0ublXdzhdrDFhtmHhN1u-gM,FHTEv4qaBADrv1cthSV8Gsavt_UsD9pP25d1YYu3N56lGxYz1iwa_OWO9pAHrG-r5amcq0BPqgb2LEPqVYYDpV7Pq_1Bd3mn0WdPeiLhU9koDSIMKj8s0wmImKhzPLMdkzv14RhMgMMr3HSBQhsJLorgtfV1946y0CDN1HzrsZ6pgIzVhHCA9oPUXyKiX1MRLrTqH9hnPsyuwyV6vWmdmoVqsdNU8w2fq6zB-G2P840VbqPA0duzxDyMJw0sHjfa0fTwXv7pmk0ee1099LPo1JsImtyGTdjIQykRhT1c8A6oNlSkUiuEUP3FRFZZ-JUhuZoBVY1OMfzKD-jXni3LnUqoiWZl6VqzBVdD-jRHF1hZV9yOKFk_oYx2o5ibIWnaIsMD4YqnPgqUOS0n2rj88DkLmECgaxFOlY_ZnSzbeBkfTBjyVd24iuozaJTkFwU7EPD2FEyVA6UESF4t2AbfIVwrJLAlGSDZ5_zcRhcck0UhF_iXQw0KWJlEWMoMBOleiwm7ijrb-Zyp4w0WTDIqNwideXE_0qjRQ1mLOXLmCWKn4pUGpJy1nHM5DOQxnhdSa-tzO8g
+/maps/vt
+nav_logo242_hr.png
+/images
+i2_2ec824b0.png
+ssl.gstatic.com/gb/images
+photo.jpg
+lh3.googleusercontent.com/-lFsfe2W6eog/AAAAAAAAAAI/AAAAAAAAAAA/AOkcYIvaR9ufVOMwP7-6HCVC8wLe5w2C8Q/s64-c-mo
+36 requests ❘ 259 KB transferred ❘ Finish: 7.82 s ❘ DOMContentLoaded: 2.23 s ❘ Load: 4.09 s
+
+Console
+
+
+
+
+
+Post request header
+Accept	
+text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Encoding	
+gzip, deflate, br
+Accept-Language	
+en-US,en;q=0.5
+Connection	
+keep-alive
+Cookie	
+_uab_collina=146859749460932289061873; thw=cn; cna=TdW3DjaH/EACAXBAPCBvNVK5; v=0; cookie2=1c47388339487bc5b0628f846f7067fa
+; t=91d71928dc675ff3094441377b2e6f72; l=Am9vKBCvRrZ2qgCZXrssh9AX34153sO2; isg=AsHBJhClcpnKDp6tlxriDbEI0wsgGbcUaCH2YyMWd0inCuLcdj5FsO8Mite4
+; _tb_token_=53eb175ffe0ee; _umdata=95315CED3FE4B09AFE82E8A2A050A33BB104B513447913ABA372910BAEC490FB
+0FF24E614ED6F41E19258E9EE49DC51F1C007C9554CE46770998EE6F71B1405DBA02335B07904F360428D0A247C95888E5A4
+01F1EAF42400FC5E0EA6D86B9343278E213B3791E835
+Host	
+login.taobao.com
+Referer	
+https://login.taobao.com/member/login.jhtml?spm=a21bo.50862.754894437.1.qVOUIW&f=top&redirectURL=https
+%3A%2F%2Fwww.taobao.com%2F
+User-Agent	
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:45.0) Gecko/20100101 Firefox/45.0

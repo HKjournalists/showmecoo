@@ -19,8 +19,8 @@ public class RestAPIConstants {
 	public static final String URI_MODULE_WORKS = URI_SEPERATOR + "works";
 	
 	
-	public static final String OPERATION_TYPE_GET = "/query";
-	public static final String OPERATION_TYPE_POST = "/create";
-	public static final String OPERATION_TYPE_PUT = "/update";
+	public static final String OPERATION_TYPE_QUERY = "/query";
+	public static final String OPERATION_TYPE_CREATE = "/create";
+	public static final String OPERATION_TYPE_UPDATE = "/update";
 	public static final String OPERATION_TYPE_DELETE = "/delete";
 }

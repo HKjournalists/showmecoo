@@ -110,17 +110,24 @@ public class UserRepositoryImpl implements UserRepository{
 	}
 
 	@Override
-	public UserEntity updateUser(UserEntity user) {
+	public UserEntity updateUser(UserEntity user) throws IllegalAccessException {
+		if(null == user || findUserById(user.getUserId()) == null){
+			throw new IllegalAccessException("the update user is illegal, please check first");
+		}
 		
 		return entityManager.merge(user);
 	}
 
 	@Override
-	public void deleteUserEntity(String userid) {
+	public boolean deleteUserEntity(String userid) {
 
 		Query query = entityManager.createNativeQuery(UserSQLConstants.SQL_DELETE_USER_BY_ID);
 		query.setParameter(1, userid);
-		query.executeUpdate();
+		int i = query.executeUpdate();
+		if(i==0){
+			return false;
+		}
+		return true;
 	}
 	
 }	

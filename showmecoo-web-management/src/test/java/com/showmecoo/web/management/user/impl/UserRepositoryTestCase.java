@@ -114,10 +114,11 @@ public class UserRepositoryTestCase {
 
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#update(java.lang.Object)}.
+	 * @throws IllegalAccessException 
 	 */
 	@Test
 	@Rollback(false)
-	public void testUpdate() {
+	public void testUpdate() throws IllegalAccessException {
 		UserEntity user = userRepository.findUserByName("mac");
 		user.setEmail("update@gmail.com");
 		userRepository.updateUser(user);
@@ -127,10 +128,11 @@ public class UserRepositoryTestCase {
 
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#delete(java.lang.Object)}.
+	 * @throws Throwable 
 	 */
 	@Test
 	@Rollback(false)
-	public void testDelete() {
+	public void testDelete() throws Throwable {
 		UserEntity user = userRepository.findUserByName("mac1");
 		userRepository.deleteUserEntity(user.getUserId());
 		UserEntity nuser = userRepository.findUserByName("mac1");

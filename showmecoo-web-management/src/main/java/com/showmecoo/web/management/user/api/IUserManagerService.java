@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
+import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.commons.constants.RestAPIConstants;
 import com.showmecoo.web.management.user.entity.UserEntity;
 
@@ -52,8 +53,8 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@POST
-	@Path(RestAPIConstants.OPERATION_TYPE_POST)
-	UserEntity createUserEntity(UserEntity user);
+	@Path(RestAPIConstants.OPERATION_TYPE_CREATE)
+	UserEntity createUserEntity(UserModel bo);
 	
 	/**
 	 * 更新用户信息
@@ -61,16 +62,17 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@PUT
-	@Path(RestAPIConstants.OPERATION_TYPE_PUT)
-	UserEntity updateUserEntity(UserEntity user);
+	@Path(RestAPIConstants.OPERATION_TYPE_UPDATE)
+	UserEntity updateUserEntity(UserModel bo);
 	
 	/**
 	 * 根据userId删除用户
 	 * @param userId
+	 * @return
 	 */
 	@DELETE
 	@Path(RestAPIConstants.OPERATION_TYPE_DELETE + "/{userid}")
-	void deleteUserEntity(@PathParam("userid")String userId);
+	boolean deleteUserEntity(@PathParam("userid")String userId);
 	
 	/**
 	 * 根据userName查询用户信息
@@ -78,7 +80,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_GET + "/{userName}")
+	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/{userName}")
 	UserEntity findUserByName(@PathParam("userName")String userName);
 	
 	/**
@@ -87,7 +89,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_GET + "/id/{userid}")
+	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/id/{userid}")
 	UserEntity findUserById(@PathParam("{userid}")String userId);
 	
 	/**
@@ -95,7 +97,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_GET + "/count")
+	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/count")
 	int countUsers();
 	
 //	List<UserEntity> findUsers();
