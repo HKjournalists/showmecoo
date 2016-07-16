@@ -35,8 +35,16 @@
 ip:port/api_version/module/operation(create/update/delete/query)/options...(list/id/name...)/parameter
 
 
-20160715
-1、预研spring request filter
-2、预研spring session 管理
-3、预研jpa 分页用法
-4、预研rest client　
+20160716
+1、预研spring request filter	not done
+2、预研spring session 管理		not done
+3、预研jpa 分页用法			not done
+4、预研rest client　			done
+
+
+20160717
+1、预研spring request filter	
+2、预研spring session 管理		
+3、预研jpa 分页用法			
+
+
