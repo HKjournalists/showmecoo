@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.showmecoo.web.management.user.constants.UserSQLConstants;
+import com.showmecoo.web.management.constants.UserSQLConstants;
 import com.showmecoo.web.management.user.entity.UserEntity;
 import com.showmecoo.web.management.user.spi.UserRepository;
 

@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.constants;
+package com.showmecoo.web.management.constants;
 
 /**
  * config all the native user SQLs

@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.constants;
+package com.showmecoo.web.management.constants;
 
 public class UserConstants {
 	

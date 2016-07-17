@@ -23,7 +23,7 @@ import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.management.user.api.IUserManagerService;
 import com.showmecoo.web.management.user.entity.UserEntity;
 import com.showmecoo.web.management.user.spi.UserRepository;
-import com.showmecoo.web.management.user.util.UserUtil;
+import com.showmecoo.web.management.util.UserUtil;
 
 /**
  * 用户管理模块对外提供的rest service 实现类，返回json格式的返回值

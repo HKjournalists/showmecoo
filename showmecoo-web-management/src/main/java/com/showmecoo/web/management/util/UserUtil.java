@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.util;
+package com.showmecoo.web.management.util;
 
 import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.management.user.entity.UserEntity;
