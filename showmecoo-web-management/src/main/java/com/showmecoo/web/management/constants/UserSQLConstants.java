@@ -35,7 +35,7 @@ public class UserSQLConstants {
   `openid` VARCHAR(45) NULL
 	 */
 	
-	public static final String SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid from user where username=?"; 
+	public static final String SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid from user where username=?1"; 
 	public static final String SQL_FIND_USER_BY_ID = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid from user where userid=?"; 
 	public static final String SQL_COUNT_USER = "select count(userid) from user"; 
 	

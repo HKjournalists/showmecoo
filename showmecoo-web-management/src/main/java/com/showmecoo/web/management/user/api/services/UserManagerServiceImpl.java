@@ -17,6 +17,9 @@ package com.showmecoo.web.management.user.api.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.showmecoo.web.commons.bo.UserModel;
@@ -62,8 +65,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 			}
 		}
 		log.debug("call create user restful api, user:{}", bo.toString());
-		
-		return userRepository.createUser(po);
+		return userRepository.save(po);
 	}
 	
 	@Override
@@ -77,41 +79,55 @@ public class UserManagerServiceImpl implements IUserManagerService{
 			}
 		}
 		log.debug("call update user restful api, user:{}", bo.toString());
-		try {
-			po = userRepository.updateUser(po);
-		} catch (IllegalAccessException e) {
-			log.error("update po failed, po:{}", po, e);
-		}
-		
+		po = userRepository.save(po);
 		return po;
 	}
 	
 	
 	@Override
-	public boolean deleteUserEntity(String userId) {
+	public void deleteUserEntity(String userId) {
 		log.debug("call delete user restful api, userid:{}", userId);
-		boolean flag = false;
 		try {
-			 flag = userRepository.deleteUserEntity(userId);
+			 userRepository.delete(userId);
 		} catch (Throwable e) {
 			log.error("delete user error, userid:{}", userId, e);
 		}
-		return flag;
 	}
 	
 	
 	@Override
 	public UserEntity findUserById(String userId) {
 		log.debug("call findUserById restful api, userid:{}", userId);
-		return userRepository.findUserById(userId);
+		return userRepository.findOne(userId);
 	}
 	@Override
-	public int countUsers() {
+	public long countUsers() {
 		log.debug("call countUsers restful api");
-		return userRepository.countUsers();
+		return userRepository.count();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.user.api.IUserManagerService#findUsersWithPageParam(int, int)
+	 */
+	@Override
+	public Page<UserEntity> findUsersWithPageParam(int page, int size) {
+		log.debug("call findUsersWithPageParam restful api, page:{}, size:{}", page, size);
+		PageRequest pageable = new PageRequest(page, size);
+		
+		return userRepository.findAll(pageable);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.user.api.IUserManagerService#findAllUsers(org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<UserEntity> findAllUsers(Pageable pageable) {
+		log.debug("call findAllUsers restful api, pageable:{},", pageable);
+		return userRepository.findAll(pageable);
 	}
 
 
+	
 	
 	
 

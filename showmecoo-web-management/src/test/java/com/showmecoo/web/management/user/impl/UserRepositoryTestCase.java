@@ -17,6 +17,7 @@ package com.showmecoo.web.management.user.impl;
 import static org.junit.Assert.fail;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -25,9 +26,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.showmecoo.web.commons.util.FastJsonUtil;
 import com.showmecoo.web.management.Application;
 import com.showmecoo.web.management.user.entity.UserEntity;
 import com.showmecoo.web.management.user.spi.UserRepository;
@@ -62,7 +66,7 @@ public class UserRepositoryTestCase {
 	 */
 	@Test
 	public void testFindUserById() {
-		UserEntity user = userRepository.findUserById("402881e755e99c620155e99c68400000");
+		UserEntity user = userRepository.findOne("402881e755e99c620155e99c68400000");
 		Assert.assertEquals(user.getUserName(), "mac");
 		System.out.println(user);
 	}
@@ -72,35 +76,42 @@ public class UserRepositoryTestCase {
 	 */
 	@Test
 	public void testFindAllUsers() {
-		fail("Not yet implemented");
+		PageRequest pageable = new PageRequest(0, 10);
+		Page<UserEntity> users = userRepository.findAll(pageable);
+		Assert.assertNotNull(users);
+		List<UserEntity> ulist = users.getContent();
+		System.out.println(FastJsonUtil.Object2String(users));
+		for(UserEntity user: ulist){
+			System.out.println(user);
+		}
 	}
-
-	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUsersWithPage()}.
-	 */
-	@Test
-	public void testFindUsersWithPage() {
-		fail("Not yet implemented");
-	}
-
+//
+//	/**
+//	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUsersWithPage()}.
+//	 */
+//	@Test
+//	public void testFindUsersWithPage() {
+//		fail("Not yet implemented");
+//	}
+//
 	/**
 	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#countUsers()}.
 	 */
 	@Test
 	public void testCountUsers() {
-		int count = userRepository.countUsers();
-		Assert.assertEquals(2, count);
+		long count = userRepository.count();
+		Assert.assertEquals(1, count);
 	}
 
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#create(java.lang.Object)}.
 	 */
 	@Test
-//	@Rollback(false)
+	@Rollback(false)
 	public void testCreate() {
 		UserEntity user = new UserEntity();
 //		user.setUserId("1");
-		user.setUserName("mac");
+		user.setUserName("mac1");
 		user.setPassword("1234");
 		user.setPhone("123456789");
 		user.setEmail("ss@aa.com");
@@ -109,21 +120,22 @@ public class UserRepositoryTestCase {
 		user.setModifyDate(new Date());
 		user.setLastLoginDate(new Date());
 		user.setOpenId("1234");
-		userRepository.createUser(user);
+		user = userRepository.save(user);
+		System.out.println(user);
 	}
-
+//
 	/**
 	 * Test method for {@link com.showmecoo.web.commons.dao.BasicRepository#update(java.lang.Object)}.
 	 * @throws IllegalAccessException 
 	 */
 	@Test
 	@Rollback(false)
-	public void testUpdate() throws IllegalAccessException {
+	public void testUpdate()  {
 		UserEntity user = userRepository.findUserByName("mac");
-		user.setEmail("update@gmail.com");
-		userRepository.updateUser(user);
-		UserEntity nuser = userRepository.findUserById(user.getUserId());
-		Assert.assertEquals("update@gmail.com", nuser.getEmail());
+		user.setEmail("update1@gmail.com");
+		userRepository.save(user);
+		UserEntity nuser = userRepository.findUserByName("mac");
+		Assert.assertEquals("update1@gmail.com", nuser.getEmail());
 	}
 
 	/**
@@ -134,7 +146,7 @@ public class UserRepositoryTestCase {
 	@Rollback(false)
 	public void testDelete() throws Throwable {
 		UserEntity user = userRepository.findUserByName("mac1");
-		userRepository.deleteUserEntity(user.getUserId());
+		userRepository.delete(user.getUserId());
 		UserEntity nuser = userRepository.findUserByName("mac1");
 		Assert.assertNull(nuser);
 	}
