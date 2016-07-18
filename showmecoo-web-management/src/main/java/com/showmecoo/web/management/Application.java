@@ -19,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * TODO 此处填写 class 信息
+ * user manager application startup entrance class
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */

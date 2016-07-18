@@ -63,7 +63,7 @@ public class HttpClientUtilTestCase {
 		String uri = "http://localhost:8080/1/users/create/";
 		
 		UserModel user = new UserModel();
-		user.setUserName("mac1");
+		user.setUserName("mac2");
 		user.setPassword("1234");
 		user.setPhone("123456789");
 		user.setEmail("ss@aa.com");
@@ -88,11 +88,11 @@ public class HttpClientUtilTestCase {
 		String uri = "http://localhost:8080/1/users/update/";
 		
 		UserModel user = new UserModel();
-		user.setUserId("402881e755f44e5b0155f44e7a1a0000");
+		user.setUserId("402881e755fdfa890155fdfa90510000");
 		user.setUserName("mac1");
 		user.setPassword("1234");
 		user.setPhone("123456789");
-		user.setEmail("ss@aa.com");
+		user.setEmail("ss2@aa.com");
 		user.setRolename("normal");
 		user.setCreateDate(new Date());
 		user.setModifyDate(new Date());
@@ -110,15 +110,34 @@ public class HttpClientUtilTestCase {
 	@Test
 	public void testSyncSendDeleteRequest() {
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
-		String uri = "http://localhost:8080/1/users/delete/402881e755f44e5b0155f44e7a1a0000";
+		String uri = "http://localhost:8080/1/users/delete/402881e755fdfa890155fdfa90510000";
 //		Map<String, String> params = new HashMap<>();
 //		params.put("userName", "mac");
 		CloseableHttpResponse response = HttpClientUtil.syncSendDeleteRequest(client, uri);
-		Assert.assertNotNull(response);
+		Assert.assertNull(response);
 		String content = HttpClientUtil.getResponseContent(response);
 		System.out.println(content);
 	}
 
+	
+	@Test
+	public void testFindUsersWithPageParam(){
+		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
+		String uri = "http://localhost:8080/1/users/query/pageList/0/10";
+		CloseableHttpResponse response = HttpClientUtil.syncSendGetRequest(client, uri);
+		Assert.assertNotNull(response);
+		System.out.println(HttpClientUtil.getResponseContent(response));
+	}
+	
+	@Test
+	public void testFindAll(){
+		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
+//		PageRequest pageable = new PageRequest(0, 10);
+		String uri = "http://localhost:8080/1/users/query/list/all";
+		CloseableHttpResponse response = HttpClientUtil.syncSendGetRequest(client, uri);
+		Assert.assertNotNull(response);
+		System.out.println(response);
+	}
 }
 
 /*

@@ -25,9 +25,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Component;
 
 import com.showmecoo.web.commons.bo.UserModel;
@@ -149,7 +146,7 @@ public interface IUserManagerService {
 	 * </pre>
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/pageList/{page}/{size}")
+	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/page/{page}/{size}")
 	Page<UserEntity> findUsersWithPageParam(@PathParam("page")int page, @PathParam("size")int size);
 	
 	/**
@@ -196,8 +193,8 @@ public interface IUserManagerService {
 	 * </pre>
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/all")
-	Page<UserEntity> findAllUsers(@PageableDefault(value = 20, sort = { "userid" }, direction = Sort.Direction.DESC)Pageable pageable);
+	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/all")
+	Page<UserEntity> findAllUsers();
 	
 	
 }

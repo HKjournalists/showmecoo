@@ -100,6 +100,7 @@ public class HttpClientUtil {
 		}
 		return response;
 	}
+	
 
 	/**
 	 * 根据response获取返回的json串

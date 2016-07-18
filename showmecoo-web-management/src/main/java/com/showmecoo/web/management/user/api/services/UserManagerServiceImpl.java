@@ -121,8 +121,9 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	 * @see com.showmecoo.web.management.user.api.IUserManagerService#findAllUsers(org.springframework.data.domain.Pageable)
 	 */
 	@Override
-	public Page<UserEntity> findAllUsers(Pageable pageable) {
-		log.debug("call findAllUsers restful api, pageable:{},", pageable);
+	public Page<UserEntity> findAllUsers() {
+		log.debug("call findAllUsers restful api");
+		Pageable pageable = new PageRequest(0, 10);
 		return userRepository.findAll(pageable);
 	}
 

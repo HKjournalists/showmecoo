@@ -131,10 +131,10 @@ public class UserRepositoryTestCase {
 	@Test
 	@Rollback(false)
 	public void testUpdate()  {
-		UserEntity user = userRepository.findUserByName("mac");
+		UserEntity user = userRepository.findUserByName("mac1");
 		user.setEmail("update1@gmail.com");
 		userRepository.save(user);
-		UserEntity nuser = userRepository.findUserByName("mac");
+		UserEntity nuser = userRepository.findUserByName("mac1");
 		Assert.assertEquals("update1@gmail.com", nuser.getEmail());
 	}
 
