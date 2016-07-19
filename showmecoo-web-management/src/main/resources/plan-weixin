@@ -48,7 +48,7 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 3、预研jpa 分页用法				done		
 
 20160719
-1、完成网页功能逻辑说明
-2、预研resteasy 与spring MVC参数参数传递
-3、预研thymeleaf与spring MVC参数传递
-
+1、完成网页功能逻辑说明						done
+2、预研resteasy 与spring MVC参数参数传递	done，resteasy 使用@QueryParam注解实现？传参数的形式
+3、预研thymeleaf与spring MVC参数传递		放弃thymeleaf， 由陈彬提供前端展示框架
+4、预研session管理
