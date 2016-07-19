@@ -1,0 +1,2 @@
+统计/path 目录下大于1G的目录
+du -h /path/ | grep ^[0-9]*.G
