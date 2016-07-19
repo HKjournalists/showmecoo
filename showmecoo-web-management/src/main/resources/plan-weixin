@@ -43,8 +43,12 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 
 
 20160717
-1、预研spring request filter	
-2、预研spring session 管理		
-3、预研jpa 分页用法			
+1、预研spring request filter		not done
+2、预研spring session 管理			not done
+3、预研jpa 分页用法				done		
 
+20160719
+1、完成网页功能逻辑说明
+2、预研resteasy 与spring MVC参数参数传递
+3、预研thymeleaf与spring MVC参数传递
 
