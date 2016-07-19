@@ -16,8 +16,13 @@ package com.showmecoo.web.commons.http;
 
 import static org.junit.Assert.fail;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.Assert;
@@ -41,7 +46,7 @@ public class HttpClientUtilTestCase {
 	}
 
 	@Test
-	public void testSyncSendGetRequest() {
+	public void testSyncSendGetRequest() throws IllegalAccessException, IOException {
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
 		String uri = "http://localhost:8080/1/users/query/mac";
 //		Map<String, String> params = new HashMap<>();
@@ -51,6 +56,18 @@ public class HttpClientUtilTestCase {
 		String content = HttpClientUtil.getResponseContent(response);
 		System.out.println(content);
 	}
+	
+	
+	@Test
+	public void testSyncSendGetRequestWithParam() throws URISyntaxException, IllegalAccessException, IOException{
+		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
+		String uri = "http://localhost:8080/hello/say";
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("name", "mac");
+		CloseableHttpResponse response = HttpClientUtil.syncSendGetRequestWithParams(client, uri, params);
+		System.out.println(HttpClientUtil.getResponseContent(response));
+		
+	}
 
 	@Test
 	public void testGetResponseContent() {
@@ -58,7 +75,7 @@ public class HttpClientUtilTestCase {
 	}
 
 	@Test
-	public void testSyncSendPostRequest() {
+	public void testSyncSendPostRequest() throws IllegalAccessException, IOException {
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
 		String uri = "http://localhost:8080/1/users/create/";
 		
@@ -83,7 +100,7 @@ public class HttpClientUtilTestCase {
 	}
 
 	@Test
-	public void testSyncSendPutRequest() {
+	public void testSyncSendPutRequest() throws ClientProtocolException, IllegalAccessException, IOException {
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
 		String uri = "http://localhost:8080/1/users/update/";
 		
@@ -108,7 +125,7 @@ public class HttpClientUtilTestCase {
 	}
 
 	@Test
-	public void testSyncSendDeleteRequest() {
+	public void testSyncSendDeleteRequest() throws IllegalAccessException, ClientProtocolException, IOException {
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
 		String uri = "http://localhost:8080/1/users/delete/402881e755fdfa890155fdfa90510000";
 //		Map<String, String> params = new HashMap<>();
@@ -121,7 +138,7 @@ public class HttpClientUtilTestCase {
 
 	
 	@Test
-	public void testFindUsersWithPageParam(){
+	public void testFindUsersWithPageParam() throws IllegalAccessException, IOException{
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
 		String uri = "http://localhost:8080/1/users/query/pageList/0/10";
 		CloseableHttpResponse response = HttpClientUtil.syncSendGetRequest(client, uri);
@@ -130,7 +147,7 @@ public class HttpClientUtilTestCase {
 	}
 	
 	@Test
-	public void testFindAll(){
+	public void testFindAll() throws IllegalAccessException, IOException{
 		CloseableHttpClient client = HttpClientUtil.getCloseableHttpClient();
 //		PageRequest pageable = new PageRequest(0, 10);
 		String uri = "http://localhost:8080/1/users/query/list/all";
