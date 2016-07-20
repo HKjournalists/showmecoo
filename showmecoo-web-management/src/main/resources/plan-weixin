@@ -52,3 +52,14 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 2、预研resteasy 与spring MVC参数参数传递	done，resteasy 使用@QueryParam注解实现？传参数的形式
 3、预研thymeleaf与spring MVC参数传递		放弃thymeleaf， 由陈彬提供前端展示框架
 4、预研session管理
+
+20160720
+1、对比thymeleaf，freemarker，beetl模版引擎，采用最合适的前后端分离框架			done，决定选择thymeleaf，因为thymeleaf大力支持html5，同时支持原生态html展现方便开发和维护，很好的支持前后端分离，目前公司小，不需要采用成本昂贵的前后端分离式架构
+2、完成一个模版引擎demo														done
+
+20160721
+1、订单模块数据库表设计
+2、完善thymeleaf使用demo
+
+
+

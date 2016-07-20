@@ -69,9 +69,9 @@
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
-<!-- 					<configuration> -->
-<!-- 						<fork>true</fork> -->
-<!-- 					</configuration> -->
+					<!-- <configuration> -->
+					<!-- <fork>true</fork> -->
+					<!-- </configuration> -->
 					<!-- 热更新, 但是不适用于m2e插件 -->
 					<dependencies>
 						<dependency>
@@ -154,6 +154,12 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- 添加thymeleaf模版引擎支持 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 	</dependencies>
 </project>
