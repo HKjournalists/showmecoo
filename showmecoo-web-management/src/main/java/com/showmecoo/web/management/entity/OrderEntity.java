@@ -1,0 +1,257 @@
+/*******************************************************************************
+ * $Header$
+ * $Revision$
+ * $Date$
+ *
+ *==============================================================================
+ *
+ * Copyright (c) 2001-2012 Primeton Technologies, Ltd.
+ * All rights reserved.
+ * 
+ * Created on 2016年7月21日
+ *******************************************************************************/
+
+
+package com.showmecoo.web.management.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
+
+/**
+ * 订单表ORM对象
+ *
+ * @author weixin (mailto:weixin@showmecoo.com)
+ */
+@Entity
+@Table(name="order")
+public class OrderEntity implements Serializable{
+/**
+	 * Comment for <code>serialVersionUID</code>
+	 */
+	private static final long serialVersionUID = 3403318868986573676L;
+	
+	@Id
+	@GeneratedValue(generator="system-uuid")  
+    @GenericGenerator(name="system-uuid",strategy="uuid")  
+	private String orderId;
+	
+	@Column(name="phone")
+	private String phone;
+	
+	@Column(name="show_addr")
+	private String showAdddr;
+	
+	@Column(name = "show_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date showDate;
+	
+	@Column(name="show_fee")
+	private int showFee;
+	
+	@Column(name="request_mark")
+	private String requestMark;
+	
+	@Column(name="userid")
+	private String userId;
+	
+	@Column(name="openid")
+	private String openId;
+	
+	@Column(name = "create_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createDate;
+	
+	@Column(name = "modify_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifyDate;
+	
+	@Column(name="modify_userid")
+	private String modifyUserId;
+
+	/**
+	 * @return Returns the orderId.
+	 */
+	public String getOrderId() {
+		return orderId;
+	}
+
+	/**
+	 * @param orderId The orderId to set.
+	 */
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	/**
+	 * @return Returns the phone.
+	 */
+	public String getPhone() {
+		return phone;
+	}
+
+	/**
+	 * @param phone The phone to set.
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	/**
+	 * @return Returns the showAdddr.
+	 */
+	public String getShowAdddr() {
+		return showAdddr;
+	}
+
+	/**
+	 * @param showAdddr The showAdddr to set.
+	 */
+	public void setShowAdddr(String showAdddr) {
+		this.showAdddr = showAdddr;
+	}
+
+	/**
+	 * @return Returns the showDate.
+	 */
+	public Date getShowDate() {
+		return showDate;
+	}
+
+	/**
+	 * @param showDate The showDate to set.
+	 */
+	public void setShowDate(Date showDate) {
+		this.showDate = showDate;
+	}
+
+	/**
+	 * @return Returns the showFee.
+	 */
+	public int getShowFee() {
+		return showFee;
+	}
+
+	/**
+	 * @param showFee The showFee to set.
+	 */
+	public void setShowFee(int showFee) {
+		this.showFee = showFee;
+	}
+
+	/**
+	 * @return Returns the requestMark.
+	 */
+	public String getRequestMark() {
+		return requestMark;
+	}
+
+	/**
+	 * @param requestMark The requestMark to set.
+	 */
+	public void setRequestMark(String requestMark) {
+		this.requestMark = requestMark;
+	}
+
+	/**
+	 * @return Returns the userId.
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId The userId to set.
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * @return Returns the openId.
+	 */
+	public String getOpenId() {
+		return openId;
+	}
+
+	/**
+	 * @param openId The openId to set.
+	 */
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
+
+	/**
+	 * @return Returns the createDate.
+	 */
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	/**
+	 * @param createDate The createDate to set.
+	 */
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	/**
+	 * @return Returns the modifyDate.
+	 */
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	/**
+	 * @param modifyDate The modifyDate to set.
+	 */
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
+	/**
+	 * @return Returns the modifyUserId.
+	 */
+	public String getModifyUserId() {
+		return modifyUserId;
+	}
+
+	/**
+	 * @param modifyUserId The modifyUserId to set.
+	 */
+	public void setModifyUserId(String modifyUserId) {
+		this.modifyUserId = modifyUserId;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "OrderEntity [orderId=" + orderId + ", phone=" + phone + ", showAdddr=" + showAdddr + ", showDate="
+				+ showDate + ", showFee=" + showFee + ", requestMark=" + requestMark + ", userId=" + userId
+				+ ", openId=" + openId + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", modifyUserId="
+				+ modifyUserId + "]";
+	}
+	
+	
+	
+	
+	
+	
+	
+}
+
+/*
+ * 修改历史
+ * $Log$ 
+ */

@@ -33,8 +33,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.showmecoo.web.commons.util.FastJsonUtil;
 import com.showmecoo.web.management.Application;
-import com.showmecoo.web.management.user.entity.UserEntity;
-import com.showmecoo.web.management.user.spi.UserRepository;
+import com.showmecoo.web.management.entity.UserEntity;
+import com.showmecoo.web.management.spi.dao.UserRepository;
 
 /**
  * TODO 此处填写 class 信息
@@ -50,7 +50,7 @@ public class UserRepositoryTestCase {
 	private UserRepository userRepository;
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUserByName(java.lang.String)}.
+	 * Test method for {@link com.showmecoo.web.management.spi.dao.impl.UserRepositoryImpl#findUserByName(java.lang.String)}.
 	 */
 	@Test
 //	@Rollback(false)
@@ -62,7 +62,7 @@ public class UserRepositoryTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findUserById(java.lang.String)}.
+	 * Test method for {@link com.showmecoo.web.management.spi.dao.impl.UserRepositoryImpl#findUserById(java.lang.String)}.
 	 */
 	@Test
 	public void testFindUserById() {
@@ -72,7 +72,7 @@ public class UserRepositoryTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#findAllUsers()}.
+	 * Test method for {@link com.showmecoo.web.management.spi.dao.impl.UserRepositoryImpl#findAllUsers()}.
 	 */
 	@Test
 	public void testFindAllUsers() {
@@ -95,7 +95,7 @@ public class UserRepositoryTestCase {
 //	}
 //
 	/**
-	 * Test method for {@link com.showmecoo.web.management.user.impl.UserRepositoryImpl#countUsers()}.
+	 * Test method for {@link com.showmecoo.web.management.spi.dao.impl.UserRepositoryImpl#countUsers()}.
 	 */
 	@Test
 	public void testCountUsers() {

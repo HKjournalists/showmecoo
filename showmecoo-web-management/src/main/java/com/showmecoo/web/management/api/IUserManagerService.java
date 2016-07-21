@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.api;
+package com.showmecoo.web.management.api;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 
 import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.commons.constants.RestAPIConstants;
-import com.showmecoo.web.management.user.entity.UserEntity;
+import com.showmecoo.web.management.entity.UserEntity;
 
 /**
  * 

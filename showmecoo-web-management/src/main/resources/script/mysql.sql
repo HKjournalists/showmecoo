@@ -77,6 +77,22 @@ groupid	用户所在的分组ID
    "groupid": 0
 }
 
-
+--订单表 order
+drop table order if exists;
+CREATE TABLE `showmecoo`.`order` (
+  `orderid` VARCHAR(32) NOT NULL,
+  `linkman_name` VARCHAR(32) NOT NULL,
+  `phone` VARCHAR(32) NOT NULL,
+  `show_addr` VARCHAR(128) NOT NULL,
+  `show_date` DATETIME NOT NULL,
+  `show_fee` INT NULL,
+  `userid` VARCHAR(32) NULL,
+  `openid` VARCHAR(45) NULL,
+  `create_date` DATETIME NOT NULL,
+  `modify_date` DATETIME NULL,
+  `modify_userid` VARCHAR(32) NULL,
+  `request_mark` TEXT(1024) NOT NULL,
+  PRIMARY KEY (`orderid`),
+  UNIQUE INDEX `orderid_UNIQUE` (`orderid` ASC));
 
 

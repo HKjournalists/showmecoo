@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.api.services;
+package com.showmecoo.web.management.api.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +23,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.showmecoo.web.commons.bo.UserModel;
-import com.showmecoo.web.management.user.api.IUserManagerService;
-import com.showmecoo.web.management.user.entity.UserEntity;
-import com.showmecoo.web.management.user.spi.UserRepository;
+import com.showmecoo.web.management.api.IUserManagerService;
+import com.showmecoo.web.management.entity.UserEntity;
+import com.showmecoo.web.management.spi.dao.UserRepository;
 import com.showmecoo.web.management.util.UserUtil;
 
 /**

@@ -15,7 +15,7 @@
 package com.showmecoo.web.management.util;
 
 import com.showmecoo.web.commons.bo.UserModel;
-import com.showmecoo.web.management.user.entity.UserEntity;
+import com.showmecoo.web.management.entity.UserEntity;
 
 /**
  * user common utils

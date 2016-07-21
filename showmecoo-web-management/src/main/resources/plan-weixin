@@ -60,6 +60,6 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 20160721
 1、订单模块数据库表设计
 2、完善thymeleaf使用demo
-
+3、微信用户CRUD接口
 
 

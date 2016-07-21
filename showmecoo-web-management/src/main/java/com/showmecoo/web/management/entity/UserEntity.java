@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.entity;
+package com.showmecoo.web.management.entity;
 
 import java.io.Serializable;
 import java.util.Date;

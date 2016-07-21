@@ -12,27 +12,20 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.impl;
-
-import java.util.List;
+package com.showmecoo.web.management.spi.dao.impl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.showmecoo.web.management.constants.UserSQLConstants;
-import com.showmecoo.web.management.user.entity.UserEntity;
-import com.showmecoo.web.management.user.spi.UserInternalDao;
-import com.showmecoo.web.management.user.spi.UserRepository;
+import com.showmecoo.web.management.spi.dao.UserInternalDao;
 
 /**
- * TODO 此处填写 class 信息
+ * 用户管理模块自定义DAO接口实现类
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
