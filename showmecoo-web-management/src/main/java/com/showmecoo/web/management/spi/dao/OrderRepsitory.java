@@ -20,11 +20,12 @@ import com.showmecoo.web.management.entity.OrderEntity;
 
 /**
  * 订单管理DAO类，提供基础的CRUD方法
+ * 订单模块对外提供的接口
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
-public interface OrderRepsitory extends PagingAndSortingRepository<OrderEntity, String>{
+public interface OrderRepsitory extends PagingAndSortingRepository<OrderEntity, String>, OrderInternalDao{
 
 }
 

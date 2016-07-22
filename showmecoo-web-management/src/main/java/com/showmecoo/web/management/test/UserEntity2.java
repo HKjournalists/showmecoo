@@ -35,7 +35,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="user")
-public class UserEntity2 implements Serializable{
+public class UserEntity2{
 
 	/**
 	 * Comment for <code>serialVersionUID</code>

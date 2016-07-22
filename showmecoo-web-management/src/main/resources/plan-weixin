@@ -58,8 +58,12 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 2、完成一个模版引擎demo														done
 
 20160721
-1、订单模块数据库表设计
-2、完善thymeleaf使用demo
-3、微信用户CRUD接口
+1、订单模块数据库表设计								done
+2、完善thymeleaf使用demo							not done
+3、微信用户CRUD接口								not done
 
-
+20160723
+1、微信用户CRUD接口，同时看看DAO层能否优化，不要一个表一个Repository
+2、完成Order模块的DAO接口
+3、完成thymeleaf剩余用法demo
+4、完成user模块controller
