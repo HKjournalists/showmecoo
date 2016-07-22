@@ -67,3 +67,4 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 2、完成Order模块的DAO接口
 3、完成thymeleaf剩余用法demo
 4、完成user模块controller
+5、完成Role模块DAO接口
