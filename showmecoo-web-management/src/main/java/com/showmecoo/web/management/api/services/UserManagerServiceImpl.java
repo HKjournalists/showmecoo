@@ -88,11 +88,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public UserModel updateUserModel(UserModel bo) throws Throwable {
 		UserEntity po = null;
 		if(null != bo){
-			try {
-				po = UserUtil.b2p(bo);
-			} catch (IllegalAccessException e) {
-				log.error("bo 2 po error, bo:{}", bo, e);
-			}
+			po = UserUtil.b2p(bo);
 		}
 		log.debug("call update user restful api, user:{}", bo.toString());
 		

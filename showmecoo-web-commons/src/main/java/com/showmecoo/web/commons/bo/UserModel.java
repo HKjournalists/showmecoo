@@ -28,8 +28,8 @@ public class UserModel implements Serializable{
 	/**
 	 * Comment for <code>serialVersionUID</code>
 	 */
-	private static final long serialVersionUID = -9072051734900629705L;
-	
+	private static final long serialVersionUID = 131015029420755284L;
+
 	private String userId;
 	
 	private String userName;
