@@ -28,8 +28,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import com.showmecoo.web.commons.bo.UserModel;
+import com.showmecoo.web.commons.bo.WechatUserModel;
 import com.showmecoo.web.commons.constants.RestAPIConstants;
-import com.showmecoo.web.management.entity.UserEntity;
 
 /**
  * 
@@ -49,13 +49,22 @@ import com.showmecoo.web.management.entity.UserEntity;
 public interface IUserManagerService {
 	
 	/**
-	 * 新增用户
+	 * 新增用户, 网页端注册新用户
 	 * @param user
 	 * @return
 	 */
 	@POST
 	@Path(RestAPIConstants.OPERATION_TYPE_CREATE)
-	UserEntity createUserEntity(UserModel bo);
+	UserModel createUserModel(UserModel bo) throws Throwable;
+	
+	/**
+	 * 新增微信公众号关注用户， 通过微信公众号注册入口
+	 * @param wechatBo
+	 * @return
+	 */
+	@POST
+	@Path(RestAPIConstants.OPERATION_TYPE_CREATE + RestAPIConstants.OPERATION_USER_WECHAT)
+	WechatUserModel createWechatUserModel(WechatUserModel wechatBo) throws Throwable;
 	
 	/**
 	 * 更新用户信息
@@ -64,7 +73,11 @@ public interface IUserManagerService {
 	 */
 	@PUT
 	@Path(RestAPIConstants.OPERATION_TYPE_UPDATE)
-	UserEntity updateUserEntity(UserModel bo);
+	UserModel updateUserModel(UserModel bo) throws Throwable;
+	
+	@PUT
+	@Path(RestAPIConstants.OPERATION_TYPE_UPDATE + RestAPIConstants.OPERATION_USER_WECHAT)
+	WechatUserModel updateWechatUserModel(WechatUserModel wechatBo) throws Throwable;
 	
 	/**
 	 * 根据userId删除用户
@@ -73,7 +86,15 @@ public interface IUserManagerService {
 	 */
 	@DELETE
 	@Path(RestAPIConstants.OPERATION_TYPE_DELETE + "/{userid}")
-	void deleteUserEntity(@PathParam("userid")String userId);
+	void deleteUserModel(@PathParam("userid")String userId) throws Throwable;
+	
+	/**
+	 * 根据微信用户的openid删除微信用户账号
+	 * @param openid
+	 */
+	@DELETE
+	@Path(value=RestAPIConstants.OPERATION_TYPE_DELETE + RestAPIConstants.OPERATION_USER_WECHAT + "/{openid}")
+	void deleteWechatUserModel(@PathParam("openid")String openid) throws Throwable;
 	
 	/**
 	 * 根据userName查询用户信息
@@ -82,7 +103,7 @@ public interface IUserManagerService {
 	 */
 	@GET
 	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/{userName}")
-	UserEntity findUserByName(@PathParam("userName")String userName);
+	UserModel findUserByName(@PathParam("userName")String userName) throws Throwable;
 	
 	/**
 	 * 根据userId查询用户信息
@@ -90,16 +111,32 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/id/{userid}")
-	UserEntity findUserById(@PathParam("{userid}")String userId);
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_FIND_USER +"/{userid}")
+	UserModel findUserById(@PathParam("userid")String userId) throws Throwable;
+	
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.OPERATION_FIND_WECHAT +"/{openid}")
+	WechatUserModel findWechatUserModelByOpenid(@PathParam("openid") String openid) throws Throwable;
+	
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.OPERATION_FIND_USER + "/{userid}")
+	WechatUserModel findWechatUserModelByUserid(@PathParam("userid") String userId) throws Throwable;
 	
 	/**
-	 * 统计总用户数
+	 * 统计网页总用户数
 	 * @return
 	 */
 	@GET
 	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/count")
 	long countUsers();
+	
+	/**
+	 * 统计微信公众号注册用户总数
+	 * @return
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/count")
+	long countWechatUsers();
 	
 	/**
 	 * 指定分页页码和每页大小的查询
@@ -147,7 +184,18 @@ public interface IUserManagerService {
 	 */
 	@GET
 	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/page/{page}/{size}")
-	Page<UserEntity> findUsersWithPageParam(@PathParam("page")int page, @PathParam("size")int size);
+	Page<UserModel> findUsersWithPageParam(@PathParam("page")int page, @PathParam("size")int size) throws Throwable;
+	
+	
+	/**
+	 * 指定分页参数查询微信用户
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/list/page/{page}/{size}")
+	Page<WechatUserModel> findWechatUsersWithPageParam(@PathParam("page") int page, @PathParam("size") int size) throws Throwable;
 	
 	/**
 	 * 查找所有的用户，返回
@@ -194,8 +242,16 @@ public interface IUserManagerService {
 	 */
 	@GET
 	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/all")
-	Page<UserEntity> findAllUsers();
+	Page<UserModel> findAllUsers() throws Throwable;
 	
+	
+	/**
+	 * 查找所有的微信用户
+	 * @return
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/list/all")
+	Page<WechatUserModel> findAllWechatUsers() throws Throwable;
 	
 }
 
