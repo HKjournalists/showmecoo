@@ -13,14 +13,31 @@ public class RestAPIConstants {
 	public static final String API_VERSION = URI_SEPERATOR + "1";
 	
 	//uri modules define
-	public static final String URI_MODULE_USERS = URI_SEPERATOR + "users";
-	public static final String URI_MODULE_ORDERS = URI_SEPERATOR + "orders";
-	public static final String URI_MODULE_ACTORS = URI_SEPERATOR + "actors";
-	public static final String URI_MODULE_WORKS = URI_SEPERATOR + "works";
+	public static final String URI_MODULE_USERS = URI_SEPERATOR + "users";//用户，包括微信用户和网页用户
+	public static final String URI_MODULE_ROLES = URI_SEPERATOR + "roles";//角色
+	public static final String URI_MODULE_ORDERS = URI_SEPERATOR + "orders";//订单
+	public static final String URI_MODULE_ACTORS = URI_SEPERATOR + "actors";//艺人
+	public static final String URI_MODULE_WORKS = URI_SEPERATOR + "works";//作品
 	
 	
 	public static final String OPERATION_TYPE_QUERY = "/query";
 	public static final String OPERATION_TYPE_CREATE = "/create";
 	public static final String OPERATION_TYPE_UPDATE = "/update";
 	public static final String OPERATION_TYPE_DELETE = "/delete";
+	
+	/**
+	 * 微信端操作
+	 */
+	public static final String OPERATION_USER_WECHAT = "/wechat";
+	
+	/**
+	 * 根据user表字段的查询前缀，用于区分URI
+	 */
+	public static final String OPERATION_FIND_USER = "/1";
+	/**
+	 * 根据wechat_user_info表字段查询前缀，用于区分URI
+	 */
+	public static final String OPERATION_FIND_WECHAT = "/2";
+	
+	
 }

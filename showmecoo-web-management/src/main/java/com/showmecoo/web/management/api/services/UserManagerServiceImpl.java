@@ -102,19 +102,28 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	 */
 	@Override
 	public WechatUserModel updateWechatUserModel(WechatUserModel wechatBo) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
+		WechatUserEntity po = new WechatUserEntity();
+		if(null != wechatBo){
+			po = UserUtil.wechatB2P(wechatBo);
+		}
+		
+		return UserUtil.wechatP2B(wechatUserRepository.save(po));
 	}
 
 	
 	@Override
 	public void deleteUserModel(String userId) throws Throwable {
 		log.debug("call delete user restful api, userid:{}", userId);
-		try {
-			 userRepository.delete(userId);
-		} catch (Throwable e) {
-			log.error("delete user error, userid:{}", userId, e);
-		}
+		userRepository.delete(userId);
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.api.IUserManagerService#deleteWechatUserModel(java.lang.String)
+	 */
+	@Override
+	public void deleteWechatUserModel(String openid) throws Throwable {
+		log.debug("call delete wechat user restful api, openid:{}" , openid);
+		wechatUserRepository.delete(openid);
 	}
 	
 	
@@ -123,10 +132,39 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		log.debug("call findUserById restful api, userid:{}", userId);
 		return UserUtil.p2b(userRepository.findOne(userId));
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUserModelByOpenid(java.lang.String)
+	 */
+	@Override
+	public WechatUserModel findWechatUserModelByOpenid(String openid) throws Throwable {
+		log.debug("call findWechatUserModelByOpenid restful api, openid:{}", openid);
+		return UserUtil.wechatP2B(wechatUserRepository.findOne(openid));
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUserModelByUserid(java.lang.String)
+	 */
+	@Override
+	public WechatUserModel findWechatUserModelByUserid(String userId) throws Throwable {
+		log.debug("call findWechatUserModelByUserid restful api, userid:{}", userId);
+		return UserUtil.wechatP2B(wechatUserRepository.findWechatUserByUserId(userId));
+	}
+	
+	
 	@Override
 	public long countUsers() {
 		log.debug("call countUsers restful api");
 		return userRepository.count();
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.api.IUserManagerService#countWechatUsers()
+	 */
+	@Override
+	public long countWechatUsers() {
+		log.debug("call countWechatUsers restful api");
+		return wechatUserRepository.count();
 	}
 
 	/* (non-Javadoc)
@@ -139,6 +177,18 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		Page<UserEntity> userPage = userRepository.findAll(pageable);
 		PageImpl<UserModel> retPage = new PageImpl<>(UserUtil.userListP2B(userPage.getContent()), pageable, userPage.getTotalElements());
 		return retPage;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUsersWithPageParam(int, int)
+	 */
+	@Override
+	public Page<WechatUserModel> findWechatUsersWithPageParam(int page, int size) throws Throwable {
+		log.debug("call findWechatUsersWithPageParam restful api, page:{}, size:{}", page, size);
+		PageRequest pageable = new PageRequest(page, size);
+		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
+		PageImpl<WechatUserModel> boPage = new PageImpl<>(UserUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
+		return boPage;
 	}
 
 	/* (non-Javadoc)
@@ -153,59 +203,17 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		return retPage;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see com.showmecoo.web.management.api.IUserManagerService#deleteWechatUserModel(java.lang.String)
-	 */
-	@Override
-	public void deleteWechatUserModel(String openid) throws Throwable {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUserModelByOpenid(java.lang.String)
-	 */
-	@Override
-	public WechatUserModel findWechatUserModelByOpenid(String openid) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUserModelByUserid(java.lang.String)
-	 */
-	@Override
-	public WechatUserModel findWechatUserModelByUserid(String userId) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.showmecoo.web.management.api.IUserManagerService#countWechatUsers()
-	 */
-	@Override
-	public long countWechatUsers() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUsersWithPageParam(int, int)
-	 */
-	@Override
-	public Page<WechatUserModel> findWechatUsersWithPageParam(int page, int size) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.showmecoo.web.management.api.IUserManagerService#findAllWechatUsers()
 	 */
 	@Override
 	public Page<WechatUserModel> findAllWechatUsers() throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
+		log.debug("call findAllWechatUsers restful api");
+		PageRequest pageable = new PageRequest(0, 10);
+		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
+		PageImpl<WechatUserModel> boPage = new PageImpl<>(UserUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
+		return boPage;
 	}
 
 
