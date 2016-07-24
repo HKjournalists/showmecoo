@@ -20,10 +20,10 @@ public class RestAPIConstants {
 	public static final String URI_MODULE_WORKS = URI_SEPERATOR + "works";//作品
 	
 	
-	public static final String OPERATION_TYPE_QUERY = "/query";
-	public static final String OPERATION_TYPE_CREATE = "/create";
-	public static final String OPERATION_TYPE_UPDATE = "/update";
-	public static final String OPERATION_TYPE_DELETE = "/delete";
+	public static final String OPERATION_TYPE_QUERY = "/q";
+	public static final String OPERATION_TYPE_CREATE = "/c";
+	public static final String OPERATION_TYPE_UPDATE = "/u";
+	public static final String OPERATION_TYPE_DELETE = "/d";
 	
 	/**
 	 * 微信端操作
@@ -38,6 +38,11 @@ public class RestAPIConstants {
 	 * 根据wechat_user_info表字段查询前缀，用于区分URI
 	 */
 	public static final String OPERATION_FIND_WECHAT = "/2";
+	
+	
+	public static final String PARAM_QUERY_NAME = "/n";//查询参数为name
+	public static final String PARAM_QUERY_ID = "/i";//查询参数为id
+	public static final String PARAM_QUERY_ALL = "/list";//查询所有
 	
 	
 }
