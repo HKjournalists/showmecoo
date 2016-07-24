@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.showmecoo.web.management.constants.UserSQLConstants;
+import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.UserEntity;
 
 /**
@@ -38,7 +38,7 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity, S
 	 * @param userName
 	 * @return
 	 */
-	@Query(value=UserSQLConstants.SQL_FIND_USER_BY_NAME, nativeQuery=true)
+	@Query(value=SQLConstants.USER_SQL_FIND_USER_BY_NAME, nativeQuery=true)
 	UserEntity findUserByName(String userName);
 	
 }

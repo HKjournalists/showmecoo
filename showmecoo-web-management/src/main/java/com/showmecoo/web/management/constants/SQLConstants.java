@@ -19,7 +19,7 @@ package com.showmecoo.web.management.constants;
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
-public class UserSQLConstants {
+public class SQLConstants {
 
 	/*
 	 * `userid` VARCHAR(45) NOT NULL, `username` VARCHAR(45) NOT NULL,
@@ -29,17 +29,19 @@ public class UserSQLConstants {
 	 * `openid` VARCHAR(45) NULL
 	 */
 
-	public static final String SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid "
+	
+	//user table
+	public static final String USER_SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid "
 									+ "from user "
 									+ "where username=?1";
 	
-	public static final String SQL_FIND_USER_BY_ID = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid "
+	public static final String USER_SQL_FIND_USER_BY_ID = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid "
 														+ "from user "
 														+ "where userid=?";
 	
-	public static final String SQL_COUNT_USER = "select count(userid) from user";
+	public static final String USER_SQL_COUNT_USER = "select count(userid) from user";
 
-	public static final String SQL_DELETE_USER_BY_ID = "delete from user where userid=?";
+	public static final String USER_SQL_DELETE_USER_BY_ID = "delete from user where userid=?";
 
 	/*
 	 * 
@@ -52,9 +54,27 @@ public class UserSQLConstants {
 	 * VARCHAR(45) NULL, PRIMARY KEY (`openid`));
 	 */
 
-	public static final String SQL_FIND_WECHAT_USER_BY_USERID = "select openid, userid, nickname, sex, city, country, province, language, headimgurl, subscribe_time, unionid, remark, groupid "
+	public static final String USER_SQL_FIND_WECHAT_USER_BY_USERID = "select openid, userid, nickname, sex, city, country, province, language, headimgurl, subscribe_time, unionid, remark, groupid "
 																+ "	from wechat_user_info "
 																+ "	where userid=?1";
+	
+	/*
+	 * CREATE TABLE `showmecoo`.`role` (
+  `roleid` INT NOT NULL AUTO_INCREMENT,
+  `rolename` VARCHAR(45) NOT NULL,
+  `roledesc` VARCHAR(45) NULL,
+  `createuserid` VARCHAR(45) NOT NULL,
+  `createdate` DATETIME NOT NULL,
+  `modifyuserid` VARCHAR(45) NOT NULL,
+  `modifydate` DATETIME NOT NULL,
+  PRIMARY KEY (`roleid`));
+
+	 */
+	
+	//role table
+	public static final String ROLE_SQL_FIND_ROLE_BY_NAME = "select roleid, rolename, roledesc, createuserid, createdate, modifyuserid, modifydate "
+															+ " from role"
+															+ " where rolename=?1";
 }
 
 /*

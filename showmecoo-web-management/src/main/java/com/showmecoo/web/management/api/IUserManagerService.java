@@ -194,7 +194,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/list/page/{page}/{size}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.PARAM_QUERY_ALL + "/page/{page}/{size}")
 	Page<WechatUserModel> findWechatUsersWithPageParam(@PathParam("page") int page, @PathParam("size") int size) throws Throwable;
 	
 	/**

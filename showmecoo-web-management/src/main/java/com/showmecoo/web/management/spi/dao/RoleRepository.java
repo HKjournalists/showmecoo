@@ -8,7 +8,7 @@
  * Copyright (c) 2001-2012 Primeton Technologies, Ltd.
  * All rights reserved.
  * 
- * Created on 2016年7月23日
+ * Created on 2016年7月24日
  *******************************************************************************/
 
 
@@ -18,23 +18,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.showmecoo.web.management.constants.SQLConstants;
-import com.showmecoo.web.management.entity.WechatUserEntity;
+import com.showmecoo.web.management.entity.RoleEntity;
 
 /**
- * TODO 此处填写 class 信息
+ * 角色管理数据层对外接口
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
-public interface WechatRepository extends PagingAndSortingRepository<WechatUserEntity, String>, UserInternalDao{
+public interface RoleRepository extends PagingAndSortingRepository<RoleEntity, Integer>{
 	
-	/**
-	 * 根据用户ID查找微信公众号关注用户
-	 * @param userId		userEntity ID
-	 * @return
-	 */
 	@Query(value=SQLConstants.USER_SQL_FIND_WECHAT_USER_BY_USERID, nativeQuery=true)
-	WechatUserEntity findWechatUserByUserId(String userId);
+	RoleEntity findRoleByName(String RoleName) throws Throwable;
+
 }
 
 /*
