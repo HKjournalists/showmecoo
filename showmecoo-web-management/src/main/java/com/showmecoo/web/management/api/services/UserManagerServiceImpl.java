@@ -30,7 +30,7 @@ import com.showmecoo.web.management.entity.UserEntity;
 import com.showmecoo.web.management.entity.WechatUserEntity;
 import com.showmecoo.web.management.spi.dao.UserRepository;
 import com.showmecoo.web.management.spi.dao.WechatRepository;
-import com.showmecoo.web.management.util.UserUtil;
+import com.showmecoo.web.management.util.PoBoTransUtil;
 
 /**
  * 用户管理模块对外提供的rest service 实现类，返回json格式的返回值
@@ -58,17 +58,17 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public UserModel findUserByName(String userName) throws Throwable {
 		log.debug("call findUserByName restful api, userName:{}", userName);
 		UserEntity po = userRepository.findUserByName(userName);
-		return UserUtil.p2b(po);
+		return PoBoTransUtil.userP2B(po);
 	}
 	
 	@Override
 	public UserModel createUserModel(UserModel bo) throws Throwable {
 		UserEntity po = null;
 		if(null != bo){
-				po = UserUtil.b2p(bo);
+				po = PoBoTransUtil.userB2P(bo);
 		}
 		log.debug("call create user restful api, user:{}", bo.toString());
-		return UserUtil.p2b(userRepository.save(po));
+		return PoBoTransUtil.userP2B(userRepository.save(po));
 	}
 	
 	/* (non-Javadoc)
@@ -78,21 +78,21 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public WechatUserModel createWechatUserModel(WechatUserModel wechatBo) throws Throwable {
 		WechatUserEntity po = null;
 		if(null != wechatBo){
-			po = UserUtil.wechatB2P(wechatBo);
+			po = PoBoTransUtil.wechatB2P(wechatBo);
 		}
 		log.debug("cal create wechat user restful api, wechatUser:{}", wechatBo);
-		return UserUtil.wechatP2B(wechatUserRepository.save(po));
+		return PoBoTransUtil.wechatP2B(wechatUserRepository.save(po));
 	}
 	
 	@Override
 	public UserModel updateUserModel(UserModel bo) throws Throwable {
 		UserEntity po = null;
 		if(null != bo){
-			po = UserUtil.b2p(bo);
+			po = PoBoTransUtil.userB2P(bo);
 		}
 		log.debug("call update user restful api, user:{}", bo.toString());
 		
-		return UserUtil.p2b(userRepository.save(po));
+		return PoBoTransUtil.userP2B(userRepository.save(po));
 	}
 	
 	
@@ -104,10 +104,10 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public WechatUserModel updateWechatUserModel(WechatUserModel wechatBo) throws Throwable {
 		WechatUserEntity po = new WechatUserEntity();
 		if(null != wechatBo){
-			po = UserUtil.wechatB2P(wechatBo);
+			po = PoBoTransUtil.wechatB2P(wechatBo);
 		}
 		
-		return UserUtil.wechatP2B(wechatUserRepository.save(po));
+		return PoBoTransUtil.wechatP2B(wechatUserRepository.save(po));
 	}
 
 	
@@ -130,7 +130,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	@Override
 	public UserModel findUserById(String userId) throws Throwable {
 		log.debug("call findUserById restful api, userid:{}", userId);
-		return UserUtil.p2b(userRepository.findOne(userId));
+		return PoBoTransUtil.userP2B(userRepository.findOne(userId));
 	}
 	
 	/* (non-Javadoc)
@@ -139,7 +139,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	@Override
 	public WechatUserModel findWechatUserModelByOpenid(String openid) throws Throwable {
 		log.debug("call findWechatUserModelByOpenid restful api, openid:{}", openid);
-		return UserUtil.wechatP2B(wechatUserRepository.findOne(openid));
+		return PoBoTransUtil.wechatP2B(wechatUserRepository.findOne(openid));
 	}
 	
 	/* (non-Javadoc)
@@ -148,7 +148,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	@Override
 	public WechatUserModel findWechatUserModelByUserid(String userId) throws Throwable {
 		log.debug("call findWechatUserModelByUserid restful api, userid:{}", userId);
-		return UserUtil.wechatP2B(wechatUserRepository.findWechatUserByUserId(userId));
+		return PoBoTransUtil.wechatP2B(wechatUserRepository.findWechatUserByUserId(userId));
 	}
 	
 	
@@ -175,7 +175,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		log.debug("call findUsersWithPageParam restful api, page:{}, size:{}", page, size);
 		PageRequest pageable = new PageRequest(page, size);
 		Page<UserEntity> userPage = userRepository.findAll(pageable);
-		PageImpl<UserModel> retPage = new PageImpl<>(UserUtil.userListP2B(userPage.getContent()), pageable, userPage.getTotalElements());
+		PageImpl<UserModel> retPage = new PageImpl<>(PoBoTransUtil.userListP2B(userPage.getContent()), pageable, userPage.getTotalElements());
 		return retPage;
 	}
 	
@@ -187,7 +187,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		log.debug("call findWechatUsersWithPageParam restful api, page:{}, size:{}", page, size);
 		PageRequest pageable = new PageRequest(page, size);
 		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
-		PageImpl<WechatUserModel> boPage = new PageImpl<>(UserUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
+		PageImpl<WechatUserModel> boPage = new PageImpl<>(PoBoTransUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
 		return boPage;
 	}
 
@@ -199,7 +199,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		log.debug("call findAllUsers restful api");
 		Pageable pageable = new PageRequest(0, 10);
 		Page<UserEntity> poPage = userRepository.findAll(pageable);
-		PageImpl<UserModel> retPage  = new PageImpl<>(UserUtil.userListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
+		PageImpl<UserModel> retPage  = new PageImpl<>(PoBoTransUtil.userListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
 		return retPage;
 	}
 
@@ -212,7 +212,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		log.debug("call findAllWechatUsers restful api");
 		PageRequest pageable = new PageRequest(0, 10);
 		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
-		PageImpl<WechatUserModel> boPage = new PageImpl<>(UserUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
+		PageImpl<WechatUserModel> boPage = new PageImpl<>(PoBoTransUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
 		return boPage;
 	}
 

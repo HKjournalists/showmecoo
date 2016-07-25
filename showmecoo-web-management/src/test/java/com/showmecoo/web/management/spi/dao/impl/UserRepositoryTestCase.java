@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.user.impl;
+package com.showmecoo.web.management.spi.dao.impl;
 
 import static org.junit.Assert.fail;
 

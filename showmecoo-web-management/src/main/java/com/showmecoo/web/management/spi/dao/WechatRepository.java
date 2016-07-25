@@ -21,7 +21,7 @@ import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.WechatUserEntity;
 
 /**
- * TODO 此处填写 class 信息
+ * 微信用户对象实例持久层接口
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  */

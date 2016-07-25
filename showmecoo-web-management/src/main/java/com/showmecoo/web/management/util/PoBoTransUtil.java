@@ -17,8 +17,10 @@ package com.showmecoo.web.management.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.showmecoo.web.commons.bo.RoleModel;
 import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.commons.bo.WechatUserModel;
+import com.showmecoo.web.management.entity.RoleEntity;
 import com.showmecoo.web.management.entity.UserEntity;
 import com.showmecoo.web.management.entity.WechatUserEntity;
 
@@ -28,7 +30,7 @@ import com.showmecoo.web.management.entity.WechatUserEntity;
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
-public class UserUtil {
+public class PoBoTransUtil {
 	
 	/**
 	 * 网页用户，业务层对象转为持久层对象
@@ -36,7 +38,7 @@ public class UserUtil {
 	 * @return
 	 * @throws IllegalAccessException
 	 */
-	public static UserEntity b2p(UserModel bo) throws IllegalAccessException{
+	public static UserEntity userB2P(UserModel bo) throws IllegalAccessException{
 		if(null == bo){
 			throw new IllegalAccessException("user object can not be null");
 		}
@@ -62,7 +64,7 @@ public class UserUtil {
 	 * @return
 	 * @throws IllegalAccessException
 	 */
-	public static UserModel p2b(UserEntity po) throws IllegalAccessException{
+	public static UserModel userP2B(UserEntity po) throws IllegalAccessException{
 		if(null == po){
 			throw new IllegalAccessException("user object can not be null");
 		}
@@ -141,23 +143,41 @@ public class UserUtil {
 		return bo;
 	}
 	
+	/**
+	 * 用户对象实例，业务层对象批量转为持久层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<UserEntity> userListB2P(List<UserModel> boList) throws IllegalAccessException{
 		List<UserEntity> poList = new ArrayList<>();
 		for(UserModel bo : boList){
-			poList.add(b2p(bo));
+			poList.add(userB2P(bo));
 		}
 		
 		return poList;
 	}
 	
+	/**
+	 * 用户实例，持久层对象批量转为业务层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<UserModel> userListP2B(List<UserEntity> poList) throws IllegalAccessException{
 		List<UserModel> boList = new ArrayList<>();
 		for(UserEntity po : poList){
-			boList.add(p2b(po));
+			boList.add(userP2B(po));
 		}
 		return boList;
 	}
 	
+	/**
+	 * 微信用户实例，持久层对象批量转为持久层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<WechatUserModel> wecahtListP2B(List<WechatUserEntity> poList) throws IllegalAccessException{
 		List<WechatUserModel> boList = new ArrayList<WechatUserModel>();
 		for(WechatUserEntity po:poList){
@@ -166,6 +186,12 @@ public class UserUtil {
 		return boList;
 	}
 	
+	/**
+	 * 微信用户实例，业务层对象批量转为持久层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<WechatUserEntity> wechatListB2P(List<WechatUserModel> boList) throws IllegalAccessException{
 		List<WechatUserEntity> poList = new ArrayList<>();
 		for(WechatUserModel bo:boList){
@@ -173,6 +199,93 @@ public class UserUtil {
 		}
 		return poList;
 	}
+	
+	
+	/**
+	 * 角色业务层对象转为持久层对象
+	 * @param bo
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static RoleEntity roleB2P(RoleModel bo) throws IllegalAccessException{
+		if(null == bo){
+			throw new IllegalAccessException("role model object can not be null");
+		}
+		RoleEntity po = new RoleEntity();
+		po.setCreateDate(bo.getCreateDate());
+		po.setCreateUserId(bo.getCreateUserId());
+		po.setModifyDate(bo.getModifyDate());
+		po.setModifyUserId(bo.getModifyUserId());
+		po.setRoleDesc(bo.getRoleDesc());
+		po.setRoleId(bo.getRoleId());
+		po.setRoleName(bo.getRoleName());
+		
+		return po;
+	}
+	
+	/**
+	 * 角色实例持久层对象转为业务层对象
+	 * @param po
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static RoleModel roleP2B(RoleEntity po) throws IllegalAccessException{
+		if(null == po){
+			throw new IllegalAccessException("role entity model object can not be null");
+		}
+		RoleModel bo = new RoleModel();
+		bo.setCreateDate(po.getCreateDate());
+		bo.setCreateUserId(po.getCreateUserId());
+		bo.setModifyDate(po.getModifyDate());
+		bo.setModifyUserId(po.getModifyUserId());
+		bo.setRoleDesc(po.getRoleDesc());
+		bo.setRoleId(po.getRoleId());
+		bo.setRoleName(po.getRoleName());
+		
+		return bo;
+	}
+	
+	/**
+	 * 角色实例持久层对象批量转为业务层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static List<RoleModel> roleListP2B(List<RoleEntity> poList) throws IllegalAccessException{
+		if(null == poList){
+			throw new IllegalAccessException("role entity model list can not be null");
+		}
+		List<RoleModel> boList = new ArrayList<>();
+		for(RoleEntity po:poList){
+			boList.add(roleP2B(po));
+		}
+		return boList;
+	}
+	
+	/**
+	 * 角色实例，业务层对象批量转为持久层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static List<RoleEntity> roleListB2P(List<RoleModel> boList) throws IllegalAccessException{
+		if(null == boList){
+			throw new IllegalAccessException("role business model list can not be null");
+		}
+		List<RoleEntity> poList = new ArrayList<>();
+		for(RoleModel bo:boList){
+			poList.add(roleB2P(bo));
+		}
+		return poList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
 

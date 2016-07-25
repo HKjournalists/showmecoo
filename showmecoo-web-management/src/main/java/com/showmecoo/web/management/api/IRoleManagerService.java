@@ -14,9 +14,6 @@
 
 package com.showmecoo.web.management.api;
 
-import java.util.List;
-
-import javax.persistence.GeneratedValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -87,7 +84,7 @@ public interface IRoleManagerService {
 	 */
 	@GET
 	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.PARAM_QUERY_ID +"/{roleid}" )
-	RoleModel findRoleById(@PathParam("{roleid}") String roleId) throws Throwable;
+	RoleModel findRoleById(@PathParam("roleid") int roleId) throws Throwable;
 	
 	/**
 	 * 根据角色名字查询角色信息

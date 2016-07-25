@@ -28,8 +28,8 @@ import com.showmecoo.web.management.entity.RoleEntity;
 
 public interface RoleRepository extends PagingAndSortingRepository<RoleEntity, Integer>{
 	
-	@Query(value=SQLConstants.USER_SQL_FIND_WECHAT_USER_BY_USERID, nativeQuery=true)
-	RoleEntity findRoleByName(String RoleName) throws Throwable;
+	@Query(value=SQLConstants.ROLE_SQL_FIND_ROLE_BY_NAME, nativeQuery=true)
+	RoleEntity findRoleByName(String roleName) throws Throwable;
 
 }
 
