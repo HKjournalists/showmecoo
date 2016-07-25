@@ -63,8 +63,15 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 3、微信用户CRUD接口								not done
 
 20160723
-1、微信用户CRUD接口，同时看看DAO层能否优化，不要一个表一个Repository		done
+1、微信用户CRUD接口，同时看看DAO层能否优化，不要一个表一个Repository		done, 暂时一个表一个repository，否则需要写一堆的manager来做增删改查
 2、完成Order模块的DAO接口											待定，讨论好订单流程再做
 3、完成thymeleaf剩余用法demo
 4、完成user模块controller
-5、完成Role模块DAO接口
+5、完成Role模块DAO接口												done
+
+
+20160725
+1、设计艺人模块和艺人作品模块表结构
+2、完成thymeleaf 剩余用法demo
+
+
