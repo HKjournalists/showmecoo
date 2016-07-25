@@ -178,7 +178,7 @@ public class PoBoTransUtil {
 	 * @return
 	 * @throws IllegalAccessException
 	 */
-	public static List<WechatUserModel> wecahtListP2B(List<WechatUserEntity> poList) throws IllegalAccessException{
+	public static List<WechatUserModel> wechatListP2B(List<WechatUserEntity> poList) throws IllegalAccessException{
 		List<WechatUserModel> boList = new ArrayList<WechatUserModel>();
 		for(WechatUserEntity po:poList){
 			boList.add(wechatP2B(po));

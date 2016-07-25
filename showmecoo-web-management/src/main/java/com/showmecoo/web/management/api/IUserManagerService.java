@@ -24,12 +24,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.commons.bo.WechatUserModel;
 import com.showmecoo.web.commons.constants.RestAPIConstants;
+import com.showmecoo.web.commons.util.JsonablePageImpl;
 
 /**
  * 
@@ -142,8 +142,8 @@ public interface IUserManagerService {
 	 * 指定分页页码和每页大小的查询
 	 * @param page						页码，从第几页开始
 	 * @param size						每页结果集大小
-	 * @return							返回带分页信息的Page对象，通过page.getContent获取结果集<br/>
-	 * page json示例
+	 * @return							返回带分页信息的JsonablePageImpl对象，通过JsonablePageImpl.getContent获取结果集<br/>
+	 * JsonablePageImpl json示例
 	 * <pre/>
 	 *  {
     "content": [
@@ -184,24 +184,24 @@ public interface IUserManagerService {
 	 */
 	@GET
 	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/page/{page}/{size}")
-	Page<UserModel> findUsersWithPageParam(@PathParam("page")int page, @PathParam("size")int size) throws Throwable;
+	JsonablePageImpl<UserModel> findUsersWithPageParam(@PathParam("page")int page, @PathParam("size")int size) throws Throwable;
 	
 	
 	/**
 	 * 指定分页参数查询微信用户
-	 * @param page
+	 * @param JsonablePageImpl
 	 * @param size
 	 * @return
 	 */
 	@GET
 	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.PARAM_QUERY_ALL + "/page/{page}/{size}")
-	Page<WechatUserModel> findWechatUsersWithPageParam(@PathParam("page") int page, @PathParam("size") int size) throws Throwable;
+	JsonablePageImpl<WechatUserModel> findWechatUsersWithPageParam(@PathParam("page") int page, @PathParam("size") int size) throws Throwable;
 	
 	/**
 	 * 查找所有的用户，返回
 	 * @param pageable
 	 * @return Page<UserEntity>			返回带分页信息的Page对象，通过page.getContent获取结果集<br/>
-	 * page json示例
+	 * JsonablePageImpl json示例
 	 * <pre/>
 	 *  {
     "content": [
@@ -242,7 +242,7 @@ public interface IUserManagerService {
 	 */
 	@GET
 	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/all")
-	Page<UserModel> findAllUsers() throws Throwable;
+	JsonablePageImpl<UserModel> findAllUsers() throws Throwable;
 	
 	
 	/**
@@ -251,7 +251,7 @@ public interface IUserManagerService {
 	 */
 	@GET
 	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/list/all")
-	Page<WechatUserModel> findAllWechatUsers() throws Throwable;
+	JsonablePageImpl<WechatUserModel> findAllWechatUsers() throws Throwable;
 	
 }
 

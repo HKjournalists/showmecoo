@@ -18,11 +18,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.showmecoo.web.commons.bo.RoleModel;
+import com.showmecoo.web.commons.util.JsonablePageImpl;
 import com.showmecoo.web.management.api.IRoleManagerService;
 import com.showmecoo.web.management.entity.RoleEntity;
 import com.showmecoo.web.management.spi.dao.RoleRepository;
@@ -106,24 +106,42 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 	 * @see com.showmecoo.web.management.api.IRoleManagerService#findAllRoles()
 	 */
 	@Override
-	public Page<RoleModel> findAllRoles() throws Throwable {
+	public JsonablePageImpl<RoleModel> findAllRoles() throws Throwable {
 		PageRequest pageable = new PageRequest(0, 10);
 		Page<RoleEntity> poPage = roleRepository.findAll(pageable);
-		PageImpl<RoleModel> boPage = new PageImpl<>(PoBoTransUtil.roleListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
-		return boPage;
+		
+		JsonablePageImpl<RoleModel> jsonablePage = new JsonablePageImpl<>();
+		jsonablePage.setContent(PoBoTransUtil.roleListP2B(poPage.getContent()));
+		jsonablePage.setFirst(poPage.isFirst());
+		jsonablePage.setLast(poPage.isLast());
+		jsonablePage.setNumber(poPage.getNumber());
+		jsonablePage.setNumberOfElements(poPage.getNumberOfElements());
+		jsonablePage.setSize(poPage.getSize());
+		jsonablePage.setTotalElements(poPage.getTotalElements());
+		jsonablePage.setTotalPages(poPage.getTotalPages());
+		
+		return jsonablePage;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.showmecoo.web.management.api.IRoleManagerService#findRolesWithPageable(int, int)
 	 */
 	@Override
-	public Page<RoleModel> findRolesWithPageable(int page, int size) throws Throwable {
+	public JsonablePageImpl<RoleModel> findRolesWithPageable(int page, int size) throws Throwable {
 		PageRequest pageable = new PageRequest(page, size);
 		Page<RoleEntity> poPage = roleRepository.findAll(pageable);
-		PageImpl<RoleModel> boPage = new PageImpl<>(PoBoTransUtil.roleListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
 		
-		boPage.getSort();
-		return boPage;
+		JsonablePageImpl<RoleModel> jsonablePage = new JsonablePageImpl<>();
+		jsonablePage.setContent(PoBoTransUtil.roleListP2B(poPage.getContent()));
+		jsonablePage.setFirst(poPage.isFirst());
+		jsonablePage.setLast(poPage.isLast());
+		jsonablePage.setNumber(poPage.getNumber());
+		jsonablePage.setNumberOfElements(poPage.getNumberOfElements());
+		jsonablePage.setSize(poPage.getSize());
+		jsonablePage.setTotalElements(poPage.getTotalElements());
+		jsonablePage.setTotalPages(poPage.getTotalPages());
+		
+		return jsonablePage;
 	}
 
 }

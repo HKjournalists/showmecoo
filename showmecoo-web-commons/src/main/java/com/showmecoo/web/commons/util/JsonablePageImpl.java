@@ -23,7 +23,39 @@ import com.alibaba.fastjson.JSONObject;
 import com.showmecoo.web.commons.bo.RoleModel;
 
 /**
- * TODO 此处填写 class 信息
+ * 可以以Json格式序列化和反序列化的分页对象
+ *
+ *<br/>
+	 * JsonablePageImpl 序列化和反序列化方式
+	 * <pre>
+	 * 序列化：<br/>
+	 * JsonablePageImpl<RoleModel> p = new JsonablePageImpl<>();
+		List<RoleModel> list = new ArrayList<>();
+		RoleModel role = new RoleModel();
+		role.setCreateDate(new Date());
+		role.setCreateUserId("123");
+		role.setModifyDate(new Date());
+		role.setModifyUserId("23");
+		role.setRoleDesc("user");
+		role.setRoleId(231);
+		role.setRoleName("role");
+		list.add(role);
+		p.setContent(list);
+		String jstr = FastJsonUtil.Object2String(p);
+	 * </pre>
+	 * <pre>
+	 * 反序列化：<br/>
+	 * JsonablePageImpl<RoleModel> np = FastJsonUtil.string2Object(jstr, JsonablePageImpl.class);
+	 * List nlist = np.getContent();
+	 * 
+	 * List<RoleModel> content = new ArrayList<>();
+	 * for(int i=0; i &lt nlist.size(); i++){ 
+	 *	JSONObject s = (JSONObject) nlist.get(i);
+	 *	RoleModel r = FastJsonUtil.jsonObj2JavaObject(s, RoleModel.class);
+	 *	content.add(r);
+	 * }
+	 * np.setContent(content);
+	 * </pre>
  *
  * @author weixin (mailto:weixin@showmecoo.com)
  * @param <T>
@@ -66,6 +98,7 @@ public class JsonablePageImpl<T> implements Serializable{
 	private boolean first;
 	private boolean last;
 	private List<T> content;
+	
 	/**
 	 * @return Returns the totalElements.
 	 */
@@ -163,7 +196,22 @@ public class JsonablePageImpl<T> implements Serializable{
 		this.content = content;
 	}
 	
+	
+	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "JsonablePageImpl [totalElements=" + totalElements + ", totalPages=" + totalPages + ", size=" + size
+				+ ", number=" + number + ", numberOfElements=" + numberOfElements + ", first=" + first + ", last="
+				+ last + ", content=" + content + "]";
+	}
+	
+	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) {
 		JsonablePageImpl<RoleModel> p = new JsonablePageImpl<>();
 		List<RoleModel> list = new ArrayList<>();
@@ -181,11 +229,13 @@ public class JsonablePageImpl<T> implements Serializable{
 		System.out.println(jstr);
 		JsonablePageImpl<RoleModel> np = FastJsonUtil.string2Object(jstr, JsonablePageImpl.class);
 		List nlist = np.getContent();
+		List<RoleModel> content = new ArrayList<>();
 		for(int i=0; i<nlist.size(); i++){
 			JSONObject s = (JSONObject) nlist.get(i);
 			RoleModel r = FastJsonUtil.jsonObj2JavaObject(s, RoleModel.class);
-			System.out.println(r);
+			content.add(r);
 		}
+		np.setContent(content);
 	}
 	
 }

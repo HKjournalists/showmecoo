@@ -18,13 +18,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.commons.bo.WechatUserModel;
+import com.showmecoo.web.commons.util.JsonablePageImpl;
 import com.showmecoo.web.management.api.IUserManagerService;
 import com.showmecoo.web.management.entity.UserEntity;
 import com.showmecoo.web.management.entity.WechatUserEntity;
@@ -171,36 +171,66 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	 * @see com.showmecoo.web.management.user.api.IUserManagerService#findUsersWithPageParam(int, int)
 	 */
 	@Override
-	public Page<UserModel> findUsersWithPageParam(int page, int size) throws Throwable {
+	public JsonablePageImpl<UserModel> findUsersWithPageParam(int page, int size) throws Throwable {
 		log.debug("call findUsersWithPageParam restful api, page:{}, size:{}", page, size);
 		PageRequest pageable = new PageRequest(page, size);
-		Page<UserEntity> userPage = userRepository.findAll(pageable);
-		PageImpl<UserModel> retPage = new PageImpl<>(PoBoTransUtil.userListP2B(userPage.getContent()), pageable, userPage.getTotalElements());
-		return retPage;
+		Page<UserEntity> poPage = userRepository.findAll(pageable);
+		
+		JsonablePageImpl<UserModel> jsonablePage = new JsonablePageImpl<>();
+		jsonablePage.setContent(PoBoTransUtil.userListP2B(poPage.getContent()));
+		jsonablePage.setFirst(poPage.isFirst());
+		jsonablePage.setLast(poPage.isLast());
+		jsonablePage.setNumber(poPage.getNumber());
+		jsonablePage.setNumberOfElements(poPage.getNumberOfElements());
+		jsonablePage.setSize(poPage.getSize());
+		jsonablePage.setTotalElements(poPage.getTotalElements());
+		jsonablePage.setTotalPages(poPage.getTotalPages());
+		
+		return jsonablePage;
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.showmecoo.web.management.api.IUserManagerService#findWechatUsersWithPageParam(int, int)
 	 */
 	@Override
-	public Page<WechatUserModel> findWechatUsersWithPageParam(int page, int size) throws Throwable {
+	public JsonablePageImpl<WechatUserModel> findWechatUsersWithPageParam(int page, int size) throws Throwable {
 		log.debug("call findWechatUsersWithPageParam restful api, page:{}, size:{}", page, size);
 		PageRequest pageable = new PageRequest(page, size);
 		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
-		PageImpl<WechatUserModel> boPage = new PageImpl<>(PoBoTransUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
-		return boPage;
+		
+		JsonablePageImpl<WechatUserModel> jsonablePage = new JsonablePageImpl<>();
+		jsonablePage.setContent(PoBoTransUtil.wechatListP2B(poPage.getContent()));
+		jsonablePage.setFirst(poPage.isFirst());
+		jsonablePage.setLast(poPage.isLast());
+		jsonablePage.setNumber(poPage.getNumber());
+		jsonablePage.setNumberOfElements(poPage.getNumberOfElements());
+		jsonablePage.setSize(poPage.getSize());
+		jsonablePage.setTotalElements(poPage.getTotalElements());
+		jsonablePage.setTotalPages(poPage.getTotalPages());
+		
+		return jsonablePage;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.showmecoo.web.management.user.api.IUserManagerService#findAllUsers(org.springframework.data.domain.Pageable)
 	 */
 	@Override
-	public Page<UserModel> findAllUsers() throws Throwable{
+	public JsonablePageImpl<UserModel> findAllUsers() throws Throwable{
 		log.debug("call findAllUsers restful api");
 		Pageable pageable = new PageRequest(0, 10);
 		Page<UserEntity> poPage = userRepository.findAll(pageable);
-		PageImpl<UserModel> retPage  = new PageImpl<>(PoBoTransUtil.userListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
-		return retPage;
+		
+		JsonablePageImpl<UserModel> jsonablePage = new JsonablePageImpl<>();
+		jsonablePage.setContent(PoBoTransUtil.userListP2B(poPage.getContent()));
+		jsonablePage.setFirst(poPage.isFirst());
+		jsonablePage.setLast(poPage.isLast());
+		jsonablePage.setNumber(poPage.getNumber());
+		jsonablePage.setNumberOfElements(poPage.getNumberOfElements());
+		jsonablePage.setSize(poPage.getSize());
+		jsonablePage.setTotalElements(poPage.getTotalElements());
+		jsonablePage.setTotalPages(poPage.getTotalPages());
+		
+		return jsonablePage;
 	}
 
 	
@@ -208,12 +238,23 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	 * @see com.showmecoo.web.management.api.IUserManagerService#findAllWechatUsers()
 	 */
 	@Override
-	public Page<WechatUserModel> findAllWechatUsers() throws Throwable {
+	public JsonablePageImpl<WechatUserModel> findAllWechatUsers() throws Throwable {
 		log.debug("call findAllWechatUsers restful api");
 		PageRequest pageable = new PageRequest(0, 10);
 		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
-		PageImpl<WechatUserModel> boPage = new PageImpl<>(PoBoTransUtil.wecahtListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
-		return boPage;
+//		PageImpl<WechatUserModel> boPage = new PageImpl<>(PoBoTransUtil.wechatListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
+		
+		JsonablePageImpl<WechatUserModel> jsonablePage = new JsonablePageImpl<>();
+		jsonablePage.setContent(PoBoTransUtil.wechatListP2B(poPage.getContent()));
+		jsonablePage.setFirst(poPage.isFirst());
+		jsonablePage.setLast(poPage.isLast());
+		jsonablePage.setNumber(poPage.getNumber());
+		jsonablePage.setNumberOfElements(poPage.getNumberOfElements());
+		jsonablePage.setSize(poPage.getSize());
+		jsonablePage.setTotalElements(poPage.getTotalElements());
+		jsonablePage.setTotalPages(poPage.getTotalPages());
+		
+		return jsonablePage;
 	}
 
 
