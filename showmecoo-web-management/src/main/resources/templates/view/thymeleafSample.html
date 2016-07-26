@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<p th:text="${showmecoo}"  t></p>
+	hello world, this is showmecoo index web page
+	<br /> userName:
+	<input type="text" value="" th:value="${showmecoo}" />
+	<input type="text" name="userName" value="James Carrot"
+		th:value="${showmecoo}" />
+	<br />
+	<table>
+		<tr data-th-each="user : ${users}">
+			<td data-th-text="${user.age}">age</td>
+			<td data-th-text="${user.name}">name</td>
+		</tr>
+	</table>
+
+
+	<table>
+		<tr>
+			<th>NAME</th>
+			<th>AGE</th>
+			<th>IN STUDENT</th>
+		</tr>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.name}">Onions</td>
+			<td th:text="${user.age}">2.41</td>
+			<td th:text="${user.hasMoney}? #{true} : #{false}">yes</td>
+		</tr>
+		
+		
+		<a href="comments.html" 
+           th:href="@{/product/comments(prodId=${prod.id})}" 
+           th:unless="${#lists.isEmpty(prod.comments)}">view</a>
+	</table>
+</body>
+</html>
