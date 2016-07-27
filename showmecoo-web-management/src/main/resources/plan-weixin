@@ -71,7 +71,11 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 
 
 20160725
-1、设计艺人模块和艺人作品模块表结构
-2、完成thymeleaf 剩余用法demo
+1、设计艺人模块和艺人作品模块表结构				done
+2、完成thymeleaf 剩余用法demo				done
+
+20160728
+1、完成actor模块的CRUD接口及单元测试用例
+
 
 
