@@ -12,13 +12,14 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.spi.dao;
+package com.showmecoo.web.management.spi.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.WechatUserEntity;
+import com.showmecoo.web.management.spi.dao.UserInternalDao;
 
 /**
  * 微信用户对象实例持久层接口

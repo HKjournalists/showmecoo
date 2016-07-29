@@ -28,8 +28,8 @@ import com.showmecoo.web.commons.util.JsonablePageImpl;
 import com.showmecoo.web.management.api.IUserManagerService;
 import com.showmecoo.web.management.entity.UserEntity;
 import com.showmecoo.web.management.entity.WechatUserEntity;
-import com.showmecoo.web.management.spi.dao.UserRepository;
-import com.showmecoo.web.management.spi.dao.WechatRepository;
+import com.showmecoo.web.management.spi.repository.UserRepository;
+import com.showmecoo.web.management.spi.repository.WechatRepository;
 import com.showmecoo.web.management.util.PoBoTransUtil;
 
 /**

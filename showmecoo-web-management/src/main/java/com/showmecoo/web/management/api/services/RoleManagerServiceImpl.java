@@ -25,7 +25,7 @@ import com.showmecoo.web.commons.bo.RoleModel;
 import com.showmecoo.web.commons.util.JsonablePageImpl;
 import com.showmecoo.web.management.api.IRoleManagerService;
 import com.showmecoo.web.management.entity.RoleEntity;
-import com.showmecoo.web.management.spi.dao.RoleRepository;
+import com.showmecoo.web.management.spi.repository.RoleRepository;
 import com.showmecoo.web.management.util.PoBoTransUtil;
 
 /**
