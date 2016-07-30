@@ -44,5 +44,12 @@ public class RestAPIConstants {
 	public static final String PARAM_QUERY_ID = "/i";//查询参数为id
 	public static final String PARAM_QUERY_ALL = "/list";//查询所有
 	
-	
+	/**
+	 * 艺人相关操作前缀
+	 */
+	public static final String OPTION_ACTOR_ACTOR = "/actor";
+	public static final String OPTION_ACTOR_DANCER = "/dancer";
+	public static final String OPTION_ACTOR_SINGER = "/singer";
+	public static final String OPTION_ACTOR_MODEL = "/model";
+	public static final String OPTION_ACTOR_COMPERE = "/compere";
 }
