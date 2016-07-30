@@ -83,7 +83,7 @@ public interface IRoleManagerService {
 	 * @throws Throwable
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.PARAM_QUERY_ID +"/{roleid}" )
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.QUERY_PARAM_ID +"/{roleid}" )
 	RoleModel findRoleById(@PathParam("roleid") int roleId) throws Throwable;
 	
 	/**
@@ -93,7 +93,7 @@ public interface IRoleManagerService {
 	 * @throws Throwable
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.PARAM_QUERY_NAME + "/{rolename}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.QUERY_PARAM_NAME + "/{rolename}")
 	RoleModel findRoleByName(@PathParam("rolename") String roleName) throws Throwable;
 	
 	/**
@@ -135,7 +135,7 @@ public interface IRoleManagerService {
 	 * 
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.PARAM_QUERY_ALL)
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.QUERY_PARAM_ALL)
 	JsonablePageImpl<RoleModel> findAllRoles() throws Throwable;
 	
 	/**
@@ -146,7 +146,7 @@ public interface IRoleManagerService {
 	 * @throws Throwable
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.PARAM_QUERY_ALL + "/{page}/{size}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.QUERY_PARAM_ALL + "/{page}/{size}")
 	JsonablePageImpl<RoleModel> findRolesWithPageable(@PathParam("page") int page, @PathParam("size") int size) throws Throwable;
 }
 

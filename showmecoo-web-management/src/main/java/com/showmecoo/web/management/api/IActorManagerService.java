@@ -14,11 +14,15 @@
 
 package com.showmecoo.web.management.api;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -26,6 +30,7 @@ import org.springframework.stereotype.Component;
 
 import com.showmecoo.web.commons.bo.ActorModel;
 import com.showmecoo.web.commons.constants.RestAPIConstants;
+import com.showmecoo.web.commons.util.JsonablePageImpl;
 
 /**
  * 演员管理 对外提供REST 接口，主要为演员一级页面提供服务
@@ -70,6 +75,44 @@ public interface IActorManagerService {
 	@DELETE
 	@Path(value=RestAPIConstants.OPERATION_TYPE_UPDATE + RestAPIConstants.OPTION_ACTOR_ACTOR)
 	void deleteActor(ActorModel bo) throws Throwable;
+	
+	/**
+	 * 根据演员id查找actor对象
+	 * @param actorId
+	 * @return
+	 * @throws Throwable
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_ACTOR_ACTOR + RestAPIConstants.QUERY_PARAM_ID + "/{actorid}")
+	ActorModel findActorModelById(@PathParam("actorid")String actorId) throws Throwable;
+	
+	/**
+	 * 根据演员名字查询，查出的结果可能是多个,因为可能重名，如果要唯一的请用别名（nickName）查询
+	 * @param actorName
+	 * @return
+	 * @throws Throwable
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_ACTOR_ACTOR + RestAPIConstants.QUERY_PARAM_NAME + "/{actorName}")
+	List<ActorModel> findActorModelByName(@PathParam("actorName")String actorName) throws Throwable;
+	
+	/**
+	 * 根据演员的别名查询，查出的结果为唯一的
+	 * @param actorNickName
+	 * @return
+	 * @throws Throwable
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_ACTOR_ACTOR + RestAPIConstants.QUERY_PARAM_NAME + "/nick/{actorNickName}")
+	ActorModel findActorModelByNickName(@PathParam("actorNickName")String actorNickName) throws Throwable;
+	
+	/**
+	 * 查询所有的演员，返回带分页的JsonablePageImpl对象的json串
+	 * @return
+	 */
+	@GET
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_ACTOR_ACTOR + RestAPIConstants.QUERY_PARAM_ALL)
+	JsonablePageImpl<ActorModel> findAllActors();
 	
 	
 	
