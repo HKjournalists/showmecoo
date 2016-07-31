@@ -30,7 +30,7 @@ import com.showmecoo.web.management.entity.WechatUserEntity;
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
-public class PoBoTransUtil {
+public class UserPoBoTransUtil {
 	
 	/**
 	 * 网页用户，业务层对象转为持久层对象

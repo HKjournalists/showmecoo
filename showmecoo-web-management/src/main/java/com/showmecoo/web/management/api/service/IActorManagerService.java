@@ -69,12 +69,12 @@ public interface IActorManagerService {
 	
 	/**
 	 * 删除艺人，同时删除actor表以及dancer, singer, model, compere子表中的形同id的纪录
-	 * @param bo
+	 * @param actorId
 	 * @throws Throwable
 	 */
 	@DELETE
 	@Path(value=RestAPIConstants.OPERATION_TYPE_UPDATE + RestAPIConstants.OPTION_ACTOR_ACTOR)
-	void deleteActor(ActorModel bo) throws Throwable;
+	void deleteActor(String actorId) throws Throwable;
 	
 	/**
 	 * 根据演员id查找actor对象
@@ -112,7 +112,7 @@ public interface IActorManagerService {
 	 */
 	@GET
 	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_ACTOR_ACTOR + RestAPIConstants.QUERY_PARAM_ALL)
-	JsonablePageImpl<ActorModel> findAllActors();
+	JsonablePageImpl<ActorModel> findAllActors() throws Throwable;
 	
 	
 	

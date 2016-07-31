@@ -26,7 +26,7 @@ import com.showmecoo.web.commons.util.JsonablePageImpl;
 import com.showmecoo.web.management.api.service.IRoleManagerService;
 import com.showmecoo.web.management.entity.RoleEntity;
 import com.showmecoo.web.management.spi.repository.RoleRepository;
-import com.showmecoo.web.management.util.PoBoTransUtil;
+import com.showmecoo.web.management.util.UserPoBoTransUtil;
 
 /**
  * 角色管理对外接口实现类
@@ -50,9 +50,9 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 		if(null == bo){
 			throw new IllegalAccessException("roleModel can not be null, roleModel: " + bo);
 		}
-		po = PoBoTransUtil.roleB2P(bo);
+		po = UserPoBoTransUtil.roleB2P(bo);
 		log.debug("call createRole restful api, bo:{}", bo);
-		return PoBoTransUtil.roleP2B(roleRepository.save(po));
+		return UserPoBoTransUtil.roleP2B(roleRepository.save(po));
 	}
 
 	/* (non-Javadoc)
@@ -72,11 +72,11 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 		if(null == bo){
 			throw new IllegalAccessException("roleModel can not be null ");
 		}
-		RoleEntity po = PoBoTransUtil.roleB2P(bo);
+		RoleEntity po = UserPoBoTransUtil.roleB2P(bo);
 
 		log.debug("call updateRole restful api, bo:{}", bo);
 		
-		return PoBoTransUtil.roleP2B(roleRepository.save(po));
+		return UserPoBoTransUtil.roleP2B(roleRepository.save(po));
 	}
 
 	/* (non-Javadoc)
@@ -86,7 +86,7 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 	public RoleModel findRoleById(int roleId) throws Throwable {
 		log.debug("call findRoleById restful api, roleid:{}", roleId);
 		
-		return PoBoTransUtil.roleP2B(roleRepository.findOne(roleId));
+		return UserPoBoTransUtil.roleP2B(roleRepository.findOne(roleId));
 	}
 
 	/* (non-Javadoc)
@@ -99,7 +99,7 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 		}
 		log.debug("call findRoleByName restful api, roleName:{}", roleName);
 		
-		return PoBoTransUtil.roleP2B(roleRepository.findRoleByName(roleName));
+		return UserPoBoTransUtil.roleP2B(roleRepository.findRoleByName(roleName));
 	}
 
 	/* (non-Javadoc)
@@ -111,7 +111,7 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 		Page<RoleEntity> poPage = roleRepository.findAll(pageable);
 		
 		JsonablePageImpl<RoleModel> jsonablePage = new JsonablePageImpl<>();
-		jsonablePage.setContent(PoBoTransUtil.roleListP2B(poPage.getContent()));
+		jsonablePage.setContent(UserPoBoTransUtil.roleListP2B(poPage.getContent()));
 		jsonablePage.setFirst(poPage.isFirst());
 		jsonablePage.setLast(poPage.isLast());
 		jsonablePage.setNumber(poPage.getNumber());
@@ -132,7 +132,7 @@ public class RoleManagerServiceImpl implements IRoleManagerService{
 		Page<RoleEntity> poPage = roleRepository.findAll(pageable);
 		
 		JsonablePageImpl<RoleModel> jsonablePage = new JsonablePageImpl<>();
-		jsonablePage.setContent(PoBoTransUtil.roleListP2B(poPage.getContent()));
+		jsonablePage.setContent(UserPoBoTransUtil.roleListP2B(poPage.getContent()));
 		jsonablePage.setFirst(poPage.isFirst());
 		jsonablePage.setLast(poPage.isLast());
 		jsonablePage.setNumber(poPage.getNumber());

@@ -14,8 +14,12 @@
 
 package com.showmecoo.web.management.spi.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.ActorEntity;
 
 /**
@@ -25,7 +29,12 @@ import com.showmecoo.web.management.entity.ActorEntity;
  */
 
 public interface ActorRepository extends PagingAndSortingRepository<ActorEntity, String>{
-
+	
+	@Query(value=SQLConstants.ACTOR_SQL_FIND_ACTOR_BY_NAME, nativeQuery=true)
+	List<ActorEntity> findActorEntityByName(String actorName);
+	
+	@Query(value=SQLConstants.ACTOR_SQL_FIND_ACTOR_BY_NICK_NAME, nativeQuery=true)
+	ActorEntity findActorEntityByNickName(String nickName);
 }
 
 /*

@@ -25,7 +25,7 @@ import com.showmecoo.web.management.entity.CompereEntity;
  */
 
 public interface CompereRepository  extends PagingAndSortingRepository<CompereEntity, String>{
-
+	
 }
 
 /*

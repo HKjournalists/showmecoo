@@ -97,7 +97,7 @@ public interface ICompereManagerService {
 	 */
 	@GET
 	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_ACTOR_COMPERE + RestAPIConstants.QUERY_PARAM_NAME + "/{compereName}")
-	List<CompereModel> findCompereByName(@PathParam("compereName")String CompereName) throws Throwable;
+	List<CompereModel> findCompereByName(@PathParam("compereName")String compereName) throws Throwable;
 	
 	/**
 	 * 根据艺名查询主持人信息<br/>

@@ -30,7 +30,7 @@ import com.showmecoo.web.management.entity.UserEntity;
 import com.showmecoo.web.management.entity.WechatUserEntity;
 import com.showmecoo.web.management.spi.repository.UserRepository;
 import com.showmecoo.web.management.spi.repository.WechatRepository;
-import com.showmecoo.web.management.util.PoBoTransUtil;
+import com.showmecoo.web.management.util.UserPoBoTransUtil;
 
 /**
  * 用户管理模块对外提供的rest service 实现类，返回json格式的返回值
@@ -58,17 +58,17 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public UserModel findUserByName(String userName) throws Throwable {
 		log.debug("call findUserByName restful api, userName:{}", userName);
 		UserEntity po = userRepository.findUserByName(userName);
-		return PoBoTransUtil.userP2B(po);
+		return UserPoBoTransUtil.userP2B(po);
 	}
 	
 	@Override
 	public UserModel createUserModel(UserModel bo) throws Throwable {
 		UserEntity po = null;
 		if(null != bo){
-				po = PoBoTransUtil.userB2P(bo);
+				po = UserPoBoTransUtil.userB2P(bo);
 		}
 		log.debug("call create user restful api, user:{}", bo.toString());
-		return PoBoTransUtil.userP2B(userRepository.save(po));
+		return UserPoBoTransUtil.userP2B(userRepository.save(po));
 	}
 	
 	/* (non-Javadoc)
@@ -78,21 +78,21 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public WechatUserModel createWechatUserModel(WechatUserModel wechatBo) throws Throwable {
 		WechatUserEntity po = null;
 		if(null != wechatBo){
-			po = PoBoTransUtil.wechatB2P(wechatBo);
+			po = UserPoBoTransUtil.wechatB2P(wechatBo);
 		}
 		log.debug("cal create wechat user restful api, wechatUser:{}", wechatBo);
-		return PoBoTransUtil.wechatP2B(wechatUserRepository.save(po));
+		return UserPoBoTransUtil.wechatP2B(wechatUserRepository.save(po));
 	}
 	
 	@Override
 	public UserModel updateUserModel(UserModel bo) throws Throwable {
 		UserEntity po = null;
 		if(null != bo){
-			po = PoBoTransUtil.userB2P(bo);
+			po = UserPoBoTransUtil.userB2P(bo);
 		}
 		log.debug("call update user restful api, user:{}", bo.toString());
 		
-		return PoBoTransUtil.userP2B(userRepository.save(po));
+		return UserPoBoTransUtil.userP2B(userRepository.save(po));
 	}
 	
 	
@@ -104,10 +104,10 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	public WechatUserModel updateWechatUserModel(WechatUserModel wechatBo) throws Throwable {
 		WechatUserEntity po = new WechatUserEntity();
 		if(null != wechatBo){
-			po = PoBoTransUtil.wechatB2P(wechatBo);
+			po = UserPoBoTransUtil.wechatB2P(wechatBo);
 		}
 		
-		return PoBoTransUtil.wechatP2B(wechatUserRepository.save(po));
+		return UserPoBoTransUtil.wechatP2B(wechatUserRepository.save(po));
 	}
 
 	
@@ -130,7 +130,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	@Override
 	public UserModel findUserById(String userId) throws Throwable {
 		log.debug("call findUserById restful api, userid:{}", userId);
-		return PoBoTransUtil.userP2B(userRepository.findOne(userId));
+		return UserPoBoTransUtil.userP2B(userRepository.findOne(userId));
 	}
 	
 	/* (non-Javadoc)
@@ -139,7 +139,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	@Override
 	public WechatUserModel findWechatUserModelByOpenid(String openid) throws Throwable {
 		log.debug("call findWechatUserModelByOpenid restful api, openid:{}", openid);
-		return PoBoTransUtil.wechatP2B(wechatUserRepository.findOne(openid));
+		return UserPoBoTransUtil.wechatP2B(wechatUserRepository.findOne(openid));
 	}
 	
 	/* (non-Javadoc)
@@ -148,7 +148,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 	@Override
 	public WechatUserModel findWechatUserModelByUserid(String userId) throws Throwable {
 		log.debug("call findWechatUserModelByUserid restful api, userid:{}", userId);
-		return PoBoTransUtil.wechatP2B(wechatUserRepository.findWechatUserByUserId(userId));
+		return UserPoBoTransUtil.wechatP2B(wechatUserRepository.findWechatUserByUserId(userId));
 	}
 	
 	
@@ -177,7 +177,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		Page<UserEntity> poPage = userRepository.findAll(pageable);
 		
 		JsonablePageImpl<UserModel> jsonablePage = new JsonablePageImpl<>();
-		jsonablePage.setContent(PoBoTransUtil.userListP2B(poPage.getContent()));
+		jsonablePage.setContent(UserPoBoTransUtil.userListP2B(poPage.getContent()));
 		jsonablePage.setFirst(poPage.isFirst());
 		jsonablePage.setLast(poPage.isLast());
 		jsonablePage.setNumber(poPage.getNumber());
@@ -199,7 +199,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		Page<WechatUserEntity> poPage = wechatUserRepository.findAll(pageable);
 		
 		JsonablePageImpl<WechatUserModel> jsonablePage = new JsonablePageImpl<>();
-		jsonablePage.setContent(PoBoTransUtil.wechatListP2B(poPage.getContent()));
+		jsonablePage.setContent(UserPoBoTransUtil.wechatListP2B(poPage.getContent()));
 		jsonablePage.setFirst(poPage.isFirst());
 		jsonablePage.setLast(poPage.isLast());
 		jsonablePage.setNumber(poPage.getNumber());
@@ -221,7 +221,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 		Page<UserEntity> poPage = userRepository.findAll(pageable);
 		
 		JsonablePageImpl<UserModel> jsonablePage = new JsonablePageImpl<>();
-		jsonablePage.setContent(PoBoTransUtil.userListP2B(poPage.getContent()));
+		jsonablePage.setContent(UserPoBoTransUtil.userListP2B(poPage.getContent()));
 		jsonablePage.setFirst(poPage.isFirst());
 		jsonablePage.setLast(poPage.isLast());
 		jsonablePage.setNumber(poPage.getNumber());
@@ -245,7 +245,7 @@ public class UserManagerServiceImpl implements IUserManagerService{
 //		PageImpl<WechatUserModel> boPage = new PageImpl<>(PoBoTransUtil.wechatListP2B(poPage.getContent()), pageable, poPage.getTotalElements());
 		
 		JsonablePageImpl<WechatUserModel> jsonablePage = new JsonablePageImpl<>();
-		jsonablePage.setContent(PoBoTransUtil.wechatListP2B(poPage.getContent()));
+		jsonablePage.setContent(UserPoBoTransUtil.wechatListP2B(poPage.getContent()));
 		jsonablePage.setFirst(poPage.isFirst());
 		jsonablePage.setLast(poPage.isLast());
 		jsonablePage.setNumber(poPage.getNumber());
