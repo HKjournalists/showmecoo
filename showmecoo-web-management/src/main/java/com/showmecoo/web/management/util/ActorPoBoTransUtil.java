@@ -19,8 +19,10 @@ import java.util.List;
 
 import com.showmecoo.web.commons.bo.ActorModel;
 import com.showmecoo.web.commons.bo.CompereModel;
+import com.showmecoo.web.commons.bo.DancerModel;
 import com.showmecoo.web.management.entity.ActorEntity;
 import com.showmecoo.web.management.entity.CompereEntity;
+import com.showmecoo.web.management.entity.DancerEntity;
 
 /**
  * Actor 业务层对象实例与数据层对象实例转换工具类
@@ -171,7 +173,69 @@ public class ActorPoBoTransUtil {
 	}
 	
 	
+	public static DancerEntity dancerB2P(DancerModel bo) throws IllegalAccessException{
+		if(null == bo){
+			throw new IllegalAccessException("DancerModel can not be null");
+		}
+		
+		DancerEntity po = new DancerEntity();
+		po.setActorId(bo.getActorId());
+		po.setBriefIntroduction(bo.getBriefIntroduction());
+		po.setDisplayAddr(bo.getDisplayAddr());
+		po.setDisplayPrice(bo.getDisplayPrice());
+		po.setLevelScore(bo.getLevelScore());
+		po.setMainImageName(bo.getMainImageName());
+		po.setSecondImageName(bo.getSecondImageName());
+		po.setSkilledStyle(bo.getSkilledStyle());
+		po.setStandardDisplay(bo.getStandardDisplay());
+		
+		return po;
+	}
 	
+	
+	public static DancerModel dancerP2B(DancerEntity po) throws IllegalAccessException{
+		if(null == po){
+			throw new IllegalAccessException("DancerEntity can not be null");
+		}
+		
+		DancerModel bo = new DancerModel();
+		bo.setActorId(po.getActorId());
+		bo.setBriefIntroduction(po.getBriefIntroduction());
+		bo.setDisplayAddr(po.getDisplayAddr());
+		bo.setDisplayPrice(po.getDisplayPrice());
+		bo.setLevelScore(po.getLevelScore());
+		bo.setMainImageName(po.getMainImageName());
+		bo.setSecondImageName(po.getSecondImageName());
+		bo.setSkilledStyle(po.getSkilledStyle());
+		bo.setStandardDisplay(po.getStandardDisplay());
+		
+		return bo;
+	}
+	
+	
+	public static List<DancerEntity> dancerListB2P(List<DancerModel> boList) throws IllegalAccessException{
+		if(null == boList){
+			throw new IllegalAccessException("DancerModel list can not be null");
+		}
+		List<DancerEntity> poList = new ArrayList<>();
+		for(DancerModel bo:boList){
+			poList.add(dancerB2P(bo));
+		}
+		return poList;
+	}
+	
+	public static List<DancerModel> dancerListP2B(List<DancerEntity> poList) throws IllegalAccessException{
+		if(null == poList){
+			throw new IllegalAccessException("DancerModel list can not be null");
+		}
+		List<DancerModel> boList = new ArrayList<>();
+		for(DancerEntity po:poList){
+			boList.add(dancerP2B(po));
+		}
+		return boList;
+	}
+	
+
 	
 	
 	
