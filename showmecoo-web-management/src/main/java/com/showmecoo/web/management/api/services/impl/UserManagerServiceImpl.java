@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.api.services;
+package com.showmecoo.web.management.api.services.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 import com.showmecoo.web.commons.bo.UserModel;
 import com.showmecoo.web.commons.bo.WechatUserModel;
 import com.showmecoo.web.commons.util.JsonablePageImpl;
-import com.showmecoo.web.management.api.IUserManagerService;
+import com.showmecoo.web.management.api.service.IUserManagerService;
 import com.showmecoo.web.management.entity.UserEntity;
 import com.showmecoo.web.management.entity.WechatUserEntity;
 import com.showmecoo.web.management.spi.repository.UserRepository;

@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.api;
+package com.showmecoo.web.management.api.service;
 
 import java.util.List;
 
