@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.spi.dao.impl;
+package com.showmecoo.web.management.spi.repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
