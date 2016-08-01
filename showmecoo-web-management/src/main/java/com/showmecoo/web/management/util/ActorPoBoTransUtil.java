@@ -32,6 +32,12 @@ import com.showmecoo.web.management.entity.DancerEntity;
 
 public class ActorPoBoTransUtil {
 	
+	/**
+	 * actor 业务层对象转为数据层对象
+	 * @param bo
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static ActorEntity actorB2P(ActorModel bo) throws IllegalAccessException{
 		if(null == bo){
 			throw new IllegalAccessException("actorModel object can not be null");
@@ -55,6 +61,12 @@ public class ActorPoBoTransUtil {
 		
 	}
 	
+	/**
+	 * actor 数据层对象转为业务层对象
+	 * @param po
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static ActorModel actorP2B(ActorEntity po) throws IllegalAccessException{
 		if(null == po){
 			throw new IllegalAccessException("actorEntity object can not be null");
@@ -78,7 +90,12 @@ public class ActorPoBoTransUtil {
 	}
 	
 	
-	
+	/**
+	 * actor 数据层对象批量转为业务层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<ActorModel> actorListP2B(List<ActorEntity> poList) throws IllegalAccessException{
 		if(null == poList){
 			throw new IllegalAccessException("actor entity list can not be null");
@@ -91,6 +108,12 @@ public class ActorPoBoTransUtil {
 		return boList;
 	}
 	
+	/**
+	 * actor 业务层对象批量转为数据层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<ActorEntity> actorListB2P(List<ActorModel> boList) throws IllegalAccessException{
 		if(null == boList){
 			throw new IllegalAccessException("actorModel list can not be null");
@@ -104,8 +127,12 @@ public class ActorPoBoTransUtil {
 	}
 	
 	
-	
-	
+	/**
+	 * Compere 数据层对象转为业务层对象
+	 * @param po
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static CompereModel compereP2B(CompereEntity po) throws IllegalAccessException{
 		if(null == po){
 			throw new IllegalAccessException("CompereEntity can not be null");
@@ -125,6 +152,12 @@ public class ActorPoBoTransUtil {
 		return bo;
 	}
 	
+	/**
+	 * Compere 业务层对象转为数据层对象
+	 * @param bo
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static CompereEntity compereB2P(CompereModel bo) throws IllegalAccessException{
 		if(null == bo){
 			throw new IllegalAccessException("CompereModel can not be null");
@@ -144,7 +177,12 @@ public class ActorPoBoTransUtil {
 		return po;
 	}
 	
-	
+	/**
+	 * Compere 数据层对象批量转为业务层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<CompereModel> compereListP2B(List<CompereEntity> poList) throws IllegalAccessException{
 		if(null == poList){
 			throw new IllegalAccessException("CompereEntity list can not be null");
@@ -158,7 +196,12 @@ public class ActorPoBoTransUtil {
 		return boList;
 	}
 	
-	
+	/**
+	 * Compere 业务层对象批量转为数据层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<CompereEntity> compereListB2P(List<CompereModel> boList) throws IllegalAccessException{
 		if(null == boList){
 			throw new IllegalAccessException("CompereModel list can not be null");
@@ -172,7 +215,12 @@ public class ActorPoBoTransUtil {
 		return poList;
 	}
 	
-	
+	/**
+	 * Dancer 业务层对象转为数据层对象
+	 * @param bo
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static DancerEntity dancerB2P(DancerModel bo) throws IllegalAccessException{
 		if(null == bo){
 			throw new IllegalAccessException("DancerModel can not be null");
@@ -192,7 +240,12 @@ public class ActorPoBoTransUtil {
 		return po;
 	}
 	
-	
+	/**
+	 * Dancer 数据层对象转为业务层对象
+	 * @param po
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static DancerModel dancerP2B(DancerEntity po) throws IllegalAccessException{
 		if(null == po){
 			throw new IllegalAccessException("DancerEntity can not be null");
@@ -212,7 +265,12 @@ public class ActorPoBoTransUtil {
 		return bo;
 	}
 	
-	
+	/**
+	 * Dancer 业务层对象批量转为数据层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<DancerEntity> dancerListB2P(List<DancerModel> boList) throws IllegalAccessException{
 		if(null == boList){
 			throw new IllegalAccessException("DancerModel list can not be null");
@@ -224,6 +282,12 @@ public class ActorPoBoTransUtil {
 		return poList;
 	}
 	
+	/**
+	 * Dancer 数据层对象批量转为业务层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
 	public static List<DancerModel> dancerListP2B(List<DancerEntity> poList) throws IllegalAccessException{
 		if(null == poList){
 			throw new IllegalAccessException("DancerModel list can not be null");
