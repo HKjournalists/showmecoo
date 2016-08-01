@@ -59,7 +59,6 @@ public class DancerManagerServiceImpl implements IDancerManagerService{
 		ActorEntity actor = actorRepository.findActorEntityByNickName(bo.getNickName());
 		if(null == actor){
 			actor = new ActorEntity();
-			actor = new ActorEntity();
 			actor.setAge(bo.getAge());
 			actor.setCreateTime(bo.getCreateTime());
 			actor.setDisplayedNum(bo.getDisplayedNum());
@@ -102,13 +101,16 @@ public class DancerManagerServiceImpl implements IDancerManagerService{
 	 */
 	@Override
 	public DancerModel findDancerById(String dancerid) throws Throwable {
+		ActorEntity actor = actorRepository.findOne(dancerid);
 		DancerEntity po = dancerRepository.findOne(dancerid);
 		if(null == po){
 			log.error("can not find dancer by id:{}", dancerid);
 			return null;
 		}
 		
-		return ActorPoBoTransUtil.dancerP2B(po);
+		DancerModel bo = ActorPoBoTransUtil.dancerP2B(po);
+		ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(actor), bo);
+		return bo;
 	}
 
 	/* (non-Javadoc)

@@ -105,9 +105,9 @@ public class SQLConstants {
 	
 	
 	public static final String ACTOR_SQL_FIND_ACTOR_BY_NICK_NAME = "select actorid, name, nick_name, height, age, sex, "
-			+ " type, style, displayed_num, visit_num, fans_num, create_time, image_name"
-			+ " from actor"
-			+ "where nick_name=?1"; 
+																	+ " type, style, displayed_num, visit_num, fans_num, create_time, image_name"
+																	+ " from actor"
+																	+ "where nick_name=?1"; 
 	
 	
 	

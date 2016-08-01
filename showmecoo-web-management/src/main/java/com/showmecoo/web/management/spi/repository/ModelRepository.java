@@ -16,7 +16,7 @@ package com.showmecoo.web.management.spi.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.showmecoo.web.management.entity.SingerEntity;
+import com.showmecoo.web.management.entity.ModelEntity;
 
 /**
  * 模特 数据层接口
@@ -24,8 +24,8 @@ import com.showmecoo.web.management.entity.SingerEntity;
  * @author weixin (mailto:weixin@showmecoo.com)
  */
 
-public interface ModelRepository extends PagingAndSortingRepository<SingerEntity, String> {
-
+public interface ModelRepository extends PagingAndSortingRepository<ModelEntity, String> {
+	
 }
 
 /*
