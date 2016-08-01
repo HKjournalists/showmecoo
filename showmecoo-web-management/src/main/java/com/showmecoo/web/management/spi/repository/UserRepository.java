@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.spi.dao;
+package com.showmecoo.web.management.spi.repository;
 
 import javax.transaction.Transactional;
 
@@ -21,6 +21,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.UserEntity;
+import com.showmecoo.web.management.spi.dao.UserInternalDao;
 
 /**
  * 用户管理DAO接口

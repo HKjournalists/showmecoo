@@ -20,8 +20,9 @@
 2、完成dao层公共部分的编码  done
 
 20160708
-1、完成用户管理的接口和类图设计
-2、完成user部分dao编码
+1、完成用户管理的接口和类图设计		
+2、完成user部分dao编码	
+
 
 
 20160713
@@ -75,7 +76,12 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 2、完成thymeleaf 剩余用法demo				done
 
 20160728
-1、完成actor模块的CRUD接口及单元测试用例
+1、完成actor模块的CRUD接口及单元测试用例    	half done
+
+20160801
+1、完成actor模块service impl编写
+2、完成actor 模块 rest api 单元测试用例编写
+
 
 
 

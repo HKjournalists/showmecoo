@@ -75,6 +75,47 @@ public class SQLConstants {
 	public static final String ROLE_SQL_FIND_ROLE_BY_NAME = "select roleid, rolename, roledesc, createuserid, createdate, modifyuserid, modifydate "
 															+ " from role"
 															+ " where rolename=?1";
+	
+	
+	
+	
+	
+//====================================Actor SQL===============================================
+	/*
+	 *  CREATE TABLE `showmecoo`.`actor` (
+  `actorid` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `nick_name` VARCHAR(45) NOT NULL,
+  `height` INT NULL,
+  `age` INT NULL,
+  `sex` INT NOT NULL,
+  `type` INT NOT NULL,
+  `style` VARCHAR(45) NULL,
+  `displayed_num` INT NULL,
+  `visit_num` INT NULL,
+  `fans_num` INT NULL,
+  `create_time` DATETIME NULL,
+  `image_name` VARCHAR(45) NULL,
+	 */
+	
+	public static final String ACTOR_SQL_FIND_ACTOR_BY_NAME = "select actorid, name, nick_name, height, age, sex, "
+																+ " type, style, displayed_num, visit_num, fans_num, create_time, image_name"
+																+ " from actor"
+																+ "where name=?1"; 
+	
+	
+	public static final String ACTOR_SQL_FIND_ACTOR_BY_NICK_NAME = "select actorid, name, nick_name, height, age, sex, "
+																	+ " type, style, displayed_num, visit_num, fans_num, create_time, image_name"
+																	+ " from actor"
+																	+ "where nick_name=?1"; 
+	
+	
+	
+
+	
+	
+	
+	
 }
 
 /*

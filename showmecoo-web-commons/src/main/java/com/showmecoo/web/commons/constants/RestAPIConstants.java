@@ -26,9 +26,13 @@ public class RestAPIConstants {
 	public static final String OPERATION_TYPE_DELETE = "/d";
 	
 	/**
-	 * 微信端操作
+	 * 用户－user相关操作前缀
 	 */
-	public static final String OPERATION_USER_WECHAT = "/wechat";
+	public static final String OPTION_USER_USER = "/user";
+	/**
+	 * 用户－wechat微信相关操作前缀
+	 */
+	public static final String OPTION_USER_WECHAT = "/wechat";
 	
 	/**
 	 * 根据user表字段的查询前缀，用于区分URI
@@ -39,10 +43,41 @@ public class RestAPIConstants {
 	 */
 	public static final String OPERATION_FIND_WECHAT = "/2";
 	
+	/**
+	 * 查询参数为name
+	 */
+	public static final String QUERY_PARAM_NAME = "/n";//查询参数为name
+	/**
+	 * 查询参数为id
+	 */
+	public static final String QUERY_PARAM_ID = "/i";//查询参数为id
+	/**
+	 * 查询所有
+	 */
+	public static final String QUERY_PARAM_ALL = "/all";//查询所有
+	public static final String QUERY_PARAM_LIST = "/list";//查询部分
+
 	
-	public static final String PARAM_QUERY_NAME = "/n";//查询参数为name
-	public static final String PARAM_QUERY_ID = "/i";//查询参数为id
-	public static final String PARAM_QUERY_ALL = "/list";//查询所有
 	
-	
+//-----------------------------------------------------------艺人相关操作前缀-------------------------------------------------
+	/**
+	 * 艺人－actor相关操作前缀
+	 */
+	public static final String OPTION_ACTOR_ACTOR = "/actor";
+	/**
+	 * 艺人－dancer相关操作前缀
+	 */
+	public static final String OPTION_ACTOR_DANCER = "/dancer";
+	/**
+	 * 艺人－singer相关操作前缀
+	 */
+	public static final String OPTION_ACTOR_SINGER = "/singer";
+	/**
+	 * 艺人－model相关操作前缀
+	 */
+	public static final String OPTION_ACTOR_MODEL = "/model";
+	/**
+	 * 艺人－compere相关操作前缀
+	 */
+	public static final String OPTION_ACTOR_COMPERE = "/compere";
 }

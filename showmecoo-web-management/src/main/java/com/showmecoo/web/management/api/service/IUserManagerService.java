@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.api;
+package com.showmecoo.web.management.api.service;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -63,7 +63,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@POST
-	@Path(RestAPIConstants.OPERATION_TYPE_CREATE + RestAPIConstants.OPERATION_USER_WECHAT)
+	@Path(RestAPIConstants.OPERATION_TYPE_CREATE + RestAPIConstants.OPTION_USER_WECHAT)
 	WechatUserModel createWechatUserModel(WechatUserModel wechatBo) throws Throwable;
 	
 	/**
@@ -76,7 +76,7 @@ public interface IUserManagerService {
 	UserModel updateUserModel(UserModel bo) throws Throwable;
 	
 	@PUT
-	@Path(RestAPIConstants.OPERATION_TYPE_UPDATE + RestAPIConstants.OPERATION_USER_WECHAT)
+	@Path(RestAPIConstants.OPERATION_TYPE_UPDATE + RestAPIConstants.OPTION_USER_WECHAT)
 	WechatUserModel updateWechatUserModel(WechatUserModel wechatBo) throws Throwable;
 	
 	/**
@@ -93,7 +93,7 @@ public interface IUserManagerService {
 	 * @param openid
 	 */
 	@DELETE
-	@Path(value=RestAPIConstants.OPERATION_TYPE_DELETE + RestAPIConstants.OPERATION_USER_WECHAT + "/{openid}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_DELETE + RestAPIConstants.OPTION_USER_WECHAT + "/{openid}")
 	void deleteWechatUserModel(@PathParam("openid")String openid) throws Throwable;
 	
 	/**
@@ -115,11 +115,11 @@ public interface IUserManagerService {
 	UserModel findUserById(@PathParam("userid")String userId) throws Throwable;
 	
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.OPERATION_FIND_WECHAT +"/{openid}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_WECHAT + RestAPIConstants.OPERATION_FIND_WECHAT +"/{openid}")
 	WechatUserModel findWechatUserModelByOpenid(@PathParam("openid") String openid) throws Throwable;
 	
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.OPERATION_FIND_USER + "/{userid}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_WECHAT + RestAPIConstants.OPERATION_FIND_USER + "/{userid}")
 	WechatUserModel findWechatUserModelByUserid(@PathParam("userid") String userId) throws Throwable;
 	
 	/**
@@ -135,7 +135,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/count")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_WECHAT + "/count")
 	long countWechatUsers();
 	
 	/**
@@ -183,7 +183,7 @@ public interface IUserManagerService {
 	 * </pre>
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/page/{page}/{size}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_USER + RestAPIConstants.QUERY_PARAM_LIST + "/{page}/{size}")
 	JsonablePageImpl<UserModel> findUsersWithPageParam(@PathParam("page")int page, @PathParam("size")int size) throws Throwable;
 	
 	
@@ -194,7 +194,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + RestAPIConstants.PARAM_QUERY_ALL + "/page/{page}/{size}")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_WECHAT + RestAPIConstants.QUERY_PARAM_LIST + "/{page}/{size}")
 	JsonablePageImpl<WechatUserModel> findWechatUsersWithPageParam(@PathParam("page") int page, @PathParam("size") int size) throws Throwable;
 	
 	/**
@@ -241,7 +241,7 @@ public interface IUserManagerService {
 	 * </pre>
 	 */
 	@GET
-	@Path(RestAPIConstants.OPERATION_TYPE_QUERY + "/list/all")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_USER + RestAPIConstants.QUERY_PARAM_ALL)
 	JsonablePageImpl<UserModel> findAllUsers() throws Throwable;
 	
 	
@@ -250,7 +250,7 @@ public interface IUserManagerService {
 	 * @return
 	 */
 	@GET
-	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPERATION_USER_WECHAT + "/list/all")
+	@Path(value=RestAPIConstants.OPERATION_TYPE_QUERY + RestAPIConstants.OPTION_USER_WECHAT + RestAPIConstants.QUERY_PARAM_ALL)
 	JsonablePageImpl<WechatUserModel> findAllWechatUsers() throws Throwable;
 	
 }

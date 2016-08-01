@@ -80,19 +80,104 @@ groupid	用户所在的分组ID
 --订单表 order
 drop table order if exists;
 CREATE TABLE `showmecoo`.`order` (
-  `orderid` VARCHAR(32) NOT NULL,
-  `linkman_name` VARCHAR(32) NOT NULL,
-  `phone` VARCHAR(32) NOT NULL,
+  `orderid` VARCHAR(45) NOT NULL,
+  `linkman_name` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NOT NULL,
   `show_addr` VARCHAR(128) NOT NULL,
   `show_date` DATETIME NOT NULL,
   `show_fee` INT NULL,
-  `userid` VARCHAR(32) NULL,
+  `userid` VARCHAR(45) NULL,
   `openid` VARCHAR(45) NULL,
   `create_date` DATETIME NOT NULL,
   `modify_date` DATETIME NULL,
-  `modify_userid` VARCHAR(32) NULL,
+  `modify_userid` VARCHAR(45) NULL,
   `request_mark` TEXT(1024) NOT NULL,
   PRIMARY KEY (`orderid`),
   UNIQUE INDEX `orderid_UNIQUE` (`orderid` ASC));
+  
+  
+  
+ --演员表  actor, 艺人主表，纪录艺人通用基本信息，主要用于一级页面展示 
+  CREATE TABLE `showmecoo`.`actor` (
+  `actorid` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `nick_name` VARCHAR(45) NOT NULL,
+  `height` INT NULL,
+  `age` INT NULL,
+  `sex` INT NOT NULL,
+  `type` INT NOT NULL,
+  `style` VARCHAR(45) NULL,
+  `displayed_num` INT NULL,
+  `visit_num` INT NULL,
+  `fans_num` INT NULL,
+  `create_time` DATETIME NULL,
+  `image_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`actorid`),
+  UNIQUE INDEX `actorid_UNIQUE` (`actorid` ASC),
+  UNIQUE INDEX `nick_name_UNIQUE` (`nick_name` ASC));
+  
+  
+  --演员表之舞蹈演员  actor_dancer  用于纪录舞者的简介信息，主要用于二级页面的展示
+  CREATE TABLE `showmecoo`.`actor_dancer` (
+  `actorid` VARCHAR(45) NOT NULL,
+  `skilled_style` VARCHAR(128) NULL,
+  `display_addr` VARCHAR(64) NULL,
+  `display_price` INT NULL,
+  `display_standard` VARCHAR(512) NULL,
+  `main_image_name` VARCHAR(45) NULL,
+  `second_image_name` VARCHAR(256) NULL,
+  `brief_introduction` VARCHAR(512) NULL,
+  `level_score` INT NULL,
+  PRIMARY KEY (`actorid`),
+  UNIQUE INDEX `actorid_UNIQUE` (`actorid` ASC));
+  
+  
+  --演员子表之歌手表  actor_singer  用于纪录歌手的简介信息，主要用与歌手二级页面
+  CREATE TABLE `showmecoo`.`actor_singer` (
+  `actorid` INT NOT NULL,
+  `skilled_style` VARCHAR(128) NULL,
+  `display_addr` VARCHAR(64) NULL,
+  `display_price` INT NULL,
+  `represantive_work` VARCHAR(256) NULL,
+  `display_standard` VARCHAR(512) NULL,
+  `main_image_name` VARCHAR(45) NULL,
+  `second_image_name` VARCHAR(256) NULL,
+  `brief_introduction` VARCHAR(512) NULL,
+  `level_score` INT NULL,
+  PRIMARY KEY (`actorid`),
+  UNIQUE INDEX `actorid_UNIQUE` (`actorid` ASC));
+  
+  
+  --演员子表－模特表  actor_model 用于纪录歌手的简介信息，主要用于模特二级页面
+  CREATE TABLE `showmecoo`.`actor_model` (
+  `actorid` VARCHAR(45) NOT NULL,
+  `skilled_style` VARCHAR(128) NULL,
+  `display_addr` VARCHAR(64) NULL,
+  `display_price` INT NULL,
+  `display_standard` VARCHAR(512) NULL,
+  `main_image_name` VARCHAR(45) NULL,
+  `second_image_name` VARCHAR(256) NULL,
+  `brief_introduction` VARCHAR(512) NULL,
+  `level_score` INT NULL,
+  PRIMARY KEY (`actorid`),
+  UNIQUE INDEX `actorid_UNIQUE` (`actorid` ASC));
+  
+  
+  --演员子表－主持人表  actor_compere 用于纪录主持人的简介信息，主要用于主持人二级页面
+  CREATE TABLE `showmecoo`.`actor_compere` (
+  `actorid` VARCHAR(45) NOT NULL,
+  `skilled_style` VARCHAR(128) NULL,
+  `display_addr` VARCHAR(64) NULL,
+  `display_price` INT NULL,
+  `display_standard` VARCHAR(512) NULL,
+  `main_image_name` VARCHAR(45) NULL,
+  `second_image_name` VARCHAR(256) NULL,
+  `brief_introduction` VARCHAR(512) NULL,
+  `level_score` INT NULL,
+  PRIMARY KEY (`actorid`),
+  UNIQUE INDEX `actorid_UNIQUE` (`actorid` ASC));
+
+
+  
 
 
