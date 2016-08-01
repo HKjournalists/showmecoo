@@ -21,10 +21,12 @@ import com.showmecoo.web.commons.bo.ActorModel;
 import com.showmecoo.web.commons.bo.CompereModel;
 import com.showmecoo.web.commons.bo.DancerModel;
 import com.showmecoo.web.commons.bo.ModelModel;
+import com.showmecoo.web.commons.bo.SingerModel;
 import com.showmecoo.web.management.entity.ActorEntity;
 import com.showmecoo.web.management.entity.CompereEntity;
 import com.showmecoo.web.management.entity.DancerEntity;
 import com.showmecoo.web.management.entity.ModelEntity;
+import com.showmecoo.web.management.entity.SingerEntity;
 
 /**
  * Actor 业务层对象实例与数据层对象实例转换工具类
@@ -421,23 +423,97 @@ public class ActorPoBoTransUtil {
 	}
 	
 	
+	/**
+	 * singer 业务层对象转为数据层对象
+	 * @param bo
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static SingerEntity singerB2P(SingerModel bo) throws IllegalAccessException{
+		if(null == bo){
+			throw new IllegalAccessException("SingerModel can not be null");
+		}
+		
+		SingerEntity po = new SingerEntity();
+		po.setActorId(bo.getActorId());
+		po.setBriefIntroduction(bo.getBriefIntroduction());
+		po.setDisplayAddr(bo.getDisplayAddr());
+		po.setDisplayPrice(bo.getDisplayPrice());
+		po.setLevelScore(bo.getLevelScore());
+		po.setMainImageName(bo.getMainImageName());
+		po.setRepresantiveWork(bo.getRepresantiveWork());
+		po.setSecondImageName(bo.getSecondImageName());
+		po.setSkilledStyle(bo.getSkilledStyle());
+		po.setStandardDisplay(bo.getStandardDisplay());
+		
+		return po;
+	}
+	
+	/**
+	 * singer 数据层对象转为业务层对象
+	 * @param po
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static SingerModel singerP2B(SingerEntity po) throws IllegalAccessException{
+		if(null == po){
+			throw new IllegalAccessException("SingerEntity can not be null");
+		}
+		
+		SingerModel bo = new SingerModel();
+		bo.setActorId(po.getActorId());
+		bo.setBriefIntroduction(po.getBriefIntroduction());
+		bo.setDisplayAddr(po.getDisplayAddr());
+		bo.setDisplayPrice(po.getDisplayPrice());
+		bo.setLevelScore(po.getLevelScore());
+		bo.setMainImageName(po.getMainImageName());
+		bo.setRepresantiveWork(po.getRepresantiveWork());
+		bo.setSecondImageName(po.getSecondImageName());
+		bo.setSkilledStyle(po.getSkilledStyle());
+		bo.setStandardDisplay(po.getStandardDisplay());
+		
+		return bo;
+	}
 	
 	
+	/**
+	 * singer 数据层对象批量转为业务层对象
+	 * @param poList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static List<SingerModel> singerListP2B(List<SingerEntity> poList) throws IllegalAccessException{
+		if(null == poList){
+			throw new IllegalAccessException("poList can not be null");
+		}
+		
+		List<SingerModel> boList = new ArrayList<>();
+		for(SingerEntity po:poList){
+			boList.add(singerP2B(po));
+		}
+		
+		return boList;
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * singer 业务层对象批量转为数据层对象
+	 * @param boList
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	public static List<SingerEntity> singerListB2P(List<SingerModel> boList) throws IllegalAccessException{
+		if(null == boList){
+			throw new IllegalAccessException("boList can not be null");
+		}
+		
+		List<SingerEntity> poList = new ArrayList<>();
+		for(SingerModel bo:boList){
+			poList.add(singerB2P(bo));
+		}
+		
+		return poList;
+	}
 	
 	
 	
