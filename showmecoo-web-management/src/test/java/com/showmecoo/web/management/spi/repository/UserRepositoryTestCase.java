@@ -14,8 +14,6 @@
 
 package com.showmecoo.web.management.spi.repository;
 
-import static org.junit.Assert.fail;
-
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +32,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.showmecoo.web.commons.util.FastJsonUtil;
 import com.showmecoo.web.management.Application;
 import com.showmecoo.web.management.entity.UserEntity;
-import com.showmecoo.web.management.spi.repository.UserRepository;
 
 /**
  * TODO 此处填写 class 信息

@@ -12,7 +12,7 @@
  *******************************************************************************/
 
 
-package com.showmecoo.web.management.spi.repository;
+package com.showmecoo.web.management.spi.service;
 
 import java.io.IOException;
 import java.util.ArrayList;

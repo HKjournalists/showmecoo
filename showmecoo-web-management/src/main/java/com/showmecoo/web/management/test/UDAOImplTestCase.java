@@ -14,8 +14,6 @@
 
 package com.showmecoo.web.management.test;
 
-import static org.junit.Assert.*;
-
 import java.util.Date;
 
 import javax.transaction.Transactional;

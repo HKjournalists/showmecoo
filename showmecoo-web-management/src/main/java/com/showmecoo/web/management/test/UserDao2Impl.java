@@ -14,12 +14,6 @@
 
 package com.showmecoo.web.management.test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-
 /**
  * TODO 此处填写 class 信息
  *
