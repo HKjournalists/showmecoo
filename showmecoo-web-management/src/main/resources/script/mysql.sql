@@ -81,7 +81,7 @@ groupid	用户所在的分组ID
 drop table order if exists;
 CREATE TABLE `showmecoo`.`order` (
   `orderid` VARCHAR(45) NOT NULL,
-  `linkman_name` VARCHAR(45) NOT NULL,
+  `link_name` VARCHAR(45) NOT NULL,
   `phone` VARCHAR(45) NOT NULL,
   `show_addr` VARCHAR(128) NOT NULL,
   `show_date` DATETIME NOT NULL,
