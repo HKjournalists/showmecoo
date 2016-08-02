@@ -79,9 +79,12 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 1、完成actor模块的CRUD接口及单元测试用例    	half done
 
 20160801
-1、完成actor模块service impl编写
-2、完成actor 模块 rest api 单元测试用例编写
+1、完成actor模块service impl编写					done
+2、完成actor 模块 rest api 单元测试用例编写			done 
 
 
-
+20160803
+1、完成订单模块CRUD接口开发
+2、完成作品模块表结构设计
+3、制定下周讨论内容大纲
 
