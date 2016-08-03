@@ -84,7 +84,12 @@ ip:port/api_version/module/operation(create/update/delete/query)/options...(list
 
 
 20160803
-1、完成订单模块CRUD接口开发
-2、完成作品模块表结构设计
-3、制定下周讨论内容大纲
+1、完成订单模块CRUD接口开发					done
+2、完成作品模块表结构设计						done
+3、制定下周讨论内容大纲						done
+
+
+20160804
+1、完成作品模块表结构讨论
+2、完成作品模块CURD接口开发
 
