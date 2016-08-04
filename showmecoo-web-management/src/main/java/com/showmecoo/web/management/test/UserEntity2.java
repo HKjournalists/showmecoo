@@ -14,7 +14,6 @@
 
 package com.showmecoo.web.management.test;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;

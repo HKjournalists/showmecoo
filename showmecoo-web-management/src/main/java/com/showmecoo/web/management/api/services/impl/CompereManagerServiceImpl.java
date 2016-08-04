@@ -72,6 +72,7 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 			po = actorRepository.save(po);
 		}
 		bo.setActorId(po.getActorId());
+		ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(po), bo);
 		CompereEntity ret = compereRepository.save(ActorPoBoTransUtil.compereB2P(bo));
 		
 		return ActorPoBoTransUtil.compereP2B(ret);
@@ -92,6 +93,7 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 	@Override
 	public void deleteCompereModel(String compereId) throws Throwable {
 		compereRepository.delete(compereId);
+		actorRepository.delete(compereId);
 	}
 
 	/* (non-Javadoc)
@@ -100,12 +102,16 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 	@Override
 	public CompereModel findCompereById(String compereId) throws Throwable {
 		
-		CompereEntity po = compereRepository.findOne(compereId);
-		if(null == po){
+		ActorEntity actor = actorRepository.findOne(compereId);
+		if(null == actor){
 			log.error("can not find compere by compereId:{}, please check again", compereId);
 			return null;
 		}
-		return ActorPoBoTransUtil.compereP2B(po);
+		
+		CompereEntity po = compereRepository.findOne(compereId);
+		CompereModel bo = ActorPoBoTransUtil.compereP2B(po);
+		ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(actor), bo);
+		return bo;
 	}
 
 	/* (non-Javadoc)
@@ -120,9 +126,11 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 		}
 		List<CompereModel> boList = new ArrayList<>();
 		for(ActorEntity actor:list){
-			boList.add(ActorPoBoTransUtil.
-					compereP2B(compereRepository.
-							findOne(actor.getActorId())));
+			
+			CompereEntity po = compereRepository.findOne(actor.getActorId());
+			CompereModel bo = ActorPoBoTransUtil.compereP2B(po);
+			ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(actor), bo);
+			boList.add(bo);
 			
 		}
 		return boList;
@@ -140,7 +148,9 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 			return null;
 		}
 		CompereEntity po = compereRepository.findOne(actor.getActorId());
-		return ActorPoBoTransUtil.compereP2B(po);
+		CompereModel bo = ActorPoBoTransUtil.compereP2B(po);
+		ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(actor), bo);
+		return bo;
 	}
 
 	/* (non-Javadoc)
@@ -150,12 +160,21 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 	public JsonablePageImpl<CompereModel> findAllComperes() throws Throwable {
 		PageRequest pageable = new PageRequest(0, 10);
 		Page<CompereEntity> poPage = compereRepository.findAll(pageable);
-		if(null == poPage.getContent()){
+		List<CompereEntity> poList = poPage.getContent();
+		if(null == poList){
 			log.error("can not find any compere");
 			return null;
 		}
+		List<CompereModel> boList = new ArrayList<>();
+		for(CompereEntity po:poList){
+			ActorEntity actor = actorRepository.findOne(po.getActorId());
+			CompereModel bo = ActorPoBoTransUtil.compereP2B(po);
+			ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(actor), bo);
+			boList.add(bo);
+		}
+		
 		JsonablePageImpl<CompereModel> jsonAble = new JsonablePageImpl<>();
-		jsonAble.setContent(ActorPoBoTransUtil.compereListP2B(poPage.getContent()));
+		jsonAble.setContent(boList);
 		jsonAble.setFirst(poPage.isFirst());
 		jsonAble.setLast(poPage.isLast());
 		jsonAble.setNumber(poPage.getNumber());
@@ -174,12 +193,20 @@ public class CompereManagerServiceImpl implements ICompereManagerService{
 		
 		PageRequest pageable = new PageRequest(page, size);
 		Page<CompereEntity> poPage = compereRepository.findAll(pageable);
-		if(null == poPage.getContent()){
+		List<CompereEntity> poList = poPage.getContent();
+		if(null == poList){
 			log.error("can not find any compere");
 			return null;
 		}
+		List<CompereModel> boList = new ArrayList<>();
+		for(CompereEntity po:poList){
+			ActorEntity actor = actorRepository.findOne(po.getActorId());
+			CompereModel bo = ActorPoBoTransUtil.compereP2B(po);
+			ActorPoBoTransUtil.addCommonAttr4Bo(ActorPoBoTransUtil.actorP2B(actor), bo);
+			boList.add(bo);
+		}
 		JsonablePageImpl<CompereModel> jsonAble = new JsonablePageImpl<>();
-		jsonAble.setContent(ActorPoBoTransUtil.compereListP2B(poPage.getContent()));
+		jsonAble.setContent(ActorPoBoTransUtil.compereListP2B(poList));
 		jsonAble.setFirst(poPage.isFirst());
 		jsonAble.setLast(poPage.isLast());
 		jsonAble.setNumber(poPage.getNumber());

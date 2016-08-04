@@ -49,7 +49,8 @@ import com.showmecoo.web.commons.util.JsonablePageImpl;
 public interface IActorManagerService {
 	
 	/**
-	 * 新增Actor，在对应的actor表新增一条纪录
+	 * 新增Actor，在对应的actor表新增一条纪录<br/>
+	 * e.g uri: http://host:port/1/actors/c/actor
 	 * @param bo
 	 * @return
 	 */
@@ -107,7 +108,8 @@ public interface IActorManagerService {
 	ActorModel findActorModelByNickName(@PathParam("actorNickName")String actorNickName) throws Throwable;
 	
 	/**
-	 * 查询所有的演员，返回带分页的JsonablePageImpl对象的json串
+	 * 查询所有的演员，返回带分页的JsonablePageImpl对象的json串<br/>
+	 * e.g uri: http://post:port/1/actors/q/actor/all
 	 * @return
 	 */
 	@GET

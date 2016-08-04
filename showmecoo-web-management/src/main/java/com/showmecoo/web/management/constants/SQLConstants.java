@@ -32,12 +32,12 @@ public class SQLConstants {
 	
 	//user table
 	public static final String USER_SQL_FIND_USER_BY_NAME = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid "
-									+ "from user "
-									+ "where username=?1";
+									+ " from user "
+									+ " where username=?1";
 	
 	public static final String USER_SQL_FIND_USER_BY_ID = "select userid, username, password, phone, email, rolename, createdate, modifydate, lastlogindate, openid "
-														+ "from user "
-														+ "where userid=?";
+														+ " from user "
+														+ " where userid=?";
 	
 	public static final String USER_SQL_COUNT_USER = "select count(userid) from user";
 
@@ -101,13 +101,13 @@ public class SQLConstants {
 	public static final String ACTOR_SQL_FIND_ACTOR_BY_NAME = "select actorid, name, nick_name, height, age, sex, "
 																+ " type, style, displayed_num, visit_num, fans_num, create_time, image_name"
 																+ " from actor"
-																+ "where name=?1"; 
+																+ " where name=?1"; 
 	
 	
 	public static final String ACTOR_SQL_FIND_ACTOR_BY_NICK_NAME = "select actorid, name, nick_name, height, age, sex, "
 																	+ " type, style, displayed_num, visit_num, fans_num, create_time, image_name"
 																	+ " from actor"
-																	+ "where nick_name=?1"; 
+																	+ " where nick_name=?1"; 
 	
 	
 	

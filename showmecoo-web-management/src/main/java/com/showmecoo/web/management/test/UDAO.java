@@ -14,8 +14,6 @@
 
 package com.showmecoo.web.management.test;
 
-import org.springframework.data.repository.Repository;
-
 /**
  * TODO 此处填写 class 信息
  *
