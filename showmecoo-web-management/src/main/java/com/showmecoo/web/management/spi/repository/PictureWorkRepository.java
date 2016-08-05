@@ -14,8 +14,10 @@
 
 package com.showmecoo.web.management.spi.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.PictureWorkEntity;
 
 /**
@@ -25,7 +27,9 @@ import com.showmecoo.web.management.entity.PictureWorkEntity;
  */
 
 public interface PictureWorkRepository extends PagingAndSortingRepository<PictureWorkEntity, String>{
-
+	
+	@Query(value=SQLConstants.WORK_SQL_FIND_PICTURE_BY_WORK_NAME, nativeQuery=true)
+	PictureWorkEntity findPictureByWorkName(String workName) throws Throwable;
 }
 
 /*

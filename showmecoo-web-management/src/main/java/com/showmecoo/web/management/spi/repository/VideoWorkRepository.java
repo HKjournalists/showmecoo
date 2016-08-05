@@ -14,8 +14,10 @@
 
 package com.showmecoo.web.management.spi.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import com.showmecoo.web.management.constants.SQLConstants;
 import com.showmecoo.web.management.entity.VideoWorkEntity;
 
 /**
@@ -25,7 +27,9 @@ import com.showmecoo.web.management.entity.VideoWorkEntity;
  */
 
 public interface VideoWorkRepository extends PagingAndSortingRepository<VideoWorkEntity, String>{
-
+	
+	@Query(value=SQLConstants.WORK_SQL_FIND_VIDEO_BY_WORK_NAME, nativeQuery=true)
+	VideoWorkEntity findVideoWorkByWorkName(String workName) throws Throwable;
 }
 
 /*
