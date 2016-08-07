@@ -112,8 +112,41 @@ public class SQLConstants {
 	
 	
 
+//====================================Work SQL===============================================
+	
+	/*
+	 * CREATE TABLE `showmecoo`.`work_picture` (
+  `pictureid` VARCHAR(45) NOT NULL,
+  `actorid` VARCHAR(45) NULL,
+  `work_name` VARCHAR(20) NULL,
+  `recommend_level` INT NULL,
+  `picture_name` VARCHAR(45) NULL,
+  `visit_num` INT NULL,
+  `create_time` DATETIME NULL,
+  `update_time` DATETIME NULL,
+  `brief_introduction` VARCHAR(256) NULL,
+	 */
+	public static final String WORK_SQL_FIND_PICTURE_BY_WORK_NAME = "select pictureid, actorid, work_name, recommend_level, picture_name, "
+																	+ " visit_num, create_time, update_time, brief_introduction"
+																	+ " from work_picture"
+																	+ " where work_name=?1"; 
 	
 	
+	/*`videoid` VARCHAR(45) NOT NULL,
+  `actorid` VARCHAR(45) NOT NULL,
+  `work_name` VARCHAR(45) NULL,
+  `recommend_level` INT NULL,
+  `video_name` VARCHAR(45) NULL,
+  `visit_num` INT NULL,
+  `create_time` DATETIME NULL,
+  `update_time` DATETIME NULL,
+  `brief_introduction` VARCHAR(256) NULL,
+  **/
+	
+	public static final String WORK_SQL_FIND_VIDEO_BY_WORK_NAME = "select videoid, actorid, work_name, recommand_level, video_name,"
+																	+ " visit_num, create_time, update_time, brief_introduction"
+																	+ " from work_video"
+																	+ " where work_name=?1";
 	
 	
 }

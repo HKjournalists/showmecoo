@@ -177,7 +177,35 @@ CREATE TABLE `showmecoo`.`order` (
   PRIMARY KEY (`actorid`),
   UNIQUE INDEX `actorid_UNIQUE` (`actorid` ASC));
 
+--艺人作品图片表 work_picture
+  CREATE TABLE `showmecoo`.`work_picture` (
+  `pictureid` VARCHAR(45) NOT NULL,
+  `actorid` VARCHAR(45) NULL,
+  `work_name` VARCHAR(20) NULL,
+  `recommend_level` INT NULL,
+  `picture_name` VARCHAR(45) NULL,
+  `visit_num` INT NULL,
+  `create_time` DATETIME NULL,
+  `update_time` DATETIME NULL,
+  `brief_introduction` VARCHAR(256) NULL,
+  PRIMARY KEY (`picture_id`),
+  UNIQUE INDEX `picture_id_UNIQUE` (`picture_id` ASC),
+  UNIQUE INDEX `work_name_UNIQUE` (`work_name` ASC));
 
-  
+  --艺人作品视频表  work_video
+  CREATE TABLE `showmecoo`.`work_video` (
+  `videoid` VARCHAR(45) NOT NULL,
+  `actorid` VARCHAR(45) NOT NULL,
+  `work_name` VARCHAR(45) NULL,
+  `recommend_level` INT NULL,
+  `video_name` VARCHAR(45) NULL,
+  `visit_num` INT NULL,
+  `create_time` DATETIME NULL,
+  `update_time` DATETIME NULL,
+  `brief_introduction` VARCHAR(256) NULL,
+  PRIMARY KEY (`video_id`),
+  UNIQUE INDEX `video_id_UNIQUE` (`video_id` ASC),
+  UNIQUE INDEX `work_name_UNIQUE` (`work_name` ASC));
+
 
 

@@ -80,4 +80,16 @@ public class RestAPIConstants {
 	 * 艺人－compere相关操作前缀
 	 */
 	public static final String OPTION_ACTOR_COMPERE = "/compere";
+	
+//-----------------------------------------------------------作品相关操作前缀-------------------------------------------------
+	/**
+	 * 作品－图片相关操作前缀
+	 */
+	public static final String OPTION_WORK_PICTURE = "/picture";
+	
+	/**
+	 * 作品－视频相关操作前缀
+	 */
+	public static final String OPTION_WORK_VIDEO = "/video";
+	
 }
