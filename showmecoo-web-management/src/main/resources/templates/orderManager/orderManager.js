@@ -1,29 +1,21 @@
 $(function(){
-	var arr = [{username:"1",password:"2",phone:"3",email:"4",roleid:"5"}
-		,{username:"11",password:"12",phone:"13",email:"14",roleid:"15"}
-		,{username:"21",password:"22",phone:"23",email:"24",roleid:"25"}
-		,{username:"21fda",password:"224132",phone:"vc23",email:"2r4",roleid:"25f"}];
+	var arr = [{link_name:"1",phone:"2",show_addr:"3",show_date:"4",show_fee:"5"}
+		,{link_name:"11",phone:"12",show_addr:"13",show_date:"14",show_fee:"15"}
+		,{link_name:"21",phone:"22",show_addr:"23",show_date:"24",show_fee:"25"}
+		,{link_name:"21fda",phone:"224132",show_addr:"vc23",show_date:"2r4",show_fee:"25f"}];
 
-	var table = TABLE_STATIC.get("userTable");
+	var table = TABLE_STATIC.get("roleTable");
 	if(table){
 		table.setData(arr);
 		var data = table.getDataByRowIndex(2);
 	}
 
-	
-	//jQuery('#userTable').bind("mousemove",test1);
-	//jQuery('#userTable').bind("click",test2);
-	//test
-	$('#useInfoModal').on('hide.bs.modal',function(){
-
-	})
-
 	//模态页面加载完成后回调事件
-	$('#useInfoModal').on('shown.bs.modal',function(){
+	$('#orderInfoModal').on('shown.bs.modal',function(){
 		debugger;
-		operatorNui({},"clear",["modal_username","modal_phone","modal_email","modal_roleid"]);
+		operatorNui({},"clear",["modal_show_addr","modal_show_date","modal_show_fee","modal_request_mark"]);
 
-		var table = TABLE_STATIC.get("userTable");
+		var table = TABLE_STATIC.get("roleTable");
 		if(table){
 			var row = table.getSelectRows();
 			if(row && row[0]){
@@ -35,14 +27,6 @@ $(function(){
 						if($(_id))
 							$(_id).val(data[c]);
 					}
-				}
-			}
-
-			var pNode = table.element.parentNode;
-			for(var i=0,len=pNode.childNodes.length;i<len;i++){
-				var c = pNode.childNodes[i];
-				if(c == table.element){
-					alert(0);
 				}
 			}
 		}

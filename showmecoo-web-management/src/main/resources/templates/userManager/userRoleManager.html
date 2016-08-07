@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>用户管理</title>
+    <title>用户角色管理</title>
 
     <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap/asset/dashboard.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <script src="../js/bootstrap/bootstrap_extend.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/bootstrap/asset/ie10-viewport-bug-workaround.js"></script>
-    <script src="userManager.js"></script>
+    <script src="userRoleManager.js"></script>
   </head>
 
   <body>
@@ -47,10 +47,10 @@
         <!-- 左侧导航 -->
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="userManager.html">用户管理</span></a></li>
+            <li><a href="userManager.html">用户管理</span></a></li>
             <li><a href="wechatUserManager.html">微信用户管理</span></a></li>
             <li><a href="roleManager.html">角色管理</a></li>
-            <li><a href="userRoleManager.html">用户角色管理</a></li>
+            <li class="active"><a href="userRoleManager.html">用户角色管理</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="../actorManager/actorManager.html">艺人管理</a></li>
@@ -72,16 +72,16 @@
                 <input type="text" class="form-control" id="username" placeholder="用户名">
               </div>
               <div class="form-group col-sm-4">
-                <label for="phone" class="col-sm-4" style="margin-top:5px;">手机号码</label>
-                <input type="text" class="form-control" id="phone" placeholder="手机号码">
+                <label for="nickname" class="col-sm-4" style="margin-top:5px;">微信号</label>
+                <input type="text" class="form-control" id="nickname" placeholder="微信号">
               </div>
               <div class="from-group col-sm-4"> 
-                <label for="email" class="col-sm-4" style="margin-top:5px;">邮箱地址</label>
-                <input type="text" class="form-control" id="email" placeholder="邮箱地址">
+                <label for="rolename" class="col-sm-4" style="margin-top:5px;">角色名</label>
+                <input type="text" class="form-control" id="rolename" placeholder="角色名">
               </div>
               <div class="form-group col-sm-4">
-                <label for="roleid" class="col-sm-4" style="margin-top:5px;">用户角色</label>
-                <input type="text" class="form-control" id="roleid" placeholder="用户角色">
+                <label for="createdate" class="col-sm-4" style="margin-top:5px;">注册时间</label>
+                <input type="text" class="form-control" id="createdate" placeholder="注册时间">
               </div>
               <div class="form-group col-sm-4">
                 <p class="col-sm-4">
@@ -91,16 +91,16 @@
               </div>
             </form>
           </div>
-          <!-- 用户信息表 start-->
+          <!-- 用户角色信息表 start-->
           <div class="table-responsive" style="margin-top: 12px;">
-            <div id="userTable" class="table table-striped table-hover" allowRowSelect="true" multiSelect="true">
+            <div id="userRoleTable" class="table table-striped table-hover" allowRowSelect="true" multiSelect="true">
               <div property="columns" id="ff">
                 <div type="checkcolumn" name="全选"></div>
                 <div field="username" name="用户名"></div>
-                <div field="password" name="用户密码"></div>
-                <div field="phone" name="手机号"></div>
+                <div field="nickname" name="微信名"></div>
+                <div field="rolename" name="角色名"></div>
                 <div field="email" name="邮箱地址"></div>
-                <div field="roleid" name="用户角色"></div>
+                <div field="createdate" name="注册时间"></div>
               </div>
             </div>
           </div>
@@ -108,14 +108,14 @@
             <li class="previous"><a href="#">&larr; Older</a></li>
             <li class="next"><a href="#">Newer &rarr;</a></li>
           </ul>
-          <!-- 用户信息表 end-->
+          <!-- 用户角色息表 end-->
           <!-- 按钮触发模态框 -->
           <button class="btn btn-sm btn-primary" data-toggle="modal" 
-             data-target="#useInfoModal">
+             data-target="#userRoleInfoModal">
              新增
           </button>
           <button class="btn btn-sm btn-primary" data-toggle="modal" 
-             data-target="#useInfoModal">
+             data-target="#userRoleInfoModal">
              编辑
           </button>
           <button class="btn btn-sm btn-primary">
@@ -123,9 +123,9 @@
           </button>
       </div>
     </div>
-    <!-- 微信用户信息 Modal start -->
-    <div class="modal fade" id="useInfoModal" tabindex="-1" role="dialog" 
-       aria-labelledby="useInfoModalLabel" aria-hidden="true">
+    <!-- 用户角色信息 Modal start -->
+    <div class="modal fade" id="userRoleInfoModal" tabindex="-1" role="dialog" 
+       aria-labelledby="userRoleInfoModalLabel" aria-hidden="true">
        <div class="modal-dialog modal-lg">
           <div class="modal-content">
              <div class="modal-header">
@@ -133,8 +133,8 @@
                    data-dismiss="modal" aria-hidden="true">
                       &times;
                 </button>
-                <h4 class="modal-title" id="useInfoModalLabel">
-                    用户信息
+                <h4 class="modal-title" id="userRoleInfoModalLabel">
+                    用户角色信息
                 </h4>
              </div>
              <!-- modal content start-->
@@ -145,16 +145,12 @@
                   <input type="text" class="form-control" id="modal_username" placeholder="用户名">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="phone" class="col-sm-4" style="margin-top:5px;">手机号</label>
-                  <input type="text" class="form-control" id="modal_phone" placeholder="手机号">
+                  <label for="nickname" class="col-sm-4" style="margin-top:5px;">微信名</label>
+                  <input type="text" class="form-control" id="modal_nickname" placeholder="微信名">
                 </div>
                 <div class="from-group col-sm-5"> 
-                  <label for="email" class="col-sm-4" style="margin-top:5px;">邮箱地址</label>
-                  <input type="text" class="form-control" id="modal_email" placeholder="邮箱地址">
-                </div>
-                <div class="form-group col-sm-5">
-                  <label for="roleid" class="col-sm-4" style="margin-top:5px;">用户角色</label>
-                  <input type="text" class="form-control" id="modal_roleid" placeholder="用户角色">
+                  <label for="rolename" class="col-sm-4" style="margin-top:5px;">角色名</label>
+                  <input type="text" class="form-control" id="modal_rolename" placeholder="角色名">
                 </div>
               </form>
              </div>
@@ -167,7 +163,7 @@
           </div><!-- /.modal-content -->
       </div><!-- /.modal -->
     </div>
-    <!-- 用户信息 Modal end -->
+    <!-- 用户角色信息 Modal end -->
   </body>
 </html>
 

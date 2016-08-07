@@ -959,6 +959,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Modal.prototype.show = function (_relatedTarget) {
+    debugger;
     var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
@@ -1198,8 +1199,8 @@ if (typeof jQuery === 'undefined') {
   // =======================
 
   function Plugin(option, _relatedTarget) {
-    debugger;
     return this.each(function () {
+      debugger;
       var $this   = $(this)
       var data    = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
@@ -1229,7 +1230,6 @@ if (typeof jQuery === 'undefined') {
   // ==============
 
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
-    debugger;
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7

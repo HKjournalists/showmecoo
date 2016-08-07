@@ -14,9 +14,10 @@
     <script src="../js/jquery/jquery-1.9.1.min.js"></script>
     <!--debugger-->
     <script src="../js/bootstrap/bootstrap.js"></script>
-
+    <script src="../js/bootstrap/bootstrap_extend.js"></script>
+    <script src="../js/common.js"></script>
     <script src="../js/bootstrap/asset/ie10-viewport-bug-workaround.js"></script>
-    <script src="../js/userManager.js"></script>
+    <script src="wechatUserManager.js"></script>
   </head>
 
   <body>
@@ -52,22 +53,22 @@
           <ul class="nav nav-sidebar">
             <li><a href="userManager.html">用户管理</span></a></li>
             <li class="active"><a href="wechartUserManager.html">微信用户管理</span></a></li>
-            <li><a href="">用户组管理</a></li>
+            <li><a href="roleManager.html">角色管理</a></li>
+            <li><a href="userRoleManager.html">用户角色管理</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">菜单管理</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li><a href="../actorManager/actorManager.html">艺人管理</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li><a href="../workManager/workManager.html">作品管理</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="../orderManager/orderManager.html">订单管理</a></li>
           </ul>
         </div>
-        <!-- 数据显示区 -->
+        <!-- 数据显示区 start
+          <iframe src="tree.html" width="98%" height="50px" frameborder="0" scrolling="no"></iframe>
+        -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h3 class="page-header"></h3>
           <div class="row">
@@ -98,118 +99,25 @@
           </div>
           <!-- 微信用户信息表 start-->
           <div class="table-responsive" style="margin-top: 12px;">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>
-                    <input type="checkbox">
-                    全选
-                  </th>
-                  <th>微信昵称</th>
-                  <th>性别</th>
-                  <th>所在城市</th>
-                  <th>所在国家</th>
-                  <th>所在省份</th>
-                  <th>用户语言</th>
-                  <th>关注时间</th>
-                  <th>备注</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="tr1" onclick="tableClick(this)">
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                </tr>
-                <tr id="tr2" onclick="tableClick(this)"> 
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                </tr>
-                <tr id="tr3" onclick="tableClick(this)">
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                </tr>
-                <tr id="tr4" onclick="tableClick(this)">
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                </tr>
-                <tr id="tr5" onclick="tableClick(this)">
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                </tr>
-                <tr id="tr6" onclick="tableClick(this)">
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                </tr>
-                <tr id="tr7" onclick="tableClick(this)">
-                  <td>
-                      <input type="checkbox">
-                  </td>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                </tr>
-              </tbody>
-            </table>
+            <div id="wechatUserTable" class="table table-striped table-hover" 
+              allowRowSelect="true" multiSelect="true">
+              <div property="columns" id="ff">
+                <div type="checkcolumn" name="全选"></div>
+                <div field="nickname" name="微信昵称"></div>
+                <div field="sex" name="性别"></div>
+                <div field="language" name="用户语言"></div>
+                <div field="city" name="所在城市"></div>
+                <div field="country" name="所在国家"></div>
+                <div field="province" name="所在省份"></div>
+                <div field="subscribe_time" name="关注时间"></div>
+                <div field="remark" name="备注"></div>
+              </div>
+            </div>
           </div>
+          <ul class="pager">
+            <li class="previous"><a href="#">&larr; Older</a></li>
+            <li class="next"><a href="#">Newer &rarr;</a></li>
+          </ul>
           <!-- 微信用户信息表 end-->
           <!-- 按钮触发模态框 -->
           <button class="btn btn-sm btn-primary" data-toggle="modal" 
@@ -223,8 +131,11 @@
           <button class="btn btn-sm btn-primary">
              删除
           </button>
+        </div>
+        <!-- 数据显示区 end -->
       </div>
     </div>
+
     <!-- 微信用户信息 Modal start -->
     <div class="modal fade" id="wechartUseInfoModal" tabindex="-1" role="dialog" 
        aria-labelledby="wechartUseInfoModalLabel" aria-hidden="true">
@@ -243,46 +154,42 @@
              <div class="modal-body"   style="height:400px;">
               <form class="form-inline" role="form">
                 <div class="from-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">微信昵称</label>
-                  <input type="text" class="form-control" id="name" placeholder="微信昵称">
+                  <label for="nickname" class="col-sm-4" style="margin-top:5px;">微信昵称</label>
+                  <input type="text" class="form-control" id="modal_nickname" placeholder="微信昵称">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">性别</label>
-                  <input type="text" class="form-control" id="name" placeholder="性别">
+                  <label for="sex" class="col-sm-4" style="margin-top:5px;">性别</label>
+                  <input type="text" class="form-control" id="modal_sex" placeholder="性别">
                 </div>
                 <div class="from-group col-sm-5"> 
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">所在城市</label>
-                  <input type="text" class="form-control" id="name" placeholder="所在城市">
+                  <label for="city" class="col-sm-4" style="margin-top:5px;">所在城市</label>
+                  <input type="text" class="form-control" id="modal_city" placeholder="所在城市">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">所在国家</label>
-                  <input type="text" class="form-control" id="name" placeholder="所在国家">
+                  <label for="country" class="col-sm-4" style="margin-top:5px;">所在国家</label>
+                  <input type="text" class="form-control" id="modal_country" placeholder="所在国家">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">所在省份</label>
-                  <input type="text" class="form-control" id="name" placeholder="所在省份">
+                  <label for="province" class="col-sm-4" style="margin-top:5px;">所在省份</label>
+                  <input type="text" class="form-control" id="modal_province" placeholder="所在省份">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">用户语言</label>
-                  <input type="text" class="form-control" id="name" placeholder="用户语言">
+                  <label for="language" class="col-sm-4" style="margin-top:5px;">用户语言</label>
+                  <input type="text" class="form-control" id="modal_language" placeholder="用户语言">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">关注时间</label>
-                  <input type="text" class="form-control" id="name" placeholder="关注时间">
+                  <label for="subscribe_time" class="col-sm-4" style="margin-top:5px;">关注时间</label>
+                  <input type="text" class="form-control" id="modal_subscribe_time" placeholder="关注时间">
                 </div>
                 <div class="form-group col-sm-5">
-                  <label for="name" class="col-sm-4" style="margin-top:5px;">备注</label>
-                  <input type="text" class="form-control" id="name" placeholder="备注">
+                  <label for="remark" class="col-sm-4" style="margin-top:5px;">备注</label>
+                  <input type="text" class="form-control" id="modal_remark" placeholder="备注">
                 </div>
               </form>
              </div>
              <!-- modal content end-->
              <div class="modal-footer">
-                <!--
-                <button type="button" class="btn btn-default" 
-                   data-dismiss="modal">关闭
-                </button>-->
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeModal()">
                    提交更改
                 </button>
              </div>
