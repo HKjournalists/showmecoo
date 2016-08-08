@@ -41,6 +41,19 @@ $(function(){
 	jQuery('.next').bind("click",function(e){
 
 	})
+	//菜单测试数据
+	var a = {menus:[{name:"用户管理",childMenus:[
+	  {name:"用户管理",href:"../userManager/userManager.html"},
+	  {name:"微信用户管理",href:"../userManager/wechatUserManager.html"},
+	  {name:"角色管理",href:"../userManager/roleManager.html"},
+	  {name:"用户角色管理",href:"../userManager/userRoleManager.html"}]},
+	  {name:"艺人管理",childMenus:[{name:"艺人管理",href:"../actorManager/actorManager.html"}]},
+	  {name:"作品管理",childMenus:[{name:"作品管理",href:"../workManager/workManager.html"}]},
+	  {name:"订单管理",childMenus:[{name:"订单管理",href:"../orderManager/orderManager.html"}]}
+	  ]};
+	var options = {data:a,parentId:"nav-content",mainPage:"roleManager.html"}
+	var b = new Nav(options);
+
 });
 
 //修改保存
