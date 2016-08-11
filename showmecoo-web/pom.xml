@@ -6,13 +6,13 @@
 		<artifactId>com.showmecoo.web.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>com.showmecooo.web</artifactId>
+	<artifactId>com.showmecoo.web.portal</artifactId>
 	
 	
 	<dependencies>
 	<dependency>
 		<groupId>com.showmecoo.web</groupId>
-		<artifactId>com.showmecoo.web.management</artifactId>
+		<artifactId>com.showmecoo.web.commons</artifactId>
 		<version>${showmecoo.version}</version>
 	</dependency>
 	</dependencies>
