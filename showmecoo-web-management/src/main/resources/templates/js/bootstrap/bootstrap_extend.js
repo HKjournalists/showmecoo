@@ -819,7 +819,6 @@ bsui.ajax = function (options) {
 	}
 
 	TABLE.prototype.getColumnByEvent = function (c) {
-		//TODO 有bug，是否应该返回所有列定义信息
 		if (c && c.target 
 			&& c.target.id) {
 			var cellIndex = this.getIndexById("td",c.target.id)["cellIndex"];
@@ -844,7 +843,7 @@ bsui.ajax = function (options) {
 			}
 		}
 		bsui.ParseString(this.element, attrs, ["onclick"]);
-		bsui.ParseBool(this.element, attrs, ["allowRowSelect","multiSelect"]);
+		bsui.ParseBool(this.element, attrs, ["allowRowSelect","multiSelect","showPager"]);
 		return attrs
 	}
 
@@ -926,8 +925,9 @@ bsui.ajax = function (options) {
 		return i;
 	}
 
-	TABLE.prototype.setData = function(data){
-		if(!data)return;
+	TABLE.prototype.setData = function(obj){
+		if(!obj || !obj["data"])return;
+		var data = obj["data"];
 		var body = document.createElement("tbody");
 		for(var i=0,len=data.length;i<len;i++){
 			var row = {_index:i+1,data:data[i]};
@@ -943,6 +943,25 @@ bsui.ajax = function (options) {
 		}
 		this.bodyEl = body;
 		this.element.appendChild(body);
+		debugger;
+		if(!this.attrs["page"]){
+			var page = this.showPage(obj);
+			this.attrs["page"] = page;
+		}else{
+			this.attrs["page"].setPageIndex(1);
+			this.attrs["page"].changePage();
+		}
+	}
+
+	TABLE.prototype.showPage = function(obj){
+		var page;
+		var showFlag = this.attrs["showPager"];
+		if(showFlag){
+			var pager = obj["pager"];
+			pager["pageIndex"] = 1;
+			var page = new PageUI(pager);
+		}
+		return page;
 	}
 
 	TABLE.prototype.getDataByRowIndex = function(index){
@@ -993,4 +1012,49 @@ bsui.ajax = function (options) {
 			TABLE_STATIC.components[id] = tableObj;
 		});
 	})
+}(jQuery);
+
++function ($) {
+	Datetimepicker = {
+		init:function(){
+			$('.form_datetime').datetimepicker({
+			    //language:  'fr',
+			    weekStart: 1,
+			    todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+			    showMeridian: 1
+			});
+			$('.form_date').datetimepicker({
+			    language:  'fr',
+			    weekStart: 1,
+			    todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				minView: 2,
+				forceParse: 0
+			});
+			$('.form_time').datetimepicker({
+			    language:  'fr',
+			    weekStart: 1,
+			    todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 1,
+				minView: 0,
+				maxView: 1,
+				forceParse: 0
+			});
+		}
+	}
+}(jQuery);
+
+
++function ($) {
+	bsui.parse = function(){
+		Datetimepicker.init();
+	}
 }(jQuery);
